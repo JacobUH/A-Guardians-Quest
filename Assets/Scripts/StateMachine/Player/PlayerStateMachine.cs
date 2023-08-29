@@ -13,7 +13,7 @@ public class PlayerStateMachine : StateMachine
     public CharacterController controller;
     public Animator animator;
     public Transform mainCameraTransform;
-    private void Awake()
+    private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
         animator = gameObject.GetComponent<Animator>();
