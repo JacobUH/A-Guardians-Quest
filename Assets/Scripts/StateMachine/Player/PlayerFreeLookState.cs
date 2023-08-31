@@ -6,7 +6,7 @@ public class PlayerFreeLookState : PlayerState
 {
     public PlayerFreeLookState(PlayerStateMachine playerStateMachine) : base(playerStateMachine) { }
 
-    private int freelookHash = Animator.StringToHash("FreeLookBlendTree");
+    private int freelookHash =  Animator.StringToHash("FreeLookBlendTree");
     private int blendSpeedHash = Animator.StringToHash("FreeLookBlendSpeed");
     private float crossFixedDuration = 0.1f;
     private float blendValue;
@@ -16,12 +16,14 @@ public class PlayerFreeLookState : PlayerState
     {
         InputReader.Instance.EnableFreelookInputReader();
         InputReader.Instance.SouthButtonPressEvent += Jump;
+        InputReader.Instance.WestButtonPressEvent += NormalAttack;
         playerStateMachine.animator.CrossFadeInFixedTime(freelookHash, crossFixedDuration);
     }
 
     public override void Exit()
     {
         InputReader.Instance.SouthButtonPressEvent -= Jump;
+        InputReader.Instance.WestButtonPressEvent -= NormalAttack;
     }
 
     public override void Tick()
@@ -29,6 +31,7 @@ public class PlayerFreeLookState : PlayerState
         UpdateAnimator();
         HandleCameraMovement();
         HandlePlayerMovement();
+        if (InputReader.Instance.isPressingWestButton) NormalAttack();
     }
 
     private void HandlePlayerMovement()
@@ -70,6 +73,11 @@ public class PlayerFreeLookState : PlayerState
         else blendValue = Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y));
 
         playerStateMachine.animator.SetFloat(blendSpeedHash, blendValue, 0.1f, Time.deltaTime);
+    }
+
+    private void NormalAttack()
+    {
+        playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalCombo.attack[0]));
     }
 
     private void Jump()

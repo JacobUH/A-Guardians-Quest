@@ -13,24 +13,31 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
     public bool isPressingRightTrigger;
     public bool isPressingDpadLeft;
     public bool isPressingDpadRight;
-    public Vector2 leftStickValue;
-    public Vector2 rightStickValue;
+
     public event Action SouthButtonPressEvent;
-    public event Action EastButtonPressEvent;
     public event Action NorthButtonPressEvent;
-    public event Action LockOnEvent;
-    public event Action StartButtonPressEvent;
-    public event Action SelectButtonPressEvent;
+    public event Action EastButtonPressEvent;
+    public event Action WestButtonPressEvent
+        ;
+    public event Action RightStickPressEvent;
+    public Vector2 leftStickValue;
+    public event Action LeftStickPressEvent;
+    public Vector2 rightStickValue;
+
     public event Action DpadUpButtonPressEvent;
     public event Action DpadDownButtonPressEvent;
     public event Action DpadLeftButtonPressEvent;
     public event Action DpadRightButtonPressEvent;
+
+    public event Action StartButtonPressEvent;
+    public event Action SelectButtonPressEvent;
+
     public bool isPressingRightShoulder = false;
     public bool isPressingLeftShoulder = false;
-    private PlayerInput playerInput;
 
+    private PlayerInput playerInput;
     private bool isPressing = false;
-    private float timer = 0f;
+    private float pressTime = 0f;
 
     private UnityAction longPressAction;
     protected override void Awake()
@@ -43,10 +50,11 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
     {
         if (isPressing)
         {
-            timer += Time.unscaledDeltaTime;
-            if (timer >= longPressDuration)
+            pressTime += Time.unscaledDeltaTime;
+            if (pressTime >= longPressDuration)
             {
-                longPressAction.Invoke();
+                longPressAction?.Invoke();
+                longPressAction = null;
                 isPressing = false;
             }
         }
@@ -74,11 +82,11 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         {
             isPressing = true;
             longPressAction = OnSouthButtonLongPress;
-            timer = 0f;
+            pressTime = 0f;
         }
         else if (context.canceled)
         {
-            if (timer < longPressDuration && isPressing)
+            if (pressTime < longPressDuration && isPressing)
             {
                 SouthButtonPressEvent?.Invoke();
             }
@@ -94,8 +102,22 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
 
     public void OnWestButton(InputAction.CallbackContext context)
     {
-        if (context.performed) isPressingWestButton = true;
-        else if (context.canceled) isPressingWestButton = false;
+        if (context.started)
+        {
+            isPressing = true;
+            isPressingWestButton = true;
+            longPressAction = OnWestButtonLongPress;
+            pressTime = 0f;
+        }
+        else if (context.canceled)
+        {
+            if (pressTime < longPressDuration && isPressing)
+            {
+                WestButtonPressEvent?.Invoke();
+            }
+            isPressing = false;
+            isPressingWestButton = false;
+        }
     }
 
 
@@ -129,11 +151,11 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         {
             isPressing = true;
             longPressAction = OnStartLongPress;
-            timer = 0f;
+            pressTime = 0f;
         }
         else if (context.canceled)
         {
-            if (timer < longPressDuration && isPressing)
+            if (pressTime < longPressDuration && isPressing)
             {
                 StartButtonPressEvent?.Invoke();
             }
@@ -147,11 +169,11 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         {
             isPressing = true;
             longPressAction = OnStartLongPress;
-            timer = 0f;
+            pressTime = 0f;
         }
         else if (context.canceled)
         {
-            if (timer < longPressDuration && isPressing)
+            if (pressTime < longPressDuration && isPressing)
             {
                 SelectButtonPressEvent?.Invoke();
             }
@@ -166,6 +188,8 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
 
     public void OnLeftStickPress(InputAction.CallbackContext context)
     {
+        if (!context.performed) return;
+        LeftStickPressEvent?.Invoke();
     }
 
     public void OnRightStick(InputAction.CallbackContext context)
@@ -176,10 +200,14 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
     public void OnRightStickPress(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        LockOnEvent?.Invoke();
+        RightStickPressEvent?.Invoke();
     }
 
     public void OnSouthButtonLongPress()
+    {
+    }
+
+    public void OnWestButtonLongPress()
     {
     }
 
@@ -193,38 +221,10 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
 
     public void OnDpadUpButton(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            isPressing = true;
-            //longPressAction = OnStartLongPress;
-            timer = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (timer < longPressDuration && isPressing)
-            {
-                DpadUpButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-        }
     }
 
     public void OnDpadDownButton(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            isPressing = true;
-            //longPressAction = OnStartLongPress;
-            timer = 0f;
-        }
-        else if (context.canceled)
-        {
-            if (timer < longPressDuration && isPressing)
-            {
-                DpadDownButtonPressEvent?.Invoke();
-            }
-            isPressing = false;
-        }
     }
 
     public void OnDpadLeftButton(InputAction.CallbackContext context)
@@ -232,13 +232,12 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         if (context.started)
         {
             isPressing = true;
-            //longPressAction = OnStartLongPress;
-            timer = 0f;
             isPressingDpadLeft = true;
+            pressTime = 0f;
         }
         else if (context.canceled)
         {
-            if (timer < longPressDuration && isPressing)
+            if (pressTime < longPressDuration && isPressing)
             {
                 DpadLeftButtonPressEvent?.Invoke();
             }
@@ -253,12 +252,11 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         {
             isPressing = true;
             isPressingDpadRight = true;
-            //longPressAction = OnStartLongPress;
-            timer = 0f;
+            pressTime = 0f;
         }
         else if (context.canceled)
         {
-            if (timer < longPressDuration && isPressing)
+            if (pressTime < longPressDuration && isPressing)
             {
                 DpadRightButtonPressEvent?.Invoke();
             }

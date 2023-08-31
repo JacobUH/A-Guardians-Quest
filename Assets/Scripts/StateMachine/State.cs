@@ -8,16 +8,15 @@ public abstract class State
     public abstract void Tick();
     public abstract void Exit();
 
-    protected float GetNormalizedTime(Animator animator, int tagHash)
+    protected float GetNormalizedTime(Animator animator, int animationHash)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
         AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
-
-        if (animator.IsInTransition(0) && nextInfo.tagHash == tagHash)
+        if (animator.IsInTransition(0) && nextInfo.shortNameHash == animationHash)
         {
             return nextInfo.normalizedTime;
         }
-        else if (!animator.IsInTransition(0) && currentInfo.tagHash == tagHash)
+        else if (!animator.IsInTransition(0) && currentInfo.shortNameHash == animationHash)
         {
             return currentInfo.normalizedTime;
         }

@@ -14,12 +14,14 @@ public class PlayerStateMachine : StateMachine
     public Animator animator;
     public Transform mainCameraTransform;
     public ForceReceiver forceReceiver;
+    public ComboManager comboManager;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         forceReceiver = GetComponent<ForceReceiver>();
+        comboManager = GetComponent<ComboManager>();
         SwitchState(new PlayerFreeLookState(this));
     }
 }

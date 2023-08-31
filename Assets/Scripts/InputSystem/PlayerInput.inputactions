@@ -336,6 +336,17 @@
                 },
                 {
                     "name": "",
+                    "id": "98d5ea86-2ec1-431d-ab79-edf1673e7ff1",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "WestButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a86f11d4-f2c0-49c1-846b-48c194fd0846",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
