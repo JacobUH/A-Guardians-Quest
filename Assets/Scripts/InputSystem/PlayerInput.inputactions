@@ -182,6 +182,17 @@
                 },
                 {
                     "name": "",
+                    "id": "17beac6c-91d0-493b-913f-1797a9f9dd09",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "SouthButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "80294a6a-bd23-43d3-802d-76b2f09ab67f",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",

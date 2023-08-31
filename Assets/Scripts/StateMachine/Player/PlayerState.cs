@@ -10,9 +10,10 @@ public abstract class PlayerState : State
     {
         this.playerStateMachine = stateMachine;
     }
+
     public void Move(Vector3 movement)
     {
-        playerStateMachine.controller.Move(movement * Time.deltaTime);
+        playerStateMachine.controller.Move((movement + playerStateMachine.forceReceiver.GetForce()) * Time.deltaTime);
     }
 
     public Vector3 CalculateMovement()

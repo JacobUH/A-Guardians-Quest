@@ -13,10 +13,13 @@ public class PlayerStateMachine : StateMachine
     public CharacterController controller;
     public Animator animator;
     public Transform mainCameraTransform;
+    public ForceReceiver forceReceiver;
+
     private void Start()
     {
-        controller = gameObject.GetComponent<CharacterController>();
-        animator = gameObject.GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+        forceReceiver = GetComponent<ForceReceiver>();
         SwitchState(new PlayerFreeLookState(this));
     }
 }

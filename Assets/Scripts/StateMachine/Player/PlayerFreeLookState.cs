@@ -15,11 +15,13 @@ public class PlayerFreeLookState : PlayerState
     public override void Enter()
     {
         InputReader.Instance.EnableFreelookInputReader();
+        InputReader.Instance.SouthButtonPressEvent += Jump;
         playerStateMachine.animator.CrossFadeInFixedTime(freelookHash, crossFixedDuration);
     }
 
     public override void Exit()
     {
+        InputReader.Instance.SouthButtonPressEvent -= Jump;
     }
 
     public override void Tick()
@@ -68,5 +70,10 @@ public class PlayerFreeLookState : PlayerState
         else blendValue = Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y));
 
         playerStateMachine.animator.SetFloat(blendSpeedHash, blendValue, 0.1f, Time.deltaTime);
+    }
+
+    private void Jump()
+    {
+        playerStateMachine.SwitchState(new PlayerJumpState(playerStateMachine));
     }
 }
