@@ -1547,14 +1547,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f1e7dbfc0aa1a459832bc752e420f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4
-  changeDirectionSpeed: 30
+  movementSpeed: 5
+  changeDirectionSpeed: 180
   jumpForce: 1
   controller: {fileID: 1469337919}
   animator: {fileID: 1469337920}
   mainCameraTransform: {fileID: 330585546}
   forceReceiver: {fileID: 1469337923}
-  comboManager: {fileID: 0}
+  comboManager: {fileID: 1469337924}
 --- !u!114 &1469337922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,6 +1568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   longPressDuration: 0.5
+  isPressingSouthButton: 0
   isPressingWestButton: 0
   isPressingLeftTrigger: 0
   isPressingRightTrigger: 0

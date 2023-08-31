@@ -40,4 +40,9 @@ public abstract class PlayerState : State
     {
         playerStateMachine.transform.rotation = Quaternion.Lerp(playerStateMachine.transform.rotation, Quaternion.LookRotation(movement), playerStateMachine.changeDirectionSpeed * Time.deltaTime);
     }
+
+    public void ChangeDirectionInstantly(Vector3 movement)
+    {
+        playerStateMachine.transform.rotation = Quaternion.LookRotation(movement);
+    }
 }

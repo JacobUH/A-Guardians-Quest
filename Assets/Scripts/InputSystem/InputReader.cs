@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFreeLookActions
 {
     public float longPressDuration = 0.5f;
+    public bool isPressingSouthButton;
     public bool isPressingWestButton;
     public bool isPressingLeftTrigger;
     public bool isPressingRightTrigger;
@@ -81,6 +82,7 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         if (context.started)
         {
             isPressing = true;
+            isPressingSouthButton = true;
             longPressAction = OnSouthButtonLongPress;
             pressTime = 0f;
         }
@@ -91,6 +93,7 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
                 SouthButtonPressEvent?.Invoke();
             }
             isPressing = false;
+            isPressingSouthButton = false;
         }
     }
 

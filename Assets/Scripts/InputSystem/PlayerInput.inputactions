@@ -215,6 +215,17 @@
                 },
                 {
                     "name": "",
+                    "id": "01ad0671-f259-452d-9719-7418c368c17c",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "EastButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6933f9ba-f900-44f8-a415-64aca04d94c0",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",

@@ -15,5 +15,5 @@ MonoBehaviour:
   animationName: NormalAttack2
   transitionDuration: 0.5
   nextComboIndex: 2
-  nextComboEnableTime: 0.7
+  nextComboEnableTime: 0.55
   damage: 0

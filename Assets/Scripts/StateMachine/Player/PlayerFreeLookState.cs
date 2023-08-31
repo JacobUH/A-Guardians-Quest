@@ -16,6 +16,7 @@ public class PlayerFreeLookState : PlayerState
     {
         InputReader.Instance.EnableFreelookInputReader();
         InputReader.Instance.SouthButtonPressEvent += Jump;
+        InputReader.Instance.EastButtonPressEvent += Dodge;
         InputReader.Instance.WestButtonPressEvent += NormalAttack;
         playerStateMachine.animator.CrossFadeInFixedTime(freelookHash, crossFixedDuration);
     }
@@ -23,6 +24,7 @@ public class PlayerFreeLookState : PlayerState
     public override void Exit()
     {
         InputReader.Instance.SouthButtonPressEvent -= Jump;
+        InputReader.Instance.EastButtonPressEvent -= Dodge;
         InputReader.Instance.WestButtonPressEvent -= NormalAttack;
     }
 
@@ -31,7 +33,9 @@ public class PlayerFreeLookState : PlayerState
         UpdateAnimator();
         HandleCameraMovement();
         HandlePlayerMovement();
+        if (!playerStateMachine.controller.isGrounded) playerStateMachine.SwitchState(new PlayerFallingState(playerStateMachine));
         if (InputReader.Instance.isPressingWestButton) NormalAttack();
+        if (InputReader.Instance.isPressingSouthButton) Jump();
     }
 
     private void HandlePlayerMovement()
@@ -83,5 +87,10 @@ public class PlayerFreeLookState : PlayerState
     private void Jump()
     {
         playerStateMachine.SwitchState(new PlayerJumpState(playerStateMachine));
+    }
+
+    private void Dodge()
+    {
+        playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
     }
 }
