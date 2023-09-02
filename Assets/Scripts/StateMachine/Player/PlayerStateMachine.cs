@@ -6,6 +6,7 @@ public class PlayerStateMachine : StateMachine
 {
     [Header("Movement Parameters")]
     public float movementSpeed = 1.5f;
+    public float dodgeSpeed = 2f;
     public float changeDirectionSpeed = 15;
     public float jumpForce = 0.6f;
 
@@ -15,6 +16,7 @@ public class PlayerStateMachine : StateMachine
     public Transform mainCameraTransform;
     public ForceReceiver forceReceiver;
     public ComboManager comboManager;
+    public TargetManager targetManager;
 
     private void Start()
     {
@@ -22,6 +24,7 @@ public class PlayerStateMachine : StateMachine
         animator = GetComponent<Animator>();
         forceReceiver = GetComponent<ForceReceiver>();
         comboManager = GetComponent<ComboManager>();
+        targetManager = GetComponent<TargetManager>();
         SwitchState(new PlayerFreeLookState(this));
     }
 }

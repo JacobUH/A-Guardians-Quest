@@ -18,6 +18,9 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.SouthButtonPressEvent += Jump;
         InputReader.Instance.EastButtonPressEvent += Dodge;
         InputReader.Instance.WestButtonPressEvent += NormalAttack;
+        InputReader.Instance.RightStickPressEvent += LockOnMode;
+        InputReader.Instance.DpadLeftButtonPressEvent += LockOnPreviousTarget;
+        InputReader.Instance.DpadRightButtonPressEvent += LockOnNextTarget;
         playerStateMachine.animator.CrossFadeInFixedTime(freelookHash, crossFixedDuration);
     }
 
@@ -26,6 +29,9 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.SouthButtonPressEvent -= Jump;
         InputReader.Instance.EastButtonPressEvent -= Dodge;
         InputReader.Instance.WestButtonPressEvent -= NormalAttack;
+        InputReader.Instance.RightStickPressEvent -= LockOnMode;
+        InputReader.Instance.DpadLeftButtonPressEvent -= LockOnPreviousTarget;
+        InputReader.Instance.DpadRightButtonPressEvent -= LockOnNextTarget;
     }
 
     public override void Tick()
@@ -52,29 +58,17 @@ public class PlayerFreeLookState : PlayerState
         }
     }
 
-    private void HandleCameraMovement()
-    {
-        if (InputReader.Instance.rightStickValue != Vector2.zero)
-        {
-            CameraController.Instance.RotateCamera(InputReader.Instance.rightStickValue);
-        }
-        if (InputReader.Instance.isPressingLeftShoulder)
-        {
-            CameraController.Instance.ZoomOut();
-        }
-        if (InputReader.Instance.isPressingRightShoulder)
-        {
-            CameraController.Instance.ZoomIn();
-        }
-    }
-
     private void UpdateAnimator()
     {
         if (InputReader.Instance.leftStickValue == Vector2.zero)
         {
-            blendValue = 0f;
+            playerStateMachine.animator.SetFloat(blendSpeedHash, 0f, 0.1f, Time.deltaTime);
+            return;
         }
         else blendValue = Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y));
+
+        if (blendValue > 0.7f) blendValue = 1f;
+        else blendValue = 0.5f;
 
         playerStateMachine.animator.SetFloat(blendSpeedHash, blendValue, 0.1f, Time.deltaTime);
     }
@@ -92,5 +86,23 @@ public class PlayerFreeLookState : PlayerState
     private void Dodge()
     {
         playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
+    }
+
+    private void LockOnMode()
+    {
+        if (playerStateMachine.targetManager.GetCurrentTarget() == null) playerStateMachine.targetManager.LockOnTarget();
+        else playerStateMachine.targetManager.DisableLockOn();
+    }
+
+    private void LockOnNextTarget()
+    {
+        if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
+        playerStateMachine.targetManager.NextTarget();
+    }
+
+    private void LockOnPreviousTarget()
+    {
+        if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
+        playerStateMachine.targetManager.PreviouTarget();
     }
 }

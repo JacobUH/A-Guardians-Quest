@@ -16,4 +16,5 @@ MonoBehaviour:
   transitionDuration: 0.5
   nextComboIndex: 2
   nextComboEnableTime: 0.55
-  damage: 0
+  damage: 30
+  knockBack: 2

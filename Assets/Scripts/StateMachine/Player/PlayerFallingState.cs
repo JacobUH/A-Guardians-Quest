@@ -24,6 +24,7 @@ public class PlayerFallingState : PlayerState
 
     public override void Tick()
     {
+        HandleCameraMovement();
         Move(momentumn);
         if (playerStateMachine.controller.isGrounded)
         {

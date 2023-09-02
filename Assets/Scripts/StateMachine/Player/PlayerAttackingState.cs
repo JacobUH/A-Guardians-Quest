@@ -27,9 +27,13 @@ public class PlayerAttackingState : PlayerState
 
     public override void Tick()
     {
+        HandleCameraMovement();
         Move(Vector3.zero);
-        //GameObject target = playerStateMachine.targetManager.IsTargeting();
-        //if (target != null) FaceTarget(target);
+        GameObject target = playerStateMachine.targetManager.GetCurrentTarget();
+        if (target != null)
+        {
+            FaceTarget(target);
+        }
 
         normalizedTime = GetNormalizedTime(playerStateMachine.animator, attackHash);
         if (normalizedTime >= 1f)

@@ -45,4 +45,20 @@ public abstract class PlayerState : State
     {
         playerStateMachine.transform.rotation = Quaternion.LookRotation(movement);
     }
+
+    public void HandleCameraMovement()
+    {
+        if (InputReader.Instance.rightStickValue != Vector2.zero)
+        {
+            CameraController.Instance.RotateCamera(InputReader.Instance.rightStickValue);
+        }
+        if (InputReader.Instance.isPressingLeftShoulder)
+        {
+            CameraController.Instance.ZoomOut();
+        }
+        if (InputReader.Instance.isPressingRightShoulder)
+        {
+            CameraController.Instance.ZoomIn();
+        }
+    }
 }

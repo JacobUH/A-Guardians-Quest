@@ -23,7 +23,8 @@ public class PlayerDodgingState : PlayerState
 
     public override void Tick()
     {
-        Move(movement);
+        HandleCameraMovement();
+        Move(movement * playerStateMachine.dodgeSpeed);
         float normalizedTime = GetNormalizedTime(playerStateMachine.animator, dodgeHash);
         if (normalizedTime >= 1f)
         {

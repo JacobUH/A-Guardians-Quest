@@ -11,4 +11,5 @@ public class Attack: ScriptableObject
     public int nextComboIndex = -1;
     public float nextComboEnableTime;
     public int damage;
+    public float knockBack;
 }
