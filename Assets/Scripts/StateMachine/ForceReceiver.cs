@@ -6,18 +6,17 @@ public class ForceReceiver : MonoBehaviour
 {
     [SerializeField] private float gravity;
     [SerializeField] private float drag;
-    [SerializeField] private PlayerStateMachine playerStateMachine;
+    [SerializeField] private StateMachine stateMachine;
     [SerializeField] private CharacterController controller;
 
     private Vector3 dampingVelocity;
     private Vector3 impact;
     private float verticalVelocity;
-    private Vector3 force;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        playerStateMachine = GetComponent<PlayerStateMachine>();
+        stateMachine = GetComponent<StateMachine>();
     }
 
     private void FixedUpdate()
@@ -50,6 +49,6 @@ public class ForceReceiver : MonoBehaviour
     public void Jump()
     {
         if (!controller.isGrounded) return;
-        verticalVelocity += Mathf.Sqrt(playerStateMachine.jumpForce * - 2f * gravity);
+        verticalVelocity += Mathf.Sqrt(stateMachine.jumpForce * - 2f * gravity);
     }
 }

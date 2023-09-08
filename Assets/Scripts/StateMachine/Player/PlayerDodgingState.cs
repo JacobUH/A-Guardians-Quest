@@ -13,6 +13,8 @@ public class PlayerDodgingState : PlayerState
     public override void Enter()
     {
         movement = CalculateMovement();
+        if (movement == Vector3.zero) return;
+
         ChangeDirectionInstantly(movement);
         playerStateMachine.animator.CrossFadeInFixedTime(dodgeHash, crossFadeDuration);
     }
@@ -24,8 +26,15 @@ public class PlayerDodgingState : PlayerState
     public override void Tick()
     {
         HandleCameraMovement();
-        Move(movement * playerStateMachine.dodgeSpeed);
         float normalizedTime = GetNormalizedTime(playerStateMachine.animator, dodgeHash);
+        if (normalizedTime <= 0.7f)
+        {
+            Move(movement * playerStateMachine.dodgeSpeed);
+        }
+        else
+        {
+            Move(Vector3.zero);
+        }
         if (normalizedTime >= 1f)
         {
             playerStateMachine.SwitchState(new PlayerFreeLookState(playerStateMachine));

@@ -4,27 +4,13 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-    [Header("Movement Parameters")]
-    public float movementSpeed = 1.5f;
-    public float dodgeSpeed = 2f;
-    public float changeDirectionSpeed = 15;
-    public float jumpForce = 0.6f;
-
-    [Header("Required Components")]
-    public CharacterController controller;
-    public Animator animator;
     public Transform mainCameraTransform;
-    public ForceReceiver forceReceiver;
-    public ComboManager comboManager;
-    public TargetManager targetManager;
+    public PlayerTargetManager playerTargetManager;
 
-    private void Start()
+    public override void Start()
     {
-        controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
-        forceReceiver = GetComponent<ForceReceiver>();
-        comboManager = GetComponent<ComboManager>();
-        targetManager = GetComponent<TargetManager>();
+        base.Start();
+        playerTargetManager = GetComponent<PlayerTargetManager>();
         SwitchState(new PlayerFreeLookState(this));
     }
 }

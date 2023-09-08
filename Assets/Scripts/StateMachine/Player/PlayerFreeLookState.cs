@@ -18,9 +18,9 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.SouthButtonPressEvent += Jump;
         InputReader.Instance.EastButtonPressEvent += Dodge;
         InputReader.Instance.WestButtonPressEvent += NormalAttack;
-        InputReader.Instance.RightStickPressEvent += LockOnMode;
+        /*InputReader.Instance.RightStickPressEvent += LockOnMode;
         InputReader.Instance.DpadLeftButtonPressEvent += LockOnPreviousTarget;
-        InputReader.Instance.DpadRightButtonPressEvent += LockOnNextTarget;
+        InputReader.Instance.DpadRightButtonPressEvent += LockOnNextTarget;*/
         playerStateMachine.animator.CrossFadeInFixedTime(freelookHash, crossFixedDuration);
     }
 
@@ -29,9 +29,9 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.SouthButtonPressEvent -= Jump;
         InputReader.Instance.EastButtonPressEvent -= Dodge;
         InputReader.Instance.WestButtonPressEvent -= NormalAttack;
-        InputReader.Instance.RightStickPressEvent -= LockOnMode;
+        /*InputReader.Instance.RightStickPressEvent -= LockOnMode;
         InputReader.Instance.DpadLeftButtonPressEvent -= LockOnPreviousTarget;
-        InputReader.Instance.DpadRightButtonPressEvent -= LockOnNextTarget;
+        InputReader.Instance.DpadRightButtonPressEvent -= LockOnNextTarget;*/
     }
 
     public override void Tick()
@@ -87,7 +87,7 @@ public class PlayerFreeLookState : PlayerState
     {
         playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
     }
-
+    /*
     private void LockOnMode()
     {
         if (playerStateMachine.targetManager.GetCurrentTarget() == null) playerStateMachine.targetManager.LockOnTarget();
@@ -104,5 +104,5 @@ public class PlayerFreeLookState : PlayerState
     {
         if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
         playerStateMachine.targetManager.PreviouTarget();
-    }
+    }*/
 }

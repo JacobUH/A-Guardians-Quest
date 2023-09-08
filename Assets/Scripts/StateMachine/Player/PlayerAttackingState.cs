@@ -29,7 +29,7 @@ public class PlayerAttackingState : PlayerState
     {
         HandleCameraMovement();
         Move(Vector3.zero);
-        GameObject target = playerStateMachine.targetManager.GetCurrentTarget();
+        GameObject target = playerStateMachine.playerTargetManager.GetCurrentTarget();
         if (target != null)
         {
             FaceTarget(target);
