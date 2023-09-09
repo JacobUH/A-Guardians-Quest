@@ -6,23 +6,11 @@ using UnityEngine;
 public class AttackHandler : MonoBehaviour
 {
     [SerializeField] private WeaponCollider weapon;
-    [SerializeField] private Attack normalAttack1;
-    [SerializeField] private Attack normalAttack2;
-    [SerializeField] private Attack normalAttack3;
+    [SerializeField] private List<Attack> attacks;
 
-    public void NormalAttack1Enabled()
+    public void EnabledAttack(int index)
     {
-        weapon.SetAttack(normalAttack1.damage, normalAttack1.knockBack);
-    }
-
-    public void NormalAttack2Enabled()
-    {
-        weapon.SetAttack(normalAttack2.damage, normalAttack2.knockBack);
-    }
-
-    public void NormalAttack3Enabled()
-    {
-        weapon.SetAttack(normalAttack3.damage, normalAttack3.knockBack);
+        weapon.SetAttack(attacks[index].damage, attacks[index].knockBack, attacks[index].hitLagDuration, attacks[index].hitLagStrength);
     }
 
     public void HitboxDisabled()

@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64056d3a7f9bee0449c7f9c7a4deed38, type: 3}
-  m_Name: NormalAttack3
+  m_Script: {fileID: 11500000, guid: ad78fd011e9bc1b4f8678513a4da9db8, type: 3}
+  m_Name: NormalCombo
   m_EditorClassIdentifier: 
-  animationName: NormalAttack3
-  transitionDuration: 0.1
-  nextComboIndex: -1
-  nextComboEnableTime: 0.7
-  damage: 90
-  knockBack: 4
-  hitLagDuration: 0.2
-  hitLagStrength: 0.5
+  attack:
+  - {fileID: 11400000, guid: 7f976be10c86b58418858918a963fe57, type: 2}

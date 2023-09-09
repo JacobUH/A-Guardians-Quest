@@ -7,7 +7,7 @@ public class WeaponCollider : MonoBehaviour
     [SerializeField] private GameObject hitEffectPrefab;
     [SerializeField] private Collider myCollider;
     [SerializeField] private float hitLagDuration = 0.1f;
-    [SerializeField] [Range(0f, 1f)] private float hitLagScale = 0f;
+    [SerializeField] [Range(0f, 1f)] private float hitLagStrength = 0f;
 
     private int damage;
     private float knockback;
@@ -47,7 +47,7 @@ public class WeaponCollider : MonoBehaviour
 
     private IEnumerator HitLag()
     {
-        Time.timeScale = hitLagScale;
+        Time.timeScale = 1f - hitLagStrength;
 
         float timer = 0f;
         while (timer < hitLagDuration)
@@ -59,10 +59,12 @@ public class WeaponCollider : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void SetAttack(int damage, float knockback)
+    public void SetAttack(int damage, float knockback, float hitLagDuration, float hitLagStrength)
     {
         this.damage = damage;
         this.knockback = knockback;
+        this.hitLagDuration = hitLagDuration;
+        this.hitLagStrength = Mathf.Clamp01(hitLagStrength);
         EnableHitBox();
     }
 

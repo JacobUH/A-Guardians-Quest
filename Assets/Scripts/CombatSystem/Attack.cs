@@ -12,4 +12,6 @@ public class Attack: ScriptableObject
     public float nextComboEnableTime;
     public int damage;
     public float knockBack;
+    public float hitLagDuration;
+    [Range(0f, 1f)] public float hitLagStrength;
 }

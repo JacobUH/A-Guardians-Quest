@@ -18,3 +18,5 @@ MonoBehaviour:
   nextComboEnableTime: 0.55
   damage: 30
   knockBack: 2
+  hitLagDuration: 0.1
+  hitLagStrength: 0.1
