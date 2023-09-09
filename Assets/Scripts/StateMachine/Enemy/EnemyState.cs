@@ -16,7 +16,14 @@ public abstract class EnemyState : State
         enemyStateMachine.controller.Move((movement + enemyStateMachine.forceReceiver.GetForce()) * Time.deltaTime);
     }
 
-    public void FaceTarget(GameObject target)
+    public void FaceTarget(float changeDirectionSpeed)
+    {
+        GameObject target = GetCurrentTarget();
+        if (target == null) return;
+        FaceTarget(target, changeDirectionSpeed);
+    }
+
+    public void FaceTarget(GameObject target, float changeDirectionSpeed)
     {
         Vector3 lookPos = target.transform.position - enemyStateMachine.transform.position;
         lookPos.y = 0f;
@@ -39,5 +46,15 @@ public abstract class EnemyState : State
     public void ChangeDirectionInstantly(Vector3 movement)
     {
         enemyStateMachine.transform.rotation = Quaternion.LookRotation(movement);
+    }
+
+    public GameObject GetCurrentTarget()
+    {
+        return enemyStateMachine.enemyTargetManager.GetCurrentTarget();
+    }
+
+    public void PlayAnimation(int animationHash, float crossFixedDuration)
+    {
+        enemyStateMachine.animator.CrossFadeInFixedTime(animationHash, crossFixedDuration);
     }
 }

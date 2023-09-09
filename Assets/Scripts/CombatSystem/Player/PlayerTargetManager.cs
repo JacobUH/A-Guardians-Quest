@@ -7,7 +7,7 @@ public class PlayerTargetManager : TargetManager
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Enemy>(out Enemy enemy))
+        if (other.TryGetComponent<EnemyCharacter>(out EnemyCharacter enemy))
         {
             targets.Add(other.gameObject);
             enemy.DieEvent += Unsubscribe;

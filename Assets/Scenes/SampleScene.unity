@@ -2109,10 +2109,10 @@ GameObject:
   - component: {fileID: 1269697485}
   - component: {fileID: 1269697490}
   - component: {fileID: 1269697484}
-  - component: {fileID: 1269697489}
   - component: {fileID: 1269697488}
   - component: {fileID: 1269697487}
   - component: {fileID: 1269697491}
+  - component: {fileID: 1269697492}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -2175,8 +2175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20277e1ba2ed9fb46ab2beae30cc33fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   healthBar: {fileID: 2091916913}
-  maxHp: 10000
+  maxHp: 300
   attack: 10
   defense: 5
 --- !u!95 &1269697485
@@ -2227,31 +2228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: -9.8
   drag: 0.2
-  stateMachine: {fileID: 1269697489}
+  stateMachine: {fileID: 0}
   controller: {fileID: 1269697482}
---- !u!114 &1269697489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269697481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899d00cf451f6714f9c372bef297bdd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 1.5
-  runSpeed: 2
-  dodgeSpeed: 2
-  changeDirectionSpeed: 15
-  jumpForce: 0.6
-  attackRange: 2
-  controller: {fileID: 1269697482}
-  animator: {fileID: 1269697485}
-  forceReceiver: {fileID: 1269697488}
-  comboManager: {fileID: 1269697487}
-  enemyTargetManager: {fileID: 0}
 --- !u!135 &1269697490
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2288,6 +2266,31 @@ MonoBehaviour:
   targets: []
   targetRange: 10
   sphereCollider: {fileID: 1269697490}
+--- !u!114 &1269697492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269697481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078787497877bf34683f42f101f33cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 1.5
+  chaseSpeed: 2
+  dodgeSpeed: 2
+  changeDirectionSpeed: 15
+  jumpForce: 0.6
+  attackRange: 2
+  controller: {fileID: 1269697482}
+  animator: {fileID: 1269697485}
+  forceReceiver: {fileID: 1269697488}
+  comboManager: {fileID: 1269697487}
+  character: {fileID: 0}
+  enemyTargetManager: {fileID: 1269697491}
+  enemyCharacter: {fileID: 0}
 --- !u!1 &1270213748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,12 +2622,12 @@ GameObject:
   - component: {fileID: 1469337919}
   - component: {fileID: 1469337926}
   - component: {fileID: 1469337922}
-  - component: {fileID: 1469337921}
   - component: {fileID: 1469337923}
   - component: {fileID: 1469337927}
   - component: {fileID: 1469337924}
   - component: {fileID: 1469337928}
   - component: {fileID: 1469337929}
+  - component: {fileID: 1469337921}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2712,8 +2715,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 4
-  runSpeed: 2
-  dodgeSpeed: 5
+  chaseSpeed: 2
+  dodgeSpeed: 6.5
   changeDirectionSpeed: 15
   jumpForce: 1
   attackRange: 2
@@ -2721,8 +2724,10 @@ MonoBehaviour:
   animator: {fileID: 1469337920}
   forceReceiver: {fileID: 1469337923}
   comboManager: {fileID: 1469337924}
+  character: {fileID: 0}
   mainCameraTransform: {fileID: 330585546}
   playerTargetManager: {fileID: 0}
+  playableCharacter: {fileID: 0}
 --- !u!114 &1469337922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2839,6 +2844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2935b93f1ce1ceb40a10dd959ce54f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   healthBar: {fileID: 1744312020}
   maxHp: 150
   attack: 10
@@ -3375,8 +3381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.15531893, y: -0.000000008951024, z: -0.000000005612349,
-    w: 0.9878644}
+  m_LocalRotation: {x: -0.15531896, y: 0.0000000162985, z: 0.000000010219264, w: 0.98786443}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

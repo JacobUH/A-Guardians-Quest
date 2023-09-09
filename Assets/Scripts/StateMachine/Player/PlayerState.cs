@@ -6,9 +6,9 @@ public abstract class PlayerState : State
 {
     public PlayerStateMachine playerStateMachine;
 
-    public PlayerState(PlayerStateMachine stateMachine)
+    public PlayerState(PlayerStateMachine playerStateMachine)
     {
-        this.playerStateMachine = stateMachine;
+        this.playerStateMachine = playerStateMachine;
     }
 
     public void Move(Vector3 movement)

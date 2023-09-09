@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable
 {
+    public bool isDead;
     [SerializeField] private GaugeBar healthBar;
     public float maxHp;
     public float attack;
     public float defense;
 
     public event Action<GameObject> DieEvent;
+    public event Action DamageEvent;
     private float currentHp;
 
     private void Start()
@@ -20,8 +22,17 @@ public class Character : MonoBehaviour, IDamageable
         healthBar.ChangeBar(Mathf.RoundToInt(currentHp));
     }
 
+    private IEnumerator DestroyCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(this.gameObject);
+    }
+
     public void DealDamage(float damage)
     {
+        if (isDead) return;
+
+        DamageEvent?.Invoke();
         currentHp = Mathf.Max(currentHp - damage, 0);
         healthBar.ChangeBar((int)currentHp);
         if (currentHp == 0) Die();
@@ -30,6 +41,8 @@ public class Character : MonoBehaviour, IDamageable
     public void Die()
     {
         DieEvent?.Invoke(this.gameObject);
-        Destroy(this.gameObject);
+        StartCoroutine(DestroyCoroutine());
     }
+
+    
 }

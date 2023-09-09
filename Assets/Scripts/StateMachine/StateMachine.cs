@@ -6,7 +6,7 @@ public class StateMachine : MonoBehaviour
 {
     [Header("Movement Parameters")]
     public float movementSpeed = 1.5f;
-    public float runSpeed = 2f;
+    public float chaseSpeed = 2f;
     public float dodgeSpeed = 2f;
     public float changeDirectionSpeed = 15;
     public float jumpForce = 0.6f;
@@ -19,15 +19,9 @@ public class StateMachine : MonoBehaviour
     public Animator animator;
     public ForceReceiver forceReceiver;
     public ComboManager comboManager;
+    public Character character;
 
     private State currentState;
-
-    public void SwitchState(State newState)
-    {
-        currentState?.Exit();
-        currentState = newState;
-        currentState?.Enter();
-    }
 
     private void Update()
     {
@@ -40,5 +34,21 @@ public class StateMachine : MonoBehaviour
         animator = GetComponent<Animator>();
         forceReceiver = GetComponent<ForceReceiver>();
         comboManager = GetComponent<ComboManager>();
+        character = GetComponent<Character>();
+        character.DamageEvent += OnDamage;
+        character.DieEvent += OnDie;
     }
+
+    public void SwitchState(State newState)
+    {
+        currentState?.Exit();
+        currentState = newState;
+        currentState?.Enter();
+    }
+
+    public virtual void OnDamage()
+    { }
+
+    public virtual void OnDie(GameObject dieCharacter)
+    { }
 }

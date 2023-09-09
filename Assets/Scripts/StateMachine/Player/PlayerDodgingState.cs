@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDodgingState : PlayerState
 {
-    public PlayerDodgingState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    public PlayerDodgingState(PlayerStateMachine playerStateMachine) : base(playerStateMachine) { }
 
     private readonly int dodgeHash = Animator.StringToHash("Dodge");
     private Vector3 movement;
@@ -13,8 +13,6 @@ public class PlayerDodgingState : PlayerState
     public override void Enter()
     {
         movement = CalculateMovement();
-        if (movement == Vector3.zero) return;
-
         ChangeDirectionInstantly(movement);
         playerStateMachine.animator.CrossFadeInFixedTime(dodgeHash, crossFadeDuration);
     }

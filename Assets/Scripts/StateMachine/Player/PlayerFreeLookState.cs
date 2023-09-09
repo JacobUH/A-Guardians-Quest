@@ -18,9 +18,9 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.SouthButtonPressEvent += Jump;
         InputReader.Instance.EastButtonPressEvent += Dodge;
         InputReader.Instance.WestButtonPressEvent += NormalAttack;
-        /*InputReader.Instance.RightStickPressEvent += LockOnMode;
+        InputReader.Instance.RightStickPressEvent += LockOnMode;
         InputReader.Instance.DpadLeftButtonPressEvent += LockOnPreviousTarget;
-        InputReader.Instance.DpadRightButtonPressEvent += LockOnNextTarget;*/
+        InputReader.Instance.DpadRightButtonPressEvent += LockOnNextTarget;
         playerStateMachine.animator.CrossFadeInFixedTime(freelookHash, crossFixedDuration);
     }
 
@@ -29,9 +29,9 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.SouthButtonPressEvent -= Jump;
         InputReader.Instance.EastButtonPressEvent -= Dodge;
         InputReader.Instance.WestButtonPressEvent -= NormalAttack;
-        /*InputReader.Instance.RightStickPressEvent -= LockOnMode;
+        InputReader.Instance.RightStickPressEvent -= LockOnMode;
         InputReader.Instance.DpadLeftButtonPressEvent -= LockOnPreviousTarget;
-        InputReader.Instance.DpadRightButtonPressEvent -= LockOnNextTarget;*/
+        InputReader.Instance.DpadRightButtonPressEvent -= LockOnNextTarget;
     }
 
     public override void Tick()
@@ -85,24 +85,25 @@ public class PlayerFreeLookState : PlayerState
 
     private void Dodge()
     {
+        if (CalculateMovement() == Vector3.zero) return;
         playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
     }
-    /*
+    
     private void LockOnMode()
     {
-        if (playerStateMachine.targetManager.GetCurrentTarget() == null) playerStateMachine.targetManager.LockOnTarget();
-        else playerStateMachine.targetManager.DisableLockOn();
+        if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null) playerStateMachine.playerTargetManager.LockOnTarget();
+        else playerStateMachine.playerTargetManager.DisableLockOn();
     }
 
     private void LockOnNextTarget()
     {
-        if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
-        playerStateMachine.targetManager.NextTarget();
+        if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null) return;
+        playerStateMachine.playerTargetManager.NextTarget();
     }
 
     private void LockOnPreviousTarget()
     {
-        if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
-        playerStateMachine.targetManager.PreviouTarget();
-    }*/
+        if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null) return;
+        playerStateMachine.playerTargetManager.PreviouTarget();
+    }
 }

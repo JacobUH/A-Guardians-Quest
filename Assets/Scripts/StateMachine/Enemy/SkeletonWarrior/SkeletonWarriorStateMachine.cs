@@ -2,25 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateMachine : StateMachine
+public class SkeletonWarriorStateMachine : EnemyStateMachine
 {
-    public EnemyTargetManager enemyTargetManager;
-    public EnemyCharacter enemyCharacter;
-
     public override void Start()
     {
         base.Start();
-        enemyCharacter = GetComponent<EnemyCharacter>();
-        enemyTargetManager = GetComponent<EnemyTargetManager>();
+        SwitchState(new SkeletonWarriorIdleState(this));
     }
 
     public override void OnDamage()
     {
         base.OnDamage();
+        SwitchState(new SkeletonWarriorImpactState(this));
     }
 
     public override void OnDie(GameObject dieCharacter)
     {
         base.OnDie(dieCharacter);
+        SwitchState(new SkeletonWarriorDieState(this));
     }
 }
