@@ -15,7 +15,7 @@ public class SkeletonWarriorAttackingState : EnemyAttackingState
 
     public override void Enter()
     {
-        enemyStateMachine.animator.CrossFadeInFixedTime(attackHash, crossFixedDuration);
+        PlayAnimation(attackHash, crossFixedDuration);
     }
 
     public override void Exit()
@@ -24,6 +24,7 @@ public class SkeletonWarriorAttackingState : EnemyAttackingState
 
     public override void Tick()
     {
+        Move(Vector3.zero);
         float normalizedTime = GetNormalizedTime(enemyStateMachine.animator, attackHash);
         if (normalizedTime <= 0.2f)
         {

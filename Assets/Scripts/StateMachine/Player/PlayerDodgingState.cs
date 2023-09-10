@@ -14,7 +14,7 @@ public class PlayerDodgingState : PlayerState
     {
         movement = CalculateMovement();
         ChangeDirectionInstantly(movement);
-        playerStateMachine.animator.CrossFadeInFixedTime(dodgeHash, crossFadeDuration);
+        PlayAnimation(dodgeHash, crossFadeDuration);
     }
 
     public override void Exit()

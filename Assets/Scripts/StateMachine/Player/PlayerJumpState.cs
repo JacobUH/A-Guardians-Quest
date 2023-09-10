@@ -13,7 +13,7 @@ public class PlayerJumpState : PlayerState
         playerStateMachine.forceReceiver.Jump();
         movement = CalculateMovement();
         if (movement != Vector3.zero) ChangeDirectionInstantly(movement);
-        playerStateMachine.animator.CrossFadeInFixedTime(jumpHash, crossFadeDuration);
+        PlayAnimation(jumpHash, crossFadeDuration);
     }
 
     public override void Exit()

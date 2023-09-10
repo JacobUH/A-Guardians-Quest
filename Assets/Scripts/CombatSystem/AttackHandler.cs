@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using UnityEngine;
 
@@ -10,11 +11,18 @@ public class AttackHandler : MonoBehaviour
 
     public void EnabledAttack(int index)
     {
-        weapon.SetAttack(attacks[index].damage, attacks[index].knockBack, attacks[index].hitLagDuration, attacks[index].hitLagStrength);
+        if (index >= attacks.Count())
+        {
+            Debug.Log($"No attack information at index {index}");
+            return;
+        }
+        weapon.gameObject.SetActive(true);
+        weapon.SetAttack(attacks[index].damage, attacks[index].knockBack, attacks[index].launchForce, 
+                         attacks[index].hitLagDuration, attacks[index].hitLagStrength, attacks[index].hitEffectPrefab);
     }
 
     public void HitboxDisabled()
     {
-        weapon.DisableHitBox();
+        weapon.gameObject.SetActive(false);
     }
 }

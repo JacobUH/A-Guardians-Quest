@@ -4,26 +4,31 @@ using UnityEngine;
 
 public class WeaponCollider : MonoBehaviour
 {
-    [SerializeField] private GameObject hitEffectPrefab;
     [SerializeField] private Collider myCollider;
-    [SerializeField] private float hitLagDuration = 0.1f;
-    [SerializeField] [Range(0f, 1f)] private float hitLagStrength = 0f;
 
+    private GameObject hitEffectPrefab;
     private int damage;
     private float knockback;
+    private float launchForce;
+    private float hitLagDuration;
+    private float hitLagStrength;
 
     private List<Collider> alreadyCollideWith = new List<Collider>();
+    private Coroutine hitLagCoroutine;
 
-    private bool isActive = false;
-
-    private void Start()
+    private void OnEnable()
     {
-        myCollider = GetComponent<Collider>();
+        alreadyCollideWith.Clear();
+    }
+
+    private void OnDisable()
+    {
+        if (hitLagCoroutine != null) StopCoroutine(hitLagCoroutine);
+        Time.timeScale = 1f;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isActive) return;
         if (other == myCollider) return;
         if (alreadyCollideWith.Contains(other)) return;
 
@@ -34,15 +39,16 @@ public class WeaponCollider : MonoBehaviour
 
         if (other.TryGetComponent<IDamageable>(out IDamageable damageableTarget))
         {
-            StartCoroutine(HitLag());
+            hitLagCoroutine = StartCoroutine(HitLag());
             damageableTarget.DealDamage(damage);
         }
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
         {
             Vector3 direction = (other.transform.position - myCollider.transform.position).normalized;
-            forceReceiver.ApplyImpact(direction * knockback);
+            direction.y = 0f;
+            forceReceiver.ApplyImpact(direction * knockback + Vector3.up * launchForce);
         }
-        isActive = false;
+        this.gameObject.SetActive(false);
     }
 
     private IEnumerator HitLag()
@@ -57,25 +63,16 @@ public class WeaponCollider : MonoBehaviour
         }
 
         Time.timeScale = 1f;
+        hitLagCoroutine = null;
     }
 
-    public void SetAttack(int damage, float knockback, float hitLagDuration, float hitLagStrength)
+    public void SetAttack(int damage, float knockback, float launchForce,float hitLagDuration, float hitLagStrength, GameObject hitEffectPrefab)
     {
         this.damage = damage;
         this.knockback = knockback;
+        this.launchForce = launchForce;
         this.hitLagDuration = hitLagDuration;
         this.hitLagStrength = Mathf.Clamp01(hitLagStrength);
-        EnableHitBox();
-    }
-
-    public void EnableHitBox()
-    {
-        alreadyCollideWith.Clear();
-        isActive = true;
-    }
-
-    public void DisableHitBox()
-    {
-        isActive = false;
+        this.hitEffectPrefab = hitEffectPrefab;
     }
 }

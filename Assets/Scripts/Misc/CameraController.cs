@@ -1,10 +1,13 @@
 using Cinemachine;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CameraController : SingletonMonobehaviour<CameraController>
 {
     [SerializeField] float zoomSpeed = 3f;
+    [SerializeField] float spanSpeed = 100f;
+    [Space]
     [SerializeField] float topMaxHeight = 7f;
     [SerializeField] float topMaxRadius = 4f;
     [SerializeField] float midMaxRadius = 7f;
@@ -20,6 +23,7 @@ public class CameraController : SingletonMonobehaviour<CameraController>
     CinemachineFramingTransposer midRigTransposer;
 
     private CinemachineFreeLook freeLook;
+    private Coroutine cameraSpanning;
 
     protected override void Awake()
     {
@@ -36,13 +40,47 @@ public class CameraController : SingletonMonobehaviour<CameraController>
         midRigTransposer = freeLook.GetRig(1).GetComponent<CinemachineFramingTransposer>();
     }
 
+    private IEnumerator SpanCameraCoroutine(float targetAngle)
+    {
+        bool rotateClockwise;
+        if ((targetAngle > freeLook.m_XAxis.Value && targetAngle - freeLook.m_XAxis.Value <= 180f) ||
+            (targetAngle < freeLook.m_XAxis.Value && freeLook.m_XAxis.Value - targetAngle >= 180f))
+        {
+            rotateClockwise = true;
+        }
+        else
+        {
+            rotateClockwise = false;
+        }
+
+        while (freeLook.m_XAxis.Value < targetAngle - 2f || freeLook.m_XAxis.Value > targetAngle + 2f)
+        {
+            if (rotateClockwise) freeLook.m_XAxis.Value += Time.deltaTime * spanSpeed;
+            else freeLook.m_XAxis.Value -= Time.deltaTime * spanSpeed;
+
+            if (freeLook.m_XAxis.Value > 360f) freeLook.m_XAxis.Value -= 360f;
+            else if (freeLook.m_XAxis.Value < 0f) freeLook.m_XAxis.Value += 360f;
+
+            yield return null;
+        }
+        cameraSpanning = null;
+    }
+
     public void RotateCamera(Vector2 cameraMovement)
     {
+        if (cameraSpanning != null) return;
+
         if (cameraMovement.x != 0 || cameraMovement.y != 0)
         {
             freeLook.m_YAxis.Value -= cameraMovement.y * Time.unscaledDeltaTime * freeLook.m_YAxis.m_MaxSpeed;
             freeLook.m_XAxis.Value += cameraMovement.x * Time.unscaledDeltaTime * freeLook.m_XAxis.m_MaxSpeed;
         }
+    }
+
+    public void SpanCamera(float targetAngle)
+    {
+        if (cameraSpanning != null) StopCoroutine(cameraSpanning);
+        cameraSpanning = StartCoroutine(SpanCameraCoroutine(targetAngle));
     }
 
     public void ZoomIn()

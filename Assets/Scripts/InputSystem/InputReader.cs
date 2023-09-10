@@ -8,22 +8,49 @@ using UnityEngine.InputSystem;
 public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFreeLookActions
 {
     public float longPressDuration = 0.5f;
-    public bool isPressingSouthButton;
-    public bool isPressingWestButton;
-    public bool isPressingLeftTrigger;
-    public bool isPressingRightTrigger;
+
     public bool isPressingDpadLeft;
     public bool isPressingDpadRight;
 
+    public bool isPressingLTRT;
+    public bool isPressingLTRS;
+
+    public bool isPressingSouthButton;
     public event Action SouthButtonPressEvent;
+    public event Action SouthButtonLongPressEvent;
+
+    public bool isPressingNorthButton;
     public event Action NorthButtonPressEvent;
+    public event Action NorthButtonLongPressEvent;
+
+    public bool isPressingEastButton;
     public event Action EastButtonPressEvent;
-    public event Action WestButtonPressEvent
-        ;
+    public event Action EastButtonLongPressEvent;
+
+    public bool isPressingWestButton;
+    public event Action WestButtonPressEvent;
+    public event Action WestButtonLongPressEvent;
+
+    public bool isPressingLeftTrigger;
+    public event Action LeftTriggerPressEvent;
+    public event Action LeftTriggerLongPressEvent;
+
+    public bool isPressingRightTrigger;
+    public event Action RightTriggerPressEvent;
+    public event Action RightTriggerLongPressEvent;
+
+    public bool isPressingLeftShoulder;
+    public event Action LeftShoulderPressEvent;
+    public event Action LeftShoulderLongPressEvent;
+
+    public bool isPressingRightShoulder;
+    public event Action RightShoulderPressEvent;
+    public event Action RightShoulderLongPressEvent;
+
+    public Vector2 rightStickValue;
     public event Action RightStickPressEvent;
     public Vector2 leftStickValue;
     public event Action LeftStickPressEvent;
-    public Vector2 rightStickValue;
 
     public event Action DpadUpButtonPressEvent;
     public event Action DpadDownButtonPressEvent;
@@ -31,22 +58,23 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
     public event Action DpadRightButtonPressEvent;
 
     public event Action StartButtonPressEvent;
+    public event Action StartButtonLongPressEvent;
     public event Action SelectButtonPressEvent;
-
-    public bool isPressingRightShoulder = false;
-    public bool isPressingLeftShoulder = false;
+    public event Action SelectButtonLongPressEvent;
 
     private PlayerInput playerInput;
     private bool isPressing = false;
     private float pressTime = 0f;
 
-    private UnityAction longPressAction;
+    private Action longPressAction;
+
     protected override void Awake()
     {
         base.Awake();
         playerInput = new PlayerInput();
         playerInput.FreeLook.SetCallbacks(this);
     }
+
     private void Update()
     {
         if (isPressing)
@@ -73,8 +101,22 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
 
     public void OnNorthButton(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
-        NorthButtonPressEvent?.Invoke();
+        if (context.started)
+        {
+            isPressing = true;
+            isPressingNorthButton = true;
+            longPressAction = NorthButtonLongPressEvent;
+            pressTime = 0f;
+        }
+        else if (context.canceled)
+        {
+            if (pressTime < longPressDuration && isPressing)
+            {
+                NorthButtonPressEvent?.Invoke();
+            }
+            isPressing = false;
+            isPressingNorthButton = false;
+        }
     }
 
     public void OnSouthButton(InputAction.CallbackContext context)
@@ -83,7 +125,7 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         {
             isPressing = true;
             isPressingSouthButton = true;
-            longPressAction = OnSouthButtonLongPress;
+            longPressAction = SouthButtonLongPressEvent;
             pressTime = 0f;
         }
         else if (context.canceled)
@@ -99,8 +141,22 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
 
     public void OnEastButton(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
-        EastButtonPressEvent?.Invoke();
+        if (context.started)
+        {
+            isPressing = true;
+            isPressingEastButton = true;
+            longPressAction = EastButtonLongPressEvent;
+            pressTime = 0f;
+        }
+        else if (context.canceled)
+        {
+            if (pressTime < longPressDuration && isPressing)
+            {
+                EastButtonPressEvent?.Invoke();
+            }
+            isPressing = false;
+            isPressingEastButton = false;
+        }
     }
 
     public void OnWestButton(InputAction.CallbackContext context)
@@ -109,7 +165,7 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         {
             isPressing = true;
             isPressingWestButton = true;
-            longPressAction = OnWestButtonLongPress;
+            longPressAction = WestButtonLongPressEvent;
             pressTime = 0f;
         }
         else if (context.canceled)
@@ -123,29 +179,84 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         }
     }
 
-
     public void OnLeftTrigger(InputAction.CallbackContext context)
     {
-        if (context.performed) isPressingLeftTrigger = true;
-        else if (context.canceled) isPressingLeftTrigger = false;
+        if (context.started)
+        {
+            isPressing = true;
+            isPressingLeftTrigger = true;
+            longPressAction = LeftTriggerLongPressEvent;
+            pressTime = 0f;
+        }
+        else if (context.canceled)
+        {
+            if (pressTime < longPressDuration && isPressing)
+            {
+                LeftTriggerPressEvent?.Invoke();
+            }
+            isPressing = false;
+            isPressingLeftTrigger = false;
+        }
     }
 
     public void OnRightTrigger(InputAction.CallbackContext context)
     {
-        if (context.performed) isPressingRightTrigger = true;
-        else if (context.canceled) isPressingRightTrigger = false;
+        if (context.started)
+        {
+            isPressing = true;
+            isPressingRightTrigger = true;
+            longPressAction = RightTriggerLongPressEvent;
+            pressTime = 0f;
+        }
+        else if (context.canceled)
+        {
+            if (pressTime < longPressDuration && isPressing)
+            {
+                RightTriggerPressEvent?.Invoke();
+            }
+            isPressing = false;
+            isPressingRightTrigger = false;
+        }
     }
 
     public void OnLeftShoulder(InputAction.CallbackContext context)
     {
-        if (context.performed) isPressingLeftShoulder = true;
-        else if (context.canceled) isPressingLeftShoulder = false;
+        if (context.started)
+        {
+            isPressing = true;
+            isPressingLeftShoulder = true;
+            longPressAction = LeftShoulderLongPressEvent;
+            pressTime = 0f;
+        }
+        else if (context.canceled)
+        {
+            if (pressTime < longPressDuration && isPressing)
+            {
+                LeftShoulderPressEvent?.Invoke();
+            }
+            isPressing = false;
+            isPressingLeftShoulder = false;
+        }
     }
 
     public void OnRightShoulder(InputAction.CallbackContext context)
     {
-        if (context.performed) isPressingRightShoulder = true;
-        else if (context.canceled) isPressingRightShoulder = false;
+        if (context.started)
+        {
+            isPressing = true;
+            isPressingRightShoulder = true;
+            longPressAction = RightShoulderLongPressEvent;
+            pressTime = 0f;
+        }
+        else if (context.canceled)
+        {
+            if (pressTime < longPressDuration && isPressing)
+            {
+                RightShoulderPressEvent?.Invoke();
+            }
+            isPressing = false;
+            isPressingRightShoulder = false;
+        }
     }
 
     public void OnStartButton(InputAction.CallbackContext context)
@@ -153,7 +264,7 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         if (context.started)
         {
             isPressing = true;
-            longPressAction = OnStartLongPress;
+            longPressAction = StartButtonLongPressEvent;
             pressTime = 0f;
         }
         else if (context.canceled)
@@ -171,7 +282,7 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
         if (context.started)
         {
             isPressing = true;
-            longPressAction = OnStartLongPress;
+            longPressAction = SelectButtonLongPressEvent;
             pressTime = 0f;
         }
         else if (context.canceled)
@@ -204,22 +315,6 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
     {
         if (!context.performed) return;
         RightStickPressEvent?.Invoke();
-    }
-
-    public void OnSouthButtonLongPress()
-    {
-    }
-
-    public void OnWestButtonLongPress()
-    {
-    }
-
-    public void OnStartLongPress()
-    {
-    }
-
-    public void OnSelectLongPress()
-    {
     }
 
     public void OnDpadUpButton(InputAction.CallbackContext context)
@@ -265,6 +360,30 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
             }
             isPressing = false;
             isPressingDpadRight = false;
+        }
+    }
+
+    public void OnLTRT(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isPressingLTRT = true;
+        }
+        else if (context.canceled)
+        {
+            isPressingLTRT = false;
+        }
+    }
+
+    public void OnLTRS(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isPressingLTRS = true;
+        }
+        else if (context.canceled)
+        {
+            isPressingLTRS = false;
         }
     }
 }

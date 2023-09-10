@@ -6,7 +6,7 @@ public class PlayerFreeLookState : PlayerState
 {
     public PlayerFreeLookState(PlayerStateMachine playerStateMachine) : base(playerStateMachine) { }
 
-    private int freelookHash =  Animator.StringToHash("FreeLookBlendTree");
+    private int freelookHash = Animator.StringToHash("FreeLookBlendTree");
     private int blendSpeedHash = Animator.StringToHash("FreeLookBlendSpeed");
     private float crossFixedDuration = 0.1f;
     private float blendValue;
@@ -18,10 +18,11 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.SouthButtonPressEvent += Jump;
         InputReader.Instance.EastButtonPressEvent += Dodge;
         InputReader.Instance.WestButtonPressEvent += NormalAttack;
-        InputReader.Instance.RightStickPressEvent += LockOnMode;
+        InputReader.Instance.RightStickPressEvent += SpanCameraFaceTarget;
+        InputReader.Instance.LeftShoulderPressEvent += LockOnMode;
         InputReader.Instance.DpadLeftButtonPressEvent += LockOnPreviousTarget;
         InputReader.Instance.DpadRightButtonPressEvent += LockOnNextTarget;
-        playerStateMachine.animator.CrossFadeInFixedTime(freelookHash, crossFixedDuration);
+        PlayAnimation(freelookHash, crossFixedDuration);
     }
 
     public override void Exit()
@@ -29,7 +30,8 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.SouthButtonPressEvent -= Jump;
         InputReader.Instance.EastButtonPressEvent -= Dodge;
         InputReader.Instance.WestButtonPressEvent -= NormalAttack;
-        InputReader.Instance.RightStickPressEvent -= LockOnMode;
+        InputReader.Instance.RightStickPressEvent -= SpanCameraFaceTarget;
+        InputReader.Instance.LeftShoulderPressEvent -= LockOnMode;
         InputReader.Instance.DpadLeftButtonPressEvent -= LockOnPreviousTarget;
         InputReader.Instance.DpadRightButtonPressEvent -= LockOnNextTarget;
     }
@@ -88,22 +90,46 @@ public class PlayerFreeLookState : PlayerState
         if (CalculateMovement() == Vector3.zero) return;
         playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
     }
-    
+
     private void LockOnMode()
     {
-        if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null) playerStateMachine.playerTargetManager.LockOnTarget();
-        else playerStateMachine.playerTargetManager.DisableLockOn();
+        if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null)
+        {
+            if (playerStateMachine.playerTargetManager.FindTarget())
+            {
+                LockOn();
+            }
+        }
+        else
+        {
+            playerStateMachine.playerTargetManager.DisableLockOn();
+        }
     }
 
     private void LockOnNextTarget()
     {
         if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null) return;
         playerStateMachine.playerTargetManager.NextTarget();
+        LockOn();
     }
 
     private void LockOnPreviousTarget()
     {
         if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null) return;
         playerStateMachine.playerTargetManager.PreviouTarget();
+        LockOn();
+    }
+
+    private void LockOn()
+    {
+        SpanCameraFaceTarget();
+    }
+
+    private void SpanCameraFaceTarget()
+    {
+        if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null) return;
+        Vector3 direction = playerStateMachine.playerTargetManager.GetCurrentTarget().transform.position - playerStateMachine.transform.position;
+        float cameraAngle = Quaternion.FromToRotation(Vector3.forward, direction).eulerAngles.y;
+        CameraController.Instance.SpanCamera(cameraAngle);
     }
 }

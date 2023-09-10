@@ -21,12 +21,17 @@ public class PlayerTargetManager : TargetManager
 
     private void Unsubscribe(GameObject target)
     {
-        if (targets.Contains(target)) targets.Remove(target);
+        if (targets.Contains(target))
+        {
+            targets.Remove(target);
+            if (currentTarget == target) currentTarget = null;
+        }
     }
 
-    public void LockOnTarget()
+    public GameObject FindTarget()
     {
         currentTarget = GetNearestTarget();
+        return currentTarget;
     }
 
     public void DisableLockOn()

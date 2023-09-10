@@ -11,7 +11,7 @@ public class PlayerImpactState : PlayerState
 
     public override void Enter()
     {
-        playerStateMachine.animator.CrossFadeInFixedTime(impactHash, crossFixedDuration);
+        PlayAnimation(impactHash, crossFixedDuration);
     }
 
     public override void Exit()
@@ -20,6 +20,7 @@ public class PlayerImpactState : PlayerState
 
     public override void Tick()
     {
+        Move(Vector3.zero); //Apply Force
         float normalizedTime = GetNormalizedTime(playerStateMachine.animator, impactHash);
         if (normalizedTime >= 1f)
         {

@@ -26,6 +26,13 @@ public class SkeletonWarriorChasingState : EnemyChasingState
     public override void Tick()
     {
         ChaseTarget(1.5f);
-        if (targetInRange) enemyStateMachine.SwitchState(new SkeletonWarriorAttackingState(skeletonWarriorStateMachine));
+        if (skeletonWarriorStateMachine.enemyTargetManager.GetCurrentTarget() == null) 
+        { 
+            enemyStateMachine.SwitchState(new SkeletonWarriorIdleState(skeletonWarriorStateMachine));
+        }
+        if (targetInRange)
+        {
+            enemyStateMachine.SwitchState(new SkeletonWarriorAttackingState(skeletonWarriorStateMachine));
+        }
     }
 }

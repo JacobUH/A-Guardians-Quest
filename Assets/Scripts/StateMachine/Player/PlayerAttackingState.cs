@@ -16,7 +16,7 @@ public class PlayerAttackingState : PlayerState
 
     public override void Enter()
     {
-        playerStateMachine.animator.CrossFadeInFixedTime(attackHash, attack.transitionDuration);
+        PlayAnimation(attackHash, attack.transitionDuration);
         InputReader.Instance.WestButtonPressEvent += TryComboNormalAttack;
     }
 

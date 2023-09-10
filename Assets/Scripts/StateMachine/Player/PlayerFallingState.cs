@@ -15,7 +15,7 @@ public class PlayerFallingState : PlayerState
     {
         momentumn = playerStateMachine.controller.velocity;
         momentumn.y = 0f;
-        playerStateMachine.animator.CrossFadeInFixedTime(fallHash, crossFadeDuration);
+        PlayAnimation(fallHash, crossFadeDuration);
     }
 
     public override void Exit()

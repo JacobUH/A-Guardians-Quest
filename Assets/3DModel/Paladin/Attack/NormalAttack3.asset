@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64056d3a7f9bee0449c7f9c7a4deed38, type: 3}
   m_Name: NormalAttack3
   m_EditorClassIdentifier: 
+  hitEffectPrefab: {fileID: 710761330545218504, guid: 65d7aeda6b6987f44bf65a04ff20ad35,
+    type: 3}
   animationName: NormalAttack3
   transitionDuration: 0.1
   nextComboIndex: -1
   nextComboEnableTime: 0.7
   damage: 90
   knockBack: 4
-  hitLagDuration: 0.2
-  hitLagStrength: 0.5
+  launchForce: 0
+  hitLagDuration: 0.1
+  hitLagStrength: 0.7

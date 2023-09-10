@@ -15,8 +15,7 @@ public class SkeletonWarriorDieState : EnemyDieState
 
     public override void Enter()
     {
-        skeletonWarriorStateMachine.character.isDead = true;
-        skeletonWarriorStateMachine.animator.CrossFadeInFixedTime(dieHash, crossFixedDuration);
+        PlayAnimation(dieHash, crossFixedDuration);
     }
 
     public override void Exit()

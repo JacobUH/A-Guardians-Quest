@@ -6,12 +6,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Combat/New Attack")]
 public class Attack: ScriptableObject
 {
+    public GameObject hitEffectPrefab;
     public string animationName;
     public float transitionDuration;
     public int nextComboIndex = -1;
     public float nextComboEnableTime;
     public int damage;
     public float knockBack;
+    public float launchForce;
     public float hitLagDuration;
     [Range(0f, 1f)] public float hitLagStrength;
 }

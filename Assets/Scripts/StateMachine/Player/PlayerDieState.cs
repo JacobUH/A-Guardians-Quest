@@ -11,8 +11,7 @@ public class PlayerDieState : PlayerState
 
     public override void Enter()
     {
-        playerStateMachine.character.isDead = true;
-        playerStateMachine.animator.CrossFadeInFixedTime(dieHash, crossFixedDuration);
+        PlayAnimation(dieHash, crossFixedDuration);
     }
 
     public override void Exit()

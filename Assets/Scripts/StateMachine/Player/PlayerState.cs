@@ -36,6 +36,13 @@ public abstract class PlayerState : State
         playerStateMachine.transform.rotation = Quaternion.Slerp(playerStateMachine.transform.rotation, lookRotation, playerStateMachine.changeDirectionSpeed * Time.deltaTime);
     }
 
+    public void FaceTargetInstantly(GameObject target)
+    {
+        Vector3 lookPos = target.transform.position - playerStateMachine.transform.position;
+        lookPos.y = 0f;
+        playerStateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
+    }
+
     public void ChangeDirection(Vector3 movement)
     {
         playerStateMachine.transform.rotation = Quaternion.Lerp(playerStateMachine.transform.rotation, Quaternion.LookRotation(movement), playerStateMachine.changeDirectionSpeed * Time.deltaTime);
@@ -52,13 +59,18 @@ public abstract class PlayerState : State
         {
             CameraController.Instance.RotateCamera(InputReader.Instance.rightStickValue);
         }
-        if (InputReader.Instance.isPressingLeftShoulder)
+        if (InputReader.Instance.isPressingLTRT)
         {
             CameraController.Instance.ZoomOut();
         }
-        if (InputReader.Instance.isPressingRightShoulder)
+        if (InputReader.Instance.isPressingLTRS)
         {
             CameraController.Instance.ZoomIn();
         }
+    }
+
+    public void PlayAnimation(int animationHash, float crossFixedDuration)
+    {
+        playerStateMachine.animator.CrossFadeInFixedTime(animationHash, crossFixedDuration);
     }
 }

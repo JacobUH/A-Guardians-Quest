@@ -188,6 +188,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LTRT"",
+                    ""type"": ""Button"",
+                    ""id"": ""e12f09fd-8c8d-416d-9c5a-67b150cde668"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LTRS"",
+                    ""type"": ""Button"",
+                    ""id"": ""87e5f542-e01d-4b8c-9ebe-df24c61342c1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -487,6 +505,72 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""DpadDownButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""667621d6-ec35-49d0-a354-c752ccaafaa1"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LTRT"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""d95c2760-57c6-4ea8-906f-ffd2939906ec"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LTRT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""b29b5e3b-e9ca-48e4-8b63-55e12ff61be6"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LTRT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""d79cc093-146d-4302-9d2f-551d2ff5c220"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LTRS"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""937b8b18-45a4-4ad8-a83e-4cd4a4d23809"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LTRS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""8397729d-bf6b-486c-9fad-f981fdf836d3"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LTRS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -541,6 +625,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_FreeLook_DpadDownButton = m_FreeLook.FindAction("DpadDownButton", throwIfNotFound: true);
         m_FreeLook_DpadLeftButton = m_FreeLook.FindAction("DpadLeftButton", throwIfNotFound: true);
         m_FreeLook_DpadRightButton = m_FreeLook.FindAction("DpadRightButton", throwIfNotFound: true);
+        m_FreeLook_LTRT = m_FreeLook.FindAction("LTRT", throwIfNotFound: true);
+        m_FreeLook_LTRS = m_FreeLook.FindAction("LTRS", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -620,6 +706,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_FreeLook_DpadDownButton;
     private readonly InputAction m_FreeLook_DpadLeftButton;
     private readonly InputAction m_FreeLook_DpadRightButton;
+    private readonly InputAction m_FreeLook_LTRT;
+    private readonly InputAction m_FreeLook_LTRS;
     public struct FreeLookActions
     {
         private @PlayerInput m_Wrapper;
@@ -642,6 +730,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @DpadDownButton => m_Wrapper.m_FreeLook_DpadDownButton;
         public InputAction @DpadLeftButton => m_Wrapper.m_FreeLook_DpadLeftButton;
         public InputAction @DpadRightButton => m_Wrapper.m_FreeLook_DpadRightButton;
+        public InputAction @LTRT => m_Wrapper.m_FreeLook_LTRT;
+        public InputAction @LTRS => m_Wrapper.m_FreeLook_LTRS;
         public InputActionMap Get() { return m_Wrapper.m_FreeLook; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -705,6 +795,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DpadRightButton.started += instance.OnDpadRightButton;
             @DpadRightButton.performed += instance.OnDpadRightButton;
             @DpadRightButton.canceled += instance.OnDpadRightButton;
+            @LTRT.started += instance.OnLTRT;
+            @LTRT.performed += instance.OnLTRT;
+            @LTRT.canceled += instance.OnLTRT;
+            @LTRS.started += instance.OnLTRS;
+            @LTRS.performed += instance.OnLTRS;
+            @LTRS.canceled += instance.OnLTRS;
         }
 
         private void UnregisterCallbacks(IFreeLookActions instance)
@@ -763,6 +859,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DpadRightButton.started -= instance.OnDpadRightButton;
             @DpadRightButton.performed -= instance.OnDpadRightButton;
             @DpadRightButton.canceled -= instance.OnDpadRightButton;
+            @LTRT.started -= instance.OnLTRT;
+            @LTRT.performed -= instance.OnLTRT;
+            @LTRT.canceled -= instance.OnLTRT;
+            @LTRS.started -= instance.OnLTRS;
+            @LTRS.performed -= instance.OnLTRS;
+            @LTRS.canceled -= instance.OnLTRS;
         }
 
         public void RemoveCallbacks(IFreeLookActions instance)
@@ -818,5 +920,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnDpadDownButton(InputAction.CallbackContext context);
         void OnDpadLeftButton(InputAction.CallbackContext context);
         void OnDpadRightButton(InputAction.CallbackContext context);
+        void OnLTRT(InputAction.CallbackContext context);
+        void OnLTRS(InputAction.CallbackContext context);
     }
 }

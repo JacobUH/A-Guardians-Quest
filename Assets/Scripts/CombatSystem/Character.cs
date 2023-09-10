@@ -6,6 +6,8 @@ using UnityEngine;
 public class Character : MonoBehaviour, IDamageable
 {
     public bool isDead;
+    public bool isUnflinching;
+    public bool isInvincible;
     [SerializeField] private GaugeBar healthBar;
     public float maxHp;
     public float attack;
@@ -30,9 +32,10 @@ public class Character : MonoBehaviour, IDamageable
 
     public void DealDamage(float damage)
     {
-        if (isDead) return;
+        if (isDead || isInvincible) return;
 
-        DamageEvent?.Invoke();
+        if (!isUnflinching) DamageEvent?.Invoke();
+
         currentHp = Mathf.Max(currentHp - damage, 0);
         healthBar.ChangeBar((int)currentHp);
         if (currentHp == 0) Die();
@@ -40,6 +43,7 @@ public class Character : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        isDead = true;
         DieEvent?.Invoke(this.gameObject);
         StartCoroutine(DestroyCoroutine());
     }
