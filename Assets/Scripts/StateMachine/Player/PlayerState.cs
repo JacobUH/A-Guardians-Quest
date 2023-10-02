@@ -73,4 +73,40 @@ public abstract class PlayerState : State
     {
         playerStateMachine.animator.CrossFadeInFixedTime(animationHash, crossFixedDuration);
     }
+
+    public void LockOnMode()
+    {
+        if (playerStateMachine.targetManager.GetCurrentTarget() == null)
+        {
+            if (playerStateMachine.targetManager.TryLockOn())
+                SpanCameraFaceTarget();
+        }
+        else
+        {
+            //playerStateMachine.targetManager.DisableLockOn();
+            LockOnNextTarget();
+        }
+    }
+
+    public void LockOnNextTarget()
+    {
+        if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
+        playerStateMachine.targetManager.NextTarget();
+        SpanCameraFaceTarget();
+    }
+
+    public void LockOnPreviousTarget()
+    {
+        if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
+        playerStateMachine.targetManager.PreviouTarget();
+        SpanCameraFaceTarget();
+    }
+
+    public void SpanCameraFaceTarget()
+    {
+        if (playerStateMachine.targetManager.GetCurrentTarget() == null) return;
+        Vector3 direction = playerStateMachine.targetManager.GetCurrentTarget().transform.position - playerStateMachine.transform.position;
+        float cameraAngle = Quaternion.FromToRotation(Vector3.forward, direction).eulerAngles.y;
+        CameraController.Instance.SpanCamera(cameraAngle);
+    }
 }

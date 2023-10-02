@@ -20,6 +20,7 @@ public class StateMachine : MonoBehaviour
     public ForceReceiver forceReceiver;
     public ComboManager comboManager;
     public Character character;
+    public TargetManager targetManager;
 
     private State currentState;
 
@@ -35,6 +36,7 @@ public class StateMachine : MonoBehaviour
         forceReceiver = GetComponent<ForceReceiver>();
         comboManager = GetComponent<ComboManager>();
         character = GetComponent<Character>();
+        targetManager = GetComponentInChildren<TargetManager>();
         character.DamageEvent += OnDamage;
         character.DieEvent += OnDie;
     }

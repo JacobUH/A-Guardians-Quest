@@ -26,7 +26,7 @@ public class Character : MonoBehaviour, IDamageable
 
     private IEnumerator DestroyCoroutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(10f);
         Destroy(this.gameObject);
     }
 

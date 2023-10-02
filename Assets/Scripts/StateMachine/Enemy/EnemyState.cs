@@ -50,7 +50,7 @@ public abstract class EnemyState : State
 
     public GameObject GetCurrentTarget()
     {
-        return enemyStateMachine.enemyTargetManager.GetCurrentTarget();
+        return enemyStateMachine.targetManager.GetCurrentTarget();
     }
 
     public void PlayAnimation(int animationHash, float crossFixedDuration)

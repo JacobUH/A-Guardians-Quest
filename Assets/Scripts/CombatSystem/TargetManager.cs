@@ -1,22 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 public class TargetManager : MonoBehaviour
 {
-    [SerializeField] protected List<GameObject> targets;
+    [SerializeField] protected List<GameObject> targets = new List<GameObject>();
     [SerializeField] protected float targetRange;
     [SerializeField] protected SphereCollider sphereCollider;
+    [SerializeField] protected GameObject targetUI;
 
     protected int targetIndex;
-    protected GameObject currentTarget;
+    [SerializeField] protected GameObject currentTarget;
 
     private void Start()
     {
         sphereCollider = GetComponent<SphereCollider>();
         sphereCollider.radius = targetRange;
+    }
+
+    protected virtual void OnTriggerEnter(Collider other) { }
+    protected virtual void OnTriggerExit(Collider other) { }
+
+    protected void TargetOnDie(GameObject target)
+    {
+        if (targets.Contains(target))
+        {
+            targets.Remove(target);
+        }
+        if (currentTarget == target) DisableLockOn();
     }
 
     public GameObject GetCurrentTarget()
@@ -59,7 +73,63 @@ public class TargetManager : MonoBehaviour
 
     public float GetDistanceToTarget()
     {
-        if (currentTarget == null) return -1f;
+        if (currentTarget == null) return Mathf.Infinity;
         return Vector3.Distance(transform.position, currentTarget.transform.position);
     }
+
+    public bool TryLockOn()
+    {
+        if (targets.Count() == 0) return false;
+        if (targets.Count() == 1) currentTarget = targets[0];
+        else currentTarget = GetNearestTarget();
+
+        currentTarget.GetComponent<StateMachine>().targetManager.DisplayTargetUI();
+        return true;
+    }
+
+    public void DisableLockOn()
+    {
+        currentTarget.GetComponent<StateMachine>().targetManager.DisableTargetUI();
+        currentTarget = null;
+    }
+
+    public void NextTarget()
+    {
+        if (targets.Count() <= 1) return;
+
+        targetIndex++;
+        if (targetIndex >= targets.Count())
+        {
+            targetIndex = 0;
+        }
+        currentTarget.GetComponent<StateMachine>().targetManager.DisableTargetUI();
+        currentTarget = targets[targetIndex];
+        currentTarget.GetComponent<StateMachine>().targetManager.DisplayTargetUI();
+    }
+
+    public void PreviouTarget()
+    {
+        if (targets.Count() <= 1) return;
+
+        targetIndex--;
+        if (targetIndex < 0)
+        {
+            targetIndex = targets.Count() - 1;
+        }
+        currentTarget.GetComponent<StateMachine>().targetManager.DisableTargetUI();
+        currentTarget = targets[targetIndex];
+        currentTarget.GetComponent<StateMachine>().targetManager.DisplayTargetUI();
+    }
+
+    //Target Indicator UI ON/OFF Functions. Not called by this script.
+    public void DisplayTargetUI()
+    {
+        targetUI.SetActive(true);
+    }
+
+    public void DisableTargetUI()
+    {
+        targetUI.SetActive(false);
+    }
 }
+

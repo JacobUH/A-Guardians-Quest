@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponCollider : MonoBehaviour
 {
     [SerializeField] private Collider myCollider;
+    [SerializeField] private string ignoreTag;
 
     private GameObject hitEffectPrefab;
     private int damage;
@@ -30,6 +31,7 @@ public class WeaponCollider : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other == myCollider) return;
+        if (other.CompareTag(ignoreTag)) return;
         if (alreadyCollideWith.Contains(other)) return;
 
         alreadyCollideWith.Add(other);

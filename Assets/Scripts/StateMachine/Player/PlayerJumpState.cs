@@ -24,7 +24,7 @@ public class PlayerJumpState : PlayerState
     {
         HandleCameraMovement();
         Move(movement * playerStateMachine.movementSpeed);
-        if (playerStateMachine.controller.velocity.y < 0)
+        if (playerStateMachine.controller.velocity.y <= 0)
         {
             playerStateMachine.SwitchState(new PlayerFallingState(playerStateMachine));
             return;

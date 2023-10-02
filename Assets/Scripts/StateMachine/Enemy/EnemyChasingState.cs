@@ -11,9 +11,9 @@ public abstract class EnemyChasingState : EnemyState
 
     protected void ChaseTarget(float chaseStopRange)
     {
-        float distance = enemyStateMachine.enemyTargetManager.GetDistanceToTarget();
+        float distance = enemyStateMachine.targetManager.GetDistanceToTarget();
 
-        if (distance <= chaseStopRange && enemyStateMachine.enemyTargetManager.IsTargetInFront())
+        if (distance <= chaseStopRange)
         {
             targetInRange = true;
         }

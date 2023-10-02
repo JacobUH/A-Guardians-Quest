@@ -354,6 +354,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ebb595d2-50ef-4890-ac4a-6bfc6729ca54",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "LeftShoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7cc3d76a-463b-4b44-87d6-d1a3e146edbb",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
@@ -501,7 +512,7 @@
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "LTRT",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -512,7 +523,7 @@
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "LTRT",
                     "isComposite": false,
                     "isPartOfComposite": true

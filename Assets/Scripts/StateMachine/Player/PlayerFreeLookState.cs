@@ -20,8 +20,8 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.WestButtonPressEvent += NormalAttack;
         InputReader.Instance.RightStickPressEvent += SpanCameraFaceTarget;
         InputReader.Instance.LeftShoulderPressEvent += LockOnMode;
-        InputReader.Instance.DpadLeftButtonPressEvent += LockOnPreviousTarget;
-        InputReader.Instance.DpadRightButtonPressEvent += LockOnNextTarget;
+        //InputReader.Instance.DpadLeftButtonPressEvent += LockOnPreviousTarget;
+        //InputReader.Instance.DpadRightButtonPressEvent += LockOnNextTarget;
         PlayAnimation(freelookHash, crossFixedDuration);
     }
 
@@ -32,8 +32,8 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.WestButtonPressEvent -= NormalAttack;
         InputReader.Instance.RightStickPressEvent -= SpanCameraFaceTarget;
         InputReader.Instance.LeftShoulderPressEvent -= LockOnMode;
-        InputReader.Instance.DpadLeftButtonPressEvent -= LockOnPreviousTarget;
-        InputReader.Instance.DpadRightButtonPressEvent -= LockOnNextTarget;
+        //InputReader.Instance.DpadLeftButtonPressEvent -= LockOnPreviousTarget;
+        //InputReader.Instance.DpadRightButtonPressEvent -= LockOnNextTarget;
     }
 
     public override void Tick()
@@ -89,47 +89,5 @@ public class PlayerFreeLookState : PlayerState
     {
         if (CalculateMovement() == Vector3.zero) return;
         playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
-    }
-
-    private void LockOnMode()
-    {
-        if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null)
-        {
-            if (playerStateMachine.playerTargetManager.FindTarget())
-            {
-                LockOn();
-            }
-        }
-        else
-        {
-            playerStateMachine.playerTargetManager.DisableLockOn();
-        }
-    }
-
-    private void LockOnNextTarget()
-    {
-        if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null) return;
-        playerStateMachine.playerTargetManager.NextTarget();
-        LockOn();
-    }
-
-    private void LockOnPreviousTarget()
-    {
-        if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null) return;
-        playerStateMachine.playerTargetManager.PreviouTarget();
-        LockOn();
-    }
-
-    private void LockOn()
-    {
-        SpanCameraFaceTarget();
-    }
-
-    private void SpanCameraFaceTarget()
-    {
-        if (playerStateMachine.playerTargetManager.GetCurrentTarget() == null) return;
-        Vector3 direction = playerStateMachine.playerTargetManager.GetCurrentTarget().transform.position - playerStateMachine.transform.position;
-        float cameraAngle = Quaternion.FromToRotation(Vector3.forward, direction).eulerAngles.y;
-        CameraController.Instance.SpanCamera(cameraAngle);
     }
 }

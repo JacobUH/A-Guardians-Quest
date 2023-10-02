@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyTargetManager : TargetManager
 {
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -12,7 +12,7 @@ public class EnemyTargetManager : TargetManager
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected override void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player") && currentTarget != null)
         {
