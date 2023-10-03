@@ -38,7 +38,6 @@ public class PlayerFreeLookState : PlayerState
 
     public override void Tick()
     {
-        if (Input.GetKeyDown(KeyCode.R)) playerStateMachine.walkMode = !playerStateMachine.walkMode;
         UpdateAnimator();
         HandleCameraMovement();
         HandlePlayerMovement();
@@ -56,8 +55,7 @@ public class PlayerFreeLookState : PlayerState
         }
         else
         {
-            if (playerStateMachine.walkMode) Move(movement * playerStateMachine.walkSpeed);
-            else Move(movement * playerStateMachine.movementSpeed);
+            Move(movement * playerStateMachine.movementSpeed);
             ChangeDirection(movement);
         }
     }
@@ -69,13 +67,10 @@ public class PlayerFreeLookState : PlayerState
             playerStateMachine.animator.SetFloat(blendSpeedHash, 0f, 0.1f, Time.deltaTime);
             return;
         }
-        if (playerStateMachine.walkMode) blendValue = 0.5f;
-        else
-        {
-            blendValue = Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y));
-            if (blendValue > 0.7f) blendValue = 1f;
-            else blendValue = 0.5f;
-        }
+        else blendValue = Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y));
+
+        if (blendValue > 0.7f) blendValue = 1f;
+        else blendValue = 0.5f;
 
         playerStateMachine.animator.SetFloat(blendSpeedHash, blendValue, 0.1f, Time.deltaTime);
     }

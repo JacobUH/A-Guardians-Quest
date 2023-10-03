@@ -12,7 +12,6 @@ public class PlayerDodgingState : PlayerState
 
     public override void Enter()
     {
-        playerStateMachine.character.isInvincible = true;
         movement = CalculateMovement();
         ChangeDirectionInstantly(movement);
         PlayAnimation(dodgeHash, crossFadeDuration);
@@ -20,7 +19,6 @@ public class PlayerDodgingState : PlayerState
 
     public override void Exit()
     {
-        playerStateMachine.character.isInvincible = false;
     }
 
     public override void Tick()

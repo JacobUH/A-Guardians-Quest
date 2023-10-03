@@ -6,12 +6,10 @@ public class StateMachine : MonoBehaviour
 {
     [Header("Movement Parameters")]
     public float movementSpeed = 1.5f;
-    public float walkSpeed = 0.7f;
     public float chaseSpeed = 2f;
     public float dodgeSpeed = 2f;
     public float changeDirectionSpeed = 15;
     public float jumpForce = 0.6f;
-    public bool walkMode;
 
     [Header("Combat Parameters")]
     public float attackRange = 2f;

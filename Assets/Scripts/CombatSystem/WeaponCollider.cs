@@ -36,21 +36,19 @@ public class WeaponCollider : MonoBehaviour
 
         alreadyCollideWith.Add(other);
 
+        GameObject hitEffect = Instantiate(hitEffectPrefab);
+        hitEffect.transform.position = other.ClosestPoint(transform.position);
+
         if (other.TryGetComponent<IDamageable>(out IDamageable damageableTarget))
         {
-            if ( damageableTarget.TryDealDamage(damage))
-            {
-                GameObject hitEffect = Instantiate(hitEffectPrefab);
-                hitEffect.transform.position = other.ClosestPoint(transform.position);
-                hitLagCoroutine = StartCoroutine(HitLag());
-
-                if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
-                {
-                    Vector3 direction = (other.transform.position - myCollider.transform.position).normalized;
-                    direction.y = 0f;
-                    forceReceiver.ApplyImpact(direction * knockback + Vector3.up * launchForce);
-                }
-            }
+            hitLagCoroutine = StartCoroutine(HitLag());
+            damageableTarget.DealDamage(damage);
+        }
+        if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
+        {
+            Vector3 direction = (other.transform.position - myCollider.transform.position).normalized;
+            direction.y = 0f;
+            forceReceiver.ApplyImpact(direction * knockback + Vector3.up * launchForce);
         }
         this.gameObject.SetActive(false);
     }

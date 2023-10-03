@@ -30,16 +30,15 @@ public class Character : MonoBehaviour, IDamageable
         Destroy(this.gameObject);
     }
 
-    public bool TryDealDamage(float damage)
+    public void DealDamage(float damage)
     {
-        if (isDead || isInvincible) return false;
+        if (isDead || isInvincible) return;
 
         if (!isUnflinching) DamageEvent?.Invoke();
 
         currentHp = Mathf.Max(currentHp - damage, 0);
         healthBar.ChangeBar((int)currentHp);
         if (currentHp == 0) Die();
-        return true;
     }
 
     public void Die()
