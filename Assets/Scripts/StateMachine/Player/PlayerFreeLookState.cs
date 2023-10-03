@@ -55,7 +55,9 @@ public class PlayerFreeLookState : PlayerState
         }
         else
         {
-            Move(movement * playerStateMachine.movementSpeed);
+            if (Input.GetKeyDown(KeyCode.R)) playerStateMachine.walkMode = !playerStateMachine.walkMode;
+            if (playerStateMachine.walkMode) Move(movement * playerStateMachine.walkSpeed);
+            else Move(movement * playerStateMachine.movementSpeed);
             ChangeDirection(movement);
         }
     }
@@ -67,10 +69,16 @@ public class PlayerFreeLookState : PlayerState
             playerStateMachine.animator.SetFloat(blendSpeedHash, 0f, 0.1f, Time.deltaTime);
             return;
         }
-        else blendValue = Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y));
-
-        if (blendValue > 0.7f) blendValue = 1f;
-        else blendValue = 0.5f;
+        if (playerStateMachine.walkMode)
+        {
+            blendValue = 0.5f;
+        }
+        else
+        {
+            blendValue = Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y));
+            if (blendValue > 0.7f) blendValue = 1f;
+            else blendValue = 0.5f;
+        }
 
         playerStateMachine.animator.SetFloat(blendSpeedHash, blendValue, 0.1f, Time.deltaTime);
     }

@@ -26,19 +26,22 @@ public class Character : MonoBehaviour, IDamageable
 
     private IEnumerator DestroyCoroutine()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(1f);
+        healthBar.gameObject.SetActive(false);
+        yield return new WaitForSeconds(5f);
         Destroy(this.gameObject);
     }
 
-    public void DealDamage(float damage)
+    public bool TryDealDamage(float damage)
     {
-        if (isDead || isInvincible) return;
+        if (isDead || isInvincible) return false;
 
         if (!isUnflinching) DamageEvent?.Invoke();
 
         currentHp = Mathf.Max(currentHp - damage, 0);
         healthBar.ChangeBar((int)currentHp);
         if (currentHp == 0) Die();
+        return true;
     }
 
     public void Die()
