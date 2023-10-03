@@ -67,14 +67,14 @@ public class CameraController : SingletonMonobehaviour<CameraController>
     }
 
     public void RotateCamera(Vector2 cameraMovement)
-    {
+    {/*
         if (cameraSpanning != null) return;
 
         if (cameraMovement.x != 0 || cameraMovement.y != 0)
         {
             freeLook.m_YAxis.Value -= cameraMovement.y * Time.unscaledDeltaTime * freeLook.m_YAxis.m_MaxSpeed;
             freeLook.m_XAxis.Value += cameraMovement.x * Time.unscaledDeltaTime * freeLook.m_XAxis.m_MaxSpeed;
-        }
+        }*/
     }
 
     public void SpanCamera(float targetAngle)
