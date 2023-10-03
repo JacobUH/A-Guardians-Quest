@@ -12,6 +12,8 @@ public class PlayerDieState : PlayerState
     public override void Enter()
     {
         PlayAnimation(dieHash, crossFixedDuration);
+        playerStateMachine.forceReceiver.enabled = false;
+        playerStateMachine.controller.enabled = false;
     }
 
     public override void Exit()

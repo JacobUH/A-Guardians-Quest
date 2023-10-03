@@ -636,10 +636,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1.5
+  walkSpeed: 0.7
   chaseSpeed: 2
   dodgeSpeed: 2
   changeDirectionSpeed: 15
   jumpForce: 0.6
+  walkMode: 0
   attackRange: 2
   controller: {fileID: 126843199}
   animator: {fileID: 126843200}
@@ -1058,7 +1060,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182663372}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1640,6 +1642,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.04
       objectReference: {fileID: 0}
+    - target: {fileID: -4292154010595695564, guid: 0820a960448dcdf4dafad5f07d997172,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4186775731687115582, guid: 0820a960448dcdf4dafad5f07d997172,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1779,6 +1786,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125846885540320074, guid: 0820a960448dcdf4dafad5f07d997172,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8979505467301458452, guid: 0820a960448dcdf4dafad5f07d997172,
         type: 3}
@@ -2336,7 +2348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08951216, y: 0.000000021651111, z: -0.0000000019458488, w: 0.99598575}
+  m_LocalRotation: {x: 0.08951216, y: -0.000000021651108, z: 0.0000000019458484, w: 0.99598575}
   m_LocalPosition: {x: 0, y: 1.8727131, z: -2.7777014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3190,7 +3202,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528232314}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4423,7 +4435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &902569352
 Transform:
   m_ObjectHideFlags: 0
@@ -6391,10 +6403,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1.5
+  walkSpeed: 0.7
   chaseSpeed: 2
   dodgeSpeed: 2
   changeDirectionSpeed: 15
   jumpForce: 0.6
+  walkMode: 0
   attackRange: 2
   controller: {fileID: 1269697482}
   animator: {fileID: 1269697485}
@@ -6479,7 +6493,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270213748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7353,10 +7367,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 4
+  walkSpeed: 0.7
   chaseSpeed: 2
   dodgeSpeed: 6.5
   changeDirectionSpeed: 15
   jumpForce: 1
+  walkMode: 0
   attackRange: 2
   controller: {fileID: 1469337919}
   animator: {fileID: 1469337920}
@@ -8199,7 +8215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652263291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27292827, y: 0.00000003667241, z: 0.0000000047070117, w: 0.96203446}
+  m_LocalRotation: {x: 0.27292827, y: 0.000000001489175, z: 1.9113955e-10, w: 0.96203446}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8838,7 +8854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752737683}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33065212, y: 0.0000000363617, z: 0.0000000024433942, w: 0.9437527}
+  m_LocalRotation: {x: 0.33065212, y: 0.00000000202637, z: 1.3616484e-10, w: 0.9437527}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9029,7 +9045,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779734545}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9097,7 +9113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.26021782, y: 0.000000002010825, z: 2.8509703e-10, w: 0.96554995}
+  m_LocalRotation: {x: 0.26021782, y: 0.000000036082834, z: 0.0000000051158775, w: 0.96554995}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

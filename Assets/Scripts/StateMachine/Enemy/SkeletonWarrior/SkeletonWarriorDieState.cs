@@ -16,6 +16,8 @@ public class SkeletonWarriorDieState : EnemyDieState
     public override void Enter()
     {
         PlayAnimation(dieHash, crossFixedDuration);
+        skeletonWarriorStateMachine.forceReceiver.enabled = false;
+        skeletonWarriorStateMachine.controller.enabled = false;
     }
 
     public override void Exit()
