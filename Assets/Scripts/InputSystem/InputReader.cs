@@ -9,9 +9,6 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
 {
     public float longPressDuration = 0.5f;
 
-    public bool isPressingDpadLeft;
-    public bool isPressingDpadRight;
-
     public bool isPressingLTRT;
     public bool isPressingLTRS;
 
@@ -52,9 +49,13 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
     public Vector2 leftStickValue;
     public event Action LeftStickPressEvent;
 
+    public bool isPressingDpadUp;
     public event Action DpadUpButtonPressEvent;
+    public bool isPressingDpadDown;
     public event Action DpadDownButtonPressEvent;
+    public bool isPressingDpadLeft;
     public event Action DpadLeftButtonPressEvent;
+    public bool isPressingDpadRight;
     public event Action DpadRightButtonPressEvent;
 
     public event Action StartButtonPressEvent;
@@ -319,6 +320,21 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
 
     public void OnDpadUpButton(InputAction.CallbackContext context)
     {
+        if (context.started)
+        {
+            isPressing = true;
+            isPressingDpadUp = true;
+            pressTime = 0f;
+        }
+        else if (context.canceled)
+        {
+            if (pressTime < longPressDuration && isPressing)
+            {
+                DpadUpButtonPressEvent?.Invoke();
+            }
+            isPressing = false;
+            isPressingDpadUp = false;
+        }
     }
 
     public void OnDpadDownButton(InputAction.CallbackContext context)

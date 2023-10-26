@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerStateMachine : StateMachine
 {
     public Transform mainCameraTransform;
+    public GameObject swordMainHand;
+    public GameObject bowMainHand;
+    public GameObject swordBack;
+    public GameObject bowBack;
 
     public override void Start()
     {

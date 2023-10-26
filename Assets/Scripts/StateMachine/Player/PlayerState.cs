@@ -109,4 +109,26 @@ public abstract class PlayerState : State
         float cameraAngle = Quaternion.FromToRotation(Vector3.forward, direction).eulerAngles.y;
         CameraController.Instance.SpanCamera(cameraAngle);
     }
+
+    public void QuickSwitchWeapon()
+    {
+        WeaponItemData currentWeapon = playerStateMachine.character.GetCurrentWeaponData();
+        if (currentWeapon.weaponType == WeaponType.Sword)
+        {
+            playerStateMachine.character.ChangeWeapon("5002");
+            playerStateMachine.swordMainHand.SetActive(false);
+            playerStateMachine.bowBack.SetActive(false);
+            playerStateMachine.swordBack.SetActive(true);
+            playerStateMachine.bowMainHand.SetActive(true);
+        }
+        else if (currentWeapon.weaponType == WeaponType.Bow)
+        {
+            playerStateMachine.character.ChangeWeapon("5001");
+            playerStateMachine.swordMainHand.SetActive(true);
+            playerStateMachine.bowBack.SetActive(true);
+            playerStateMachine.swordBack.SetActive(false);
+            playerStateMachine.bowMainHand.SetActive(false);
+        }
+        QuickSlotManager.Instance.UpdateCurrentWeaponInfo();
+    }
 }

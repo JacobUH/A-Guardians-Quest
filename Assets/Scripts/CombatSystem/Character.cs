@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable
@@ -8,20 +9,22 @@ public class Character : MonoBehaviour, IDamageable
     public bool isDead;
     public bool isUnflinching;
     public bool isInvincible;
-    [SerializeField] private GaugeBar healthBar;
-    public float maxHp;
-    public float attack;
-    public float defense;
-
     public event Action<GameObject> DieEvent;
     public event Action DamageEvent;
+
+    [SerializeField] private GaugeBar healthBar;
+    [SerializeField] private TextMeshProUGUI healthBarTextMesh;
+    [SerializeField] private CharacterBaseStats baseStats;
+    [SerializeField] private CharacterEquipmentData equipmentData;
+
     private float currentHp;
 
     private void Start()
     {
+        int maxHp = GetMaxHp();
         currentHp = maxHp;
-        healthBar.SetBar(Mathf.RoundToInt(maxHp));
-        healthBar.ChangeBar(Mathf.RoundToInt(currentHp));
+        healthBar.SetBar(maxHp);
+        UpdateHPUI();
     }
 
     private IEnumerator DestroyCoroutine()
@@ -39,7 +42,7 @@ public class Character : MonoBehaviour, IDamageable
         if (!isUnflinching) DamageEvent?.Invoke();
 
         currentHp = Mathf.Max(currentHp - damage, 0);
-        healthBar.ChangeBar((int)currentHp);
+        UpdateHPUI();
         if (currentHp == 0) Die();
         return true;
     }
@@ -51,5 +54,48 @@ public class Character : MonoBehaviour, IDamageable
         StartCoroutine(DestroyCoroutine());
     }
 
-    
+    public void RecoverHp(int amount)
+    {
+        int maxHp = Mathf.RoundToInt(GetMaxHp());
+        currentHp = Mathf.Min(currentHp + amount, maxHp);
+        UpdateHPUI();
+    }
+
+    public void UpdateHPUI()
+    {
+        int maxHp = Mathf.RoundToInt(GetMaxHp());
+        healthBar.ChangeBar(Mathf.RoundToInt(currentHp));
+        if (healthBarTextMesh != null) healthBarTextMesh.text = $"HP {currentHp}/{maxHp}";
+    }
+
+    public int GetMaxHp()
+    {
+        return Mathf.RoundToInt(baseStats.hp + equipmentData.TotalHp());
+    }
+
+    public float GetAttack()
+    {
+        return baseStats.attack + equipmentData.TotalAttack();
+    }
+
+    public float GetDefense()
+    {
+        return baseStats.defense + equipmentData.TotalDefense();
+    }
+
+    public WeaponItemData GetCurrentWeaponData()
+    {
+        string itemGuid = equipmentData.equippingItemGuids[0];
+        if (!string.IsNullOrEmpty(itemGuid))
+        {
+            WeaponItemData weapon = (WeaponItemData)ItemDatabase.Instance.GetItemData(equipmentData.equippingItemGuids[0]);
+            return weapon;
+        }
+        else return null;
+    }
+
+    public void ChangeWeapon(string itemGuid)
+    {
+        equipmentData.Equip(itemGuid);
+    }
 }

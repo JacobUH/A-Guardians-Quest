@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class ComboManager : MonoBehaviour
 {
-    public Combo normalCombo;
+    public Combo normalSwordCombo;
+    public Combo normalBowCombo;
 }

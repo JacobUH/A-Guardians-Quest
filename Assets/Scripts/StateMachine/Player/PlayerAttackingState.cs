@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerAttackingState : PlayerState
 {
-    public PlayerAttackingState(PlayerStateMachine playerStateMachine, Attack attack) : base(playerStateMachine)
+    public PlayerAttackingState(PlayerStateMachine playerStateMachine, Combo combo, int attackIndex) : base(playerStateMachine)
     {
-        this.attack = attack;
+        this.attack = combo.attack[attackIndex];
+        this.combo = combo;
         attackHash = Animator.StringToHash(attack.animationName);
     }
 
     private Attack attack;
+    private Combo combo;
     private float normalizedTime;
     private int attackHash;
 
@@ -51,7 +53,6 @@ public class PlayerAttackingState : PlayerState
         if (attack.nextComboIndex == -1) return;
         if (normalizedTime < attack.nextComboEnableTime) return;
 
-        Attack nextAttack = playerStateMachine.comboManager.normalCombo.attack[attack.nextComboIndex];
-        playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, nextAttack));
+        playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, combo, attack.nextComboIndex));
     }
 }

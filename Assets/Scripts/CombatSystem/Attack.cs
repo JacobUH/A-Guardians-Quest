@@ -7,6 +7,7 @@ using UnityEngine;
 public class Attack: ScriptableObject
 {
     public GameObject hitEffectPrefab;
+    public GameObject projectilePrefab;
     public string animationName;
     public float transitionDuration;
     public int nextComboIndex = -1;
@@ -15,5 +16,7 @@ public class Attack: ScriptableObject
     public float knockBack;
     public float launchForce;
     public float hitLagDuration;
+    public float projectileSpeed;
+    public float projectileLifetime;
     [Range(0f, 1f)] public float hitLagStrength;
 }

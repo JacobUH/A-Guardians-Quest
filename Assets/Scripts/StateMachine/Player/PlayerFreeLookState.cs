@@ -15,6 +15,8 @@ public class PlayerFreeLookState : PlayerState
     public override void Enter()
     {
         InputReader.Instance.EnableFreelookInputReader();
+        InputReader.Instance.DpadUpButtonPressEvent += UseItem;
+        InputReader.Instance.DpadLeftButtonPressEvent += QuickSwitchWeapon;
         InputReader.Instance.SouthButtonPressEvent += Jump;
         InputReader.Instance.EastButtonPressEvent += Dodge;
         InputReader.Instance.WestButtonPressEvent += NormalAttack;
@@ -27,6 +29,8 @@ public class PlayerFreeLookState : PlayerState
 
     public override void Exit()
     {
+        InputReader.Instance.DpadUpButtonPressEvent -= UseItem;
+        InputReader.Instance.DpadLeftButtonPressEvent -= QuickSwitchWeapon;
         InputReader.Instance.SouthButtonPressEvent -= Jump;
         InputReader.Instance.EastButtonPressEvent -= Dodge;
         InputReader.Instance.WestButtonPressEvent -= NormalAttack;
@@ -43,7 +47,7 @@ public class PlayerFreeLookState : PlayerState
         HandlePlayerMovement();
         if (!playerStateMachine.controller.isGrounded) playerStateMachine.SwitchState(new PlayerFallingState(playerStateMachine));
         if (InputReader.Instance.isPressingWestButton) NormalAttack();
-        if (InputReader.Instance.isPressingSouthButton) Jump();
+        //if (InputReader.Instance.isPressingSouthButton) Jump();
     }
 
     private void HandlePlayerMovement()
@@ -85,7 +89,24 @@ public class PlayerFreeLookState : PlayerState
 
     private void NormalAttack()
     {
-        playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalCombo.attack[0]));
+        WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
+        if (weaponType == WeaponType.Sword)
+        {
+            playerStateMachine.swordMainHand.SetActive(true);
+            playerStateMachine.bowBack.SetActive(true);
+            playerStateMachine.swordBack.SetActive(false);
+            playerStateMachine.bowMainHand.SetActive(false);
+            playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalSwordCombo, 0));
+        }
+        else if (weaponType == WeaponType.Bow)
+        {
+            playerStateMachine.swordMainHand.SetActive(false);
+            playerStateMachine.bowBack.SetActive(false);
+            playerStateMachine.swordBack.SetActive(true);
+            playerStateMachine.bowMainHand.SetActive(true);
+            playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalBowCombo, 0));
+        }
+        else return;
     }
 
     private void Jump()
@@ -97,5 +118,19 @@ public class PlayerFreeLookState : PlayerState
     {
         if (CalculateMovement() == Vector3.zero) return;
         playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
+    }
+
+    private void UseItem()
+    {
+        InventorySlot slot = QuickSlotManager.Instance.GetQuickItemInfo();
+        if (slot != null)
+        {
+            InventoryBox.Instance.RemoveItem(slot.itemGuid, 1);
+            QuickSlotManager.Instance.UpdateCurrentItemInfo();
+
+            ConsumableItemData consumableItem = (ConsumableItemData)ItemDatabase.Instance.GetItemData(slot.itemGuid);
+            Debug.Log($"Leon use {consumableItem.name}");
+            consumableItem.Use(playerStateMachine.gameObject);
+        }
     }
 }

@@ -1,20 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonobehaviour<GameManager>
 {
-    void Start()
+    private bool isInMenu;
+    private float cursorHideDelay = 3.0f; 
+    private float lastMouseActivityTime;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        LockCursor();
+    }
+
+    void Update()
+    {
+        Vector2 mouseDelta = Mouse.current.delta.ReadValue();
+
+        if (isInMenu && mouseDelta != Vector2.zero)
+        {
+            UnlockCursor();
+            lastMouseActivityTime = Time.time;
+        }
+        else if (Time.time - lastMouseActivityTime >= cursorHideDelay)
+        {
+            LockCursor();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
+    private void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    void Update()
+    private void UnlockCursor()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void SetInMenuBool(bool b)
+    {
+        isInMenu = b;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#endif
     }
 }
