@@ -13,7 +13,7 @@ public abstract class PlayerState : State
 
     public void Move(Vector3 movement)
     {
-        playerStateMachine.controller.Move((movement + playerStateMachine.forceReceiver.GetForce()) * Time.deltaTime);
+        playerStateMachine.controller.Move((movement + playerStateMachine.forceReceiver.GetForce() + playerStateMachine.slideDirection) * Time.deltaTime);
     }
 
     public Vector3 CalculateMovement()
@@ -26,6 +26,21 @@ public abstract class PlayerState : State
         forward.Normalize();
         right.Normalize();
         return forward * movementInput.y + right * movementInput.x;
+    }
+
+    public void HandlePlayerMovement()
+    {
+        Vector3 movement = CalculateMovement();
+        if (InputReader.Instance.leftStickValue == Vector2.zero)
+        {
+            Move(Vector3.zero);
+        }
+        else
+        {
+            if (playerStateMachine.walkMode) Move(movement * playerStateMachine.walkSpeed);
+            else Move(movement * playerStateMachine.movementSpeed);
+            ChangeDirection(movement);
+        }
     }
 
     public void FaceTarget(GameObject target)

@@ -53,7 +53,7 @@ public class AttackCollider : MonoBehaviour
                 }
             }
         }
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
     }
 
     private IEnumerator HitLag()

@@ -47,23 +47,6 @@ public class PlayerFreeLookState : PlayerState
         HandlePlayerMovement();
         if (!playerStateMachine.controller.isGrounded) playerStateMachine.SwitchState(new PlayerFallingState(playerStateMachine));
         if (InputReader.Instance.isPressingWestButton) NormalAttack();
-        //if (InputReader.Instance.isPressingSouthButton) Jump();
-    }
-
-    private void HandlePlayerMovement()
-    {
-        movement = CalculateMovement();
-        if (InputReader.Instance.leftStickValue == Vector2.zero)
-        {
-            Move(Vector3.zero);
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.R)) playerStateMachine.walkMode = !playerStateMachine.walkMode;
-            if (playerStateMachine.walkMode) Move(movement * playerStateMachine.walkSpeed);
-            else Move(movement * playerStateMachine.movementSpeed);
-            ChangeDirection(movement);
-        }
     }
 
     private void UpdateAnimator()

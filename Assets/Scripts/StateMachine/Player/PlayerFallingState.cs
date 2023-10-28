@@ -8,13 +8,10 @@ public class PlayerFallingState : PlayerState
     public PlayerFallingState(PlayerStateMachine playerStateMachine) : base(playerStateMachine) { }
 
     private readonly int fallHash = Animator.StringToHash("Fall");
-    private Vector3 momentumn;
     private const float crossFadeDuration = 0.1f;
 
     public override void Enter()
     {
-        momentumn = playerStateMachine.controller.velocity;
-        momentumn.y = 0f;
         PlayAnimation(fallHash, crossFadeDuration);
     }
 
@@ -24,8 +21,8 @@ public class PlayerFallingState : PlayerState
 
     public override void Tick()
     {
+        HandlePlayerMovement();
         HandleCameraMovement();
-        Move(momentumn);
         if (playerStateMachine.controller.isGrounded)
         {
             playerStateMachine.SwitchState(new PlayerFreeLookState(playerStateMachine));

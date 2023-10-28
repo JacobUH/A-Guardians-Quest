@@ -12,6 +12,10 @@ public class StateMachine : MonoBehaviour
     public float changeDirectionSpeed = 15;
     public float jumpForce = 0.6f;
     public bool walkMode;
+    public float groundCheckDistance = 0.2f;
+    public float slideSpeed = 2.0f;
+    public bool isGrounded;
+    public Vector3 slideDirection;
 
     [Header("Combat Parameters")]
     public float attackRange = 2f;
@@ -25,9 +29,11 @@ public class StateMachine : MonoBehaviour
     public TargetManager targetManager;
 
     private State currentState;
+    private Vector3 groundNormal;
 
     private void Update()
     {
+        GroundCheck();
         currentState?.Tick();
     }
 
@@ -55,4 +61,20 @@ public class StateMachine : MonoBehaviour
 
     public virtual void OnDie(GameObject dieCharacter)
     { }
+
+    public void GroundCheck()
+    {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, groundCheckDistance);
+
+        groundNormal = hit.normal;
+        float groundAngle = Vector3.Angle(Vector3.up, groundNormal);
+        if (groundAngle > 45)
+            ApplySlide();
+        else slideDirection = Vector3.zero;
+    }
+
+    private void ApplySlide()
+    {
+        slideDirection = Vector3.ProjectOnPlane(transform.forward, groundNormal).normalized * slideSpeed;
+    }
 }

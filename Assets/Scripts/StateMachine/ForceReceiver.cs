@@ -29,7 +29,7 @@ public class ForceReceiver : MonoBehaviour
     {
         if (controller.isGrounded)
         {
-            verticalVelocity = gravity * Time.deltaTime;
+            verticalVelocity = gravity * 100f * Time.deltaTime;
         }
         else
         {
