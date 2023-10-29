@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour {
         if (muted) {
             AudioListener.volume = 0;
         } else {
-            AudioListener.volume = 1;
+            Load();
         }
     }
 
@@ -34,6 +34,6 @@ public class SoundManager : MonoBehaviour {
     }
 
     private void Save() {
-        PlayerPrefs.SetFloat("volume", volumeSlider.value);
+        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
     }
 }
