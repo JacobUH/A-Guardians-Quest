@@ -4233,7 +4233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30560145, y: 0.000000018021547, z: -0.000000005784126, w: 0.9521595}
+  m_LocalRotation: {x: 0.30560145, y: -0.000000018021543, z: 0.0000000057841247, w: 0.9521595}
   m_LocalPosition: {x: 0, y: 3.288025, z: -2.8552125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6152,7 +6152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionsUI: {fileID: 1500897891}
   pauseUI: {fileID: 1009936173}
-  mixer: {fileID: 0}
 --- !u!114 &464729587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8433,7 +8432,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1722662329}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: ChangeVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9518,7 +9517,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &863912874
 GameObject:
   m_ObjectHideFlags: 0
@@ -18551,7 +18550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652263291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5015232, y: 0.00000003617606, z: -0.0000000044086312, w: 0.86514413}
+  m_LocalRotation: {x: 0.5015232, y: 0.0000000020160262, z: -2.456841e-10, w: 0.86514413}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19996,6 +19995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f08c9f52c2102429857c20621645ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 686579493}
 --- !u!4 &1722662330
 Transform:
   m_ObjectHideFlags: 0
@@ -21135,7 +21135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.45988798, y: 0.0000000020254143, z: -1.4970446e-10, w: 0.8879769}
+  m_LocalRotation: {x: 0.45988798, y: 0.000000036344556, z: -0.0000000026863245, w: 0.8879769}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

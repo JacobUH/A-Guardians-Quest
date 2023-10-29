@@ -6,6 +6,8 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour {
 
+    public Slider volumeSlider;
+
     void Start() {
         if(!PlayerPrefs.HasKey("musicVolume")) {
             PlayerPrefs.SetFloat("musicVolume", 1);
@@ -21,17 +23,17 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
-    public void ChangeVolume(float value) {
-        AudioListener.volume = value;
-        Save(value);
+    public void ChangeVolume() {
+        AudioListener.volume = volumeSlider.value;
+        Save();
     }
 
     private void Load() {
-        float value = PlayerPrefs.GetFloat("musicVolume");
-        ChangeVolume(value);
+        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        ChangeVolume();
     }
 
-    private void Save(float value) {
-        PlayerPrefs.SetFloat("volume", value);
+    private void Save() {
+        PlayerPrefs.SetFloat("volume", volumeSlider.value);
     }
 }
