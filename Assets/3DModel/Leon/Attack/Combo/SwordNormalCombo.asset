@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad78fd011e9bc1b4f8678513a4da9db8, type: 3}
+  m_Name: SwordNormalCombo
+  m_EditorClassIdentifier: 
+  attack:
+  - {fileID: 11400000, guid: 936859efab1b80041baf201cdacf1b40, type: 2}
+  - {fileID: 11400000, guid: 85b5d7178ca351c4a8d10c5caea76a4f, type: 2}
+  - {fileID: 11400000, guid: 2922e47a77f05ba4aa42c6df92bf6135, type: 2}

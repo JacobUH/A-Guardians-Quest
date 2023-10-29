@@ -17,12 +17,12 @@ public class ItemDropData : MonoBehaviour
     private float gravity = -9.81f;
     private Vector3 dropVelocity;
     private Vector3 movement;
-
+    /*
     private void OnEnable()
     {
         Initialize();
         movement.y = UnityEngine.Random.Range(3f,5f);
-    }
+    }*/
 
     private void OnDisable()
     {
@@ -40,6 +40,8 @@ public class ItemDropData : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        Initialize();
+        movement.y = UnityEngine.Random.Range(3f, 5f);
     }
 
     private void Update()

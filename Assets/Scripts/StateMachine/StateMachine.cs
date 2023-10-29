@@ -6,12 +6,14 @@ public class StateMachine : MonoBehaviour
 {
     [Header("Movement Parameters")]
     public float movementSpeed = 1.5f;
+    public float dashSpeed = 2.5f;
     public float walkSpeed = 0.7f;
     public float chaseSpeed = 2f;
     public float dodgeSpeed = 2f;
     public float changeDirectionSpeed = 15;
     public float jumpForce = 0.6f;
     public bool walkMode;
+    public bool isDashing;
     public float groundCheckDistance = 0.2f;
     public float slideSpeed = 2.0f;
     public bool isGrounded;

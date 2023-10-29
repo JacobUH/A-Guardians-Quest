@@ -10,6 +10,9 @@ public class Attack: ScriptableObject
     public GameObject projectilePrefab;
     public string animationName;
     public float transitionDuration;
+    public float moveForwardDistance;
+    public float moveStartTime;
+    public float moveEndTime;
     public int nextComboIndex = -1;
     public float nextComboEnableTime;
     public int damage;

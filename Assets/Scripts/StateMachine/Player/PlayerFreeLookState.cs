@@ -19,7 +19,9 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.DpadLeftButtonPressEvent += QuickSwitchWeapon;
         InputReader.Instance.SouthButtonPressEvent += Jump;
         InputReader.Instance.EastButtonPressEvent += Dodge;
+        InputReader.Instance.EastButtonLongPressEvent += Dash;
         InputReader.Instance.WestButtonPressEvent += NormalAttack;
+        InputReader.Instance.WestButtonLongPressEvent += ChargeAttack;
         InputReader.Instance.RightStickPressEvent += SpanCameraFaceTarget;
         InputReader.Instance.LeftShoulderPressEvent += LockOnMode;
         //InputReader.Instance.DpadLeftButtonPressEvent += LockOnPreviousTarget;
@@ -33,7 +35,9 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.DpadLeftButtonPressEvent -= QuickSwitchWeapon;
         InputReader.Instance.SouthButtonPressEvent -= Jump;
         InputReader.Instance.EastButtonPressEvent -= Dodge;
+        InputReader.Instance.EastButtonLongPressEvent -= Dash;
         InputReader.Instance.WestButtonPressEvent -= NormalAttack;
+        InputReader.Instance.WestButtonLongPressEvent -= ChargeAttack;
         InputReader.Instance.RightStickPressEvent -= SpanCameraFaceTarget;
         InputReader.Instance.LeftShoulderPressEvent -= LockOnMode;
         //InputReader.Instance.DpadLeftButtonPressEvent -= LockOnPreviousTarget;
@@ -46,7 +50,6 @@ public class PlayerFreeLookState : PlayerState
         HandleCameraMovement();
         HandlePlayerMovement();
         if (!playerStateMachine.controller.isGrounded) playerStateMachine.SwitchState(new PlayerFallingState(playerStateMachine));
-        if (InputReader.Instance.isPressingWestButton) NormalAttack();
     }
 
     private void UpdateAnimator()
@@ -72,6 +75,7 @@ public class PlayerFreeLookState : PlayerState
 
     private void NormalAttack()
     {
+        playerStateMachine.isDashing = false;
         WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
         {
@@ -92,6 +96,21 @@ public class PlayerFreeLookState : PlayerState
         else return;
     }
 
+    private void ChargeAttack()
+    {
+        playerStateMachine.isDashing = false;
+        WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
+        if (weaponType == WeaponType.Sword)
+        {
+            playerStateMachine.swordMainHand.SetActive(true);
+            playerStateMachine.bowBack.SetActive(true);
+            playerStateMachine.swordBack.SetActive(false);
+            playerStateMachine.bowMainHand.SetActive(false);
+            playerStateMachine.SwitchState(new PlayerChargeAttackingState(playerStateMachine));
+        }
+        else return;
+    }
+
     private void Jump()
     {
         playerStateMachine.SwitchState(new PlayerJumpState(playerStateMachine));
@@ -100,7 +119,13 @@ public class PlayerFreeLookState : PlayerState
     private void Dodge()
     {
         if (CalculateMovement() == Vector3.zero) return;
+        playerStateMachine.isDashing = false;
         playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
+    }
+
+    private void Dash()
+    {
+        playerStateMachine.isDashing = true; 
     }
 
     private void UseItem()

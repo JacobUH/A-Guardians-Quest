@@ -33,12 +33,13 @@ public abstract class PlayerState : State
         Vector3 movement = CalculateMovement();
         if (InputReader.Instance.leftStickValue == Vector2.zero)
         {
+            playerStateMachine.isDashing = false;
             Move(Vector3.zero);
         }
         else
         {
             if (playerStateMachine.walkMode) Move(movement * playerStateMachine.walkSpeed);
-            else Move(movement * playerStateMachine.movementSpeed);
+            else Move(movement * (playerStateMachine.isDashing ? playerStateMachine.movementSpeed: playerStateMachine.dashSpeed));
             ChangeDirection(movement);
         }
     }

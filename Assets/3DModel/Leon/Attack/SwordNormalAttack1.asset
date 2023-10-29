@@ -10,23 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64056d3a7f9bee0449c7f9c7a4deed38, type: 3}
-  m_Name: NormalBowAttack1
+  m_Name: SwordNormalAttack1
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 710761330545218504, guid: 65d7aeda6b6987f44bf65a04ff20ad35,
     type: 3}
-  projectilePrefab: {fileID: 8085482803599371413, guid: d43dcf452991ad947a7ebcd70f080dd5,
-    type: 3}
-  animationName: NormalBowAttack1
+  projectilePrefab: {fileID: 0}
+  animationName: SwordNormalAttack1
   transitionDuration: 0.1
-  moveForwardDistance: -0.5
-  moveStartTime: 0.4
-  moveEndTime: 0.5
-  nextComboIndex: -1
-  nextComboEnableTime: 1
-  damage: 5
-  knockBack: 1
-  launchForce: 0
+  moveForwardDistance: 1
+  moveStartTime: 0.2
+  moveEndTime: 0.3
+  nextComboIndex: 1
+  nextComboEnableTime: 0.5
+  damage: 10
+  knockBack: 2
+  launchForce: -10
   hitLagDuration: 0.1
-  projectileSpeed: 20
-  projectileLifetime: 0.4
+  projectileSpeed: 0
+  projectileLifetime: 0
   hitLagStrength: 0.7

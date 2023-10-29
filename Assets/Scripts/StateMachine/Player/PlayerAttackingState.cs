@@ -20,17 +20,18 @@ public class PlayerAttackingState : PlayerState
     {
         PlayAnimation(attackHash, attack.transitionDuration);
         InputReader.Instance.WestButtonPressEvent += TryComboNormalAttack;
+        InputReader.Instance.WestButtonLongPressEvent += ChargeAttack;
     }
 
     public override void Exit()
     {
         InputReader.Instance.WestButtonPressEvent -= TryComboNormalAttack;
+        InputReader.Instance.WestButtonLongPressEvent -= ChargeAttack;
     }
 
     public override void Tick()
     {
         HandleCameraMovement();
-        Move(Vector3.zero);
         GameObject target = playerStateMachine.targetManager.GetCurrentTarget();
         if (target != null)
         {
@@ -38,13 +39,14 @@ public class PlayerAttackingState : PlayerState
         }
 
         normalizedTime = GetNormalizedTime(playerStateMachine.animator, attackHash);
+        if (normalizedTime >= attack.moveStartTime && normalizedTime < attack.moveEndTime)
+        {
+            Move(playerStateMachine.transform.forward * attack.moveForwardDistance);
+        }
+
         if (normalizedTime >= 1f)
         {
             playerStateMachine.SwitchState(new PlayerFreeLookState(playerStateMachine));
-        }
-        else
-        {
-            if (InputReader.Instance.isPressingWestButton) TryComboNormalAttack();
         }
     }
 
@@ -54,5 +56,20 @@ public class PlayerAttackingState : PlayerState
         if (normalizedTime < attack.nextComboEnableTime) return;
 
         playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, combo, attack.nextComboIndex));
+    }
+
+    private void ChargeAttack()
+    {
+        if (normalizedTime < attack.nextComboEnableTime) return;
+        WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
+        if (weaponType == WeaponType.Sword)
+        {
+            playerStateMachine.swordMainHand.SetActive(true);
+            playerStateMachine.bowBack.SetActive(true);
+            playerStateMachine.swordBack.SetActive(false);
+            playerStateMachine.bowMainHand.SetActive(false);
+            playerStateMachine.SwitchState(new PlayerChargeAttackingState(playerStateMachine));
+        }
+        else return;
     }
 }
