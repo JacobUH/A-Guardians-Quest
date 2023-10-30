@@ -31,10 +31,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             LockCursor();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        
     }
 
     private void LockCursor()

@@ -632,6 +632,7 @@ MonoBehaviour:
   pauseUI: {fileID: 2695373051307879278}
   optionsUI: {fileID: 0}
   MainMenu: MainMenu
+  healthBar: {fileID: 0}
 --- !u!1 &3489342704290693339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,8 +1034,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 2695373051307879278}
-  optionsUI: {fileID: 0}
+  optionsUI: {fileID: 758360219276473721}
   MainMenu: MainMenu
+  healthBar: {fileID: 0}
 --- !u!1 &6849821257039379049
 GameObject:
   m_ObjectHideFlags: 0

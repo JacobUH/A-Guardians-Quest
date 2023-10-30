@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseUI;
     public GameObject optionsUI;
     public string MainMenu;
-    public GameObject healthBar;
+    public GameObject CharacterUI;
     
 
     // Update is called once per frame
@@ -38,9 +38,9 @@ public class PauseMenu : MonoBehaviour
         pauseUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-        healthBar.SetActive(false);
+        CharacterUI.SetActive(false);
     }
 
     public void resume()
@@ -50,7 +50,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        healthBar.SetActive(true);
+        CharacterUI.SetActive(true);
     }
 
 
