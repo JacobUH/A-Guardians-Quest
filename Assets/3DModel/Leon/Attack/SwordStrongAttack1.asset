@@ -16,16 +16,17 @@ MonoBehaviour:
     type: 3}
   projectilePrefab: {fileID: 0}
   animationName: SwordStrongAttack1
-  transitionDuration: 0
-  moveForwardDistance: 0
-  moveStartTime: 0
-  moveEndTime: 0
+  transitionDuration: 0.1
+  moveForwardDistance: 2
+  moveStartTime: 0.1
+  moveEndTime: 0.5
   nextComboIndex: -1
+  nextStrongComboIndex: -1
   nextComboEnableTime: 0
-  damage: 20
+  damage: 25
   knockBack: 2
-  launchForce: 0
-  hitLagDuration: 0.1
+  launchForce: 10
+  hitLagDuration: 0.5
   projectileSpeed: 0
   projectileLifetime: 0
-  hitLagStrength: 0.7
+  hitLagStrength: 0.8

@@ -244,6 +244,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""6a210039-1721-4d43-ad63-71630bc049e1"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""NorthButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""68cb6ce0-f578-4d77-9c01-cf49a07f7783"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",

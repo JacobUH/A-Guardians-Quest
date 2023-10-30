@@ -39,7 +39,7 @@ public abstract class PlayerState : State
         else
         {
             if (playerStateMachine.walkMode) Move(movement * playerStateMachine.walkSpeed);
-            else Move(movement * (playerStateMachine.isDashing ? playerStateMachine.movementSpeed: playerStateMachine.dashSpeed));
+            else Move(movement * (playerStateMachine.isDashing ? playerStateMachine.dashSpeed : playerStateMachine.movementSpeed));
             ChangeDirection(movement);
         }
     }

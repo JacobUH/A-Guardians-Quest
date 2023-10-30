@@ -21,12 +21,14 @@ public class PlayerAttackingState : PlayerState
         PlayAnimation(attackHash, attack.transitionDuration);
         InputReader.Instance.WestButtonPressEvent += TryComboNormalAttack;
         InputReader.Instance.WestButtonLongPressEvent += ChargeAttack;
+        InputReader.Instance.NorthButtonPressEvent += StrongAttack;
     }
 
     public override void Exit()
     {
         InputReader.Instance.WestButtonPressEvent -= TryComboNormalAttack;
         InputReader.Instance.WestButtonLongPressEvent -= ChargeAttack;
+        InputReader.Instance.NorthButtonPressEvent -= StrongAttack;
     }
 
     public override void Tick()
@@ -69,6 +71,23 @@ public class PlayerAttackingState : PlayerState
             playerStateMachine.swordBack.SetActive(false);
             playerStateMachine.bowMainHand.SetActive(false);
             playerStateMachine.SwitchState(new PlayerChargeAttackingState(playerStateMachine));
+        }
+        else return;
+    }
+
+    private void StrongAttack()
+    {
+        if (attack.nextStrongComboIndex == -1) return;
+        if (normalizedTime < attack.nextComboEnableTime) return;
+
+        WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
+        if (weaponType == WeaponType.Sword)
+        {
+            playerStateMachine.swordMainHand.SetActive(true);
+            playerStateMachine.bowBack.SetActive(true);
+            playerStateMachine.swordBack.SetActive(false);
+            playerStateMachine.bowMainHand.SetActive(false);
+            playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.strongSwordAttackCombo, attack.nextStrongComboIndex));
         }
         else return;
     }

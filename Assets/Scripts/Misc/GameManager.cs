@@ -14,7 +14,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         base.Awake();
         LockCursor();
-        LoadSceneAdditively("StartingZone");
     }
 
     void Update()
@@ -30,8 +29,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         {
             LockCursor();
         }
-
-        
     }
 
     private void LockCursor()
@@ -57,10 +54,5 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.ExitPlaymode();
 #endif
-    }
-
-    public void LoadSceneAdditively(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
     }
 }

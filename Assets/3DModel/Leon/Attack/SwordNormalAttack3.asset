@@ -21,6 +21,7 @@ MonoBehaviour:
   moveStartTime: 0.3
   moveEndTime: 0.6
   nextComboIndex: -1
+  nextStrongComboIndex: 1
   nextComboEnableTime: 0.7
   damage: 25
   knockBack: 4

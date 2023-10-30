@@ -4,7 +4,7 @@ public class Billboard : MonoBehaviour
 {
     public Transform cameraTransform;
 
-    private void Awake()
+    private void OnEnable()
     {
         SetCamera();
     }

@@ -30,7 +30,6 @@ public class PauseMenu : MonoBehaviour
                 pause();
             }
         }
-
     }
 
     void pause()
@@ -38,8 +37,7 @@ public class PauseMenu : MonoBehaviour
         pauseUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        GameManager.Instance.SetInMenuBool(true);
         CharacterUI.SetActive(false);
     }
 
@@ -48,8 +46,7 @@ public class PauseMenu : MonoBehaviour
         pauseUI.SetActive(false);
         isPaused = false;
         Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        GameManager.Instance.SetInMenuBool(false);
         CharacterUI.SetActive(true);
     }
 
@@ -61,7 +58,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void quitGame()
     {
-        Application.Quit();
+        GameManager.Instance.QuitGame();
     }
 
     public void save()

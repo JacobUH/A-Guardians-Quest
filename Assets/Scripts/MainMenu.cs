@@ -5,37 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void NewGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("PersistentScene");
+        SceneManager.LoadScene("StartingZone", LoadSceneMode.Additive);
     }
     public void LoadGamge()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("PersistentScene");
+        SceneManager.LoadScene("StartingZone", LoadSceneMode.Additive);
     }
     public void Option()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("OptionsMenu");
     }
 
     public void Credits()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Credits");
     }
     public void exitGame()
     {
         Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#endif
     }
 }

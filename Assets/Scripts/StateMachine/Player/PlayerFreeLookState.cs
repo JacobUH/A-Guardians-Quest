@@ -10,7 +10,6 @@ public class PlayerFreeLookState : PlayerState
     private int blendSpeedHash = Animator.StringToHash("FreeLookBlendSpeed");
     private float crossFixedDuration = 0.1f;
     private float blendValue;
-    private Vector3 movement;
 
     public override void Enter()
     {
@@ -21,6 +20,7 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.EastButtonPressEvent += Dodge;
         InputReader.Instance.EastButtonLongPressEvent += Dash;
         InputReader.Instance.WestButtonPressEvent += NormalAttack;
+        InputReader.Instance.NorthButtonPressEvent += StrongAttack;
         InputReader.Instance.WestButtonLongPressEvent += ChargeAttack;
         InputReader.Instance.RightStickPressEvent += SpanCameraFaceTarget;
         InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
@@ -37,6 +37,7 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.EastButtonPressEvent -= Dodge;
         InputReader.Instance.EastButtonLongPressEvent -= Dash;
         InputReader.Instance.WestButtonPressEvent -= NormalAttack;
+        InputReader.Instance.NorthButtonPressEvent -= StrongAttack;
         InputReader.Instance.WestButtonLongPressEvent -= ChargeAttack;
         InputReader.Instance.RightStickPressEvent -= SpanCameraFaceTarget;
         InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
@@ -107,6 +108,21 @@ public class PlayerFreeLookState : PlayerState
             playerStateMachine.swordBack.SetActive(false);
             playerStateMachine.bowMainHand.SetActive(false);
             playerStateMachine.SwitchState(new PlayerChargeAttackingState(playerStateMachine));
+        }
+        else return;
+    }
+
+    private void StrongAttack()
+    {
+        playerStateMachine.isDashing = false;
+        WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
+        if (weaponType == WeaponType.Sword)
+        {
+            playerStateMachine.swordMainHand.SetActive(true);
+            playerStateMachine.bowBack.SetActive(true);
+            playerStateMachine.swordBack.SetActive(false);
+            playerStateMachine.bowMainHand.SetActive(false);
+            playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.strongSwordAttackCombo, 0));
         }
         else return;
     }
