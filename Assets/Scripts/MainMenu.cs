@@ -9,11 +9,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("PersistentScene");
         SceneManager.LoadScene("StartingZone", LoadSceneMode.Additive);
+        SceneManager.LoadScene("MainZone", LoadSceneMode.Additive);
     }
     public void LoadGamge()
     {
         SceneManager.LoadScene("PersistentScene");
         SceneManager.LoadScene("StartingZone", LoadSceneMode.Additive);
+        SceneManager.LoadScene("MainZone", LoadSceneMode.Additive);
     }
     public void Option()
     {
