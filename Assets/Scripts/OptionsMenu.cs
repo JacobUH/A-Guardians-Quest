@@ -10,6 +10,7 @@ public class OptionsMenu : MonoBehaviour
 
     public GameObject optionsUI;
     public GameObject pauseUI;
+    private bool muteOn;
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +34,6 @@ public class OptionsMenu : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
 
 }
