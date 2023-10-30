@@ -23,7 +23,7 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.WestButtonPressEvent += NormalAttack;
         InputReader.Instance.WestButtonLongPressEvent += ChargeAttack;
         InputReader.Instance.RightStickPressEvent += SpanCameraFaceTarget;
-        InputReader.Instance.LeftShoulderPressEvent += LockOnMode;
+        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
         //InputReader.Instance.DpadLeftButtonPressEvent += LockOnPreviousTarget;
         //InputReader.Instance.DpadRightButtonPressEvent += LockOnNextTarget;
         PlayAnimation(freelookHash, crossFixedDuration);
@@ -39,7 +39,7 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.WestButtonPressEvent -= NormalAttack;
         InputReader.Instance.WestButtonLongPressEvent -= ChargeAttack;
         InputReader.Instance.RightStickPressEvent -= SpanCameraFaceTarget;
-        InputReader.Instance.LeftShoulderPressEvent -= LockOnMode;
+        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
         //InputReader.Instance.DpadLeftButtonPressEvent -= LockOnPreviousTarget;
         //InputReader.Instance.DpadRightButtonPressEvent -= LockOnNextTarget;
     }
@@ -125,20 +125,17 @@ public class PlayerFreeLookState : PlayerState
 
     private void Dash()
     {
-        playerStateMachine.isDashing = true; 
+        playerStateMachine.isDashing = true;
     }
 
     private void UseItem()
     {
-        InventorySlot slot = QuickSlotManager.Instance.GetQuickItemInfo();
-        if (slot != null)
+        string itemGuid = "1001"; //RedPotion
+        if (InventoryBox.Instance.RemoveItem(itemGuid, 1))
         {
-            InventoryBox.Instance.RemoveItem(slot.itemGuid, 1);
-            QuickSlotManager.Instance.UpdateCurrentItemInfo();
-
-            ConsumableItemData consumableItem = (ConsumableItemData)ItemDatabase.Instance.GetItemData(slot.itemGuid);
-            Debug.Log($"Leon use {consumableItem.name}");
+            ConsumableItemData consumableItem = (ConsumableItemData)ItemDatabase.Instance.GetItemData(itemGuid);
             consumableItem.Use(playerStateMachine.gameObject);
+            EventHandler.OnUseItemEvent(itemGuid);
         }
     }
 }

@@ -97,6 +97,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   itemID: 9999
   quantity: 1
+  isFloating: 1
   itemGuid: 
 --- !u!1001 &4129044802471586543
 PrefabInstance:

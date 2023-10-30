@@ -83,13 +83,13 @@ public class TargetManager : MonoBehaviour
         if (targets.Count() == 1) currentTarget = targets[0];
         else currentTarget = GetNearestTarget();
 
-        currentTarget.GetComponent<StateMachine>().targetManager.DisplayTargetUI();
+        currentTarget.GetComponent<StateMachine>().targetManager.EnabledTargetedMark();
         return true;
     }
 
     public void DisableLockOn()
     {
-        currentTarget.GetComponent<StateMachine>().targetManager.DisableTargetUI();
+        currentTarget.GetComponent<StateMachine>().targetManager.DisableTargetedMark();
         currentTarget = null;
     }
 
@@ -102,9 +102,9 @@ public class TargetManager : MonoBehaviour
         {
             targetIndex = 0;
         }
-        currentTarget.GetComponent<StateMachine>().targetManager.DisableTargetUI();
+        currentTarget.GetComponent<StateMachine>().targetManager.DisableTargetedMark();
         currentTarget = targets[targetIndex];
-        currentTarget.GetComponent<StateMachine>().targetManager.DisplayTargetUI();
+        currentTarget.GetComponent<StateMachine>().targetManager.EnabledTargetedMark();
     }
 
     public void PreviouTarget()
@@ -116,18 +116,17 @@ public class TargetManager : MonoBehaviour
         {
             targetIndex = targets.Count() - 1;
         }
-        currentTarget.GetComponent<StateMachine>().targetManager.DisableTargetUI();
+        currentTarget.GetComponent<StateMachine>().targetManager.DisableTargetedMark();
         currentTarget = targets[targetIndex];
-        currentTarget.GetComponent<StateMachine>().targetManager.DisplayTargetUI();
+        currentTarget.GetComponent<StateMachine>().targetManager.EnabledTargetedMark();
     }
 
-    //Target Indicator UI ON/OFF Functions. Not called by this script.
-    public void DisplayTargetUI()
+    public void EnabledTargetedMark()
     {
         targetUI.SetActive(true);
     }
 
-    public void DisableTargetUI()
+    public void DisableTargetedMark()
     {
         targetUI.SetActive(false);
     }

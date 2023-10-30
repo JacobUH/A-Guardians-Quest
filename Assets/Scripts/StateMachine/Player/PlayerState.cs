@@ -75,11 +75,11 @@ public abstract class PlayerState : State
         {
             CameraController.Instance.RotateCamera(InputReader.Instance.rightStickValue);
         }
-        if (InputReader.Instance.isPressingLTRT)
+        if (InputReader.Instance.isPressingLeftTrigger)
         {
             CameraController.Instance.ZoomOut();
         }
-        if (InputReader.Instance.isPressingLTRS)
+        if (InputReader.Instance.isPressingRightTrigger)
         {
             CameraController.Instance.ZoomIn();
         }
@@ -145,6 +145,6 @@ public abstract class PlayerState : State
             playerStateMachine.swordBack.SetActive(false);
             playerStateMachine.bowMainHand.SetActive(false);
         }
-        QuickSlotManager.Instance.UpdateCurrentWeaponInfo();
+        EventHandler.OnSwitchWeaponEvent();
     }
 }

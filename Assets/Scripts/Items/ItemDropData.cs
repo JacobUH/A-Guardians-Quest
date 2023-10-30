@@ -11,18 +11,13 @@ public class ItemDropData : MonoBehaviour
     [SerializeField] private CharacterController controller;
     [SerializeField] public int itemID;
     [SerializeField] public int quantity;
+    [SerializeField] public bool isFloating;
 
     [SerializeField] protected string itemGuid;
 
     private float gravity = -9.81f;
     private Vector3 dropVelocity;
     private Vector3 movement;
-    /*
-    private void OnEnable()
-    {
-        Initialize();
-        movement.y = UnityEngine.Random.Range(3f,5f);
-    }*/
 
     private void OnDisable()
     {
@@ -33,7 +28,7 @@ public class ItemDropData : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player")) return;
         InventoryBox.Instance.AddItem(itemGuid, quantity);
-        QuickSlotManager.Instance.UpdateCurrentItemInfo();
+        EventHandler.OnPickUpItemEvent(itemGuid);
         this.gameObject.SetActive(false);
     }
 
@@ -41,21 +36,24 @@ public class ItemDropData : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         Initialize();
-        movement.y = UnityEngine.Random.Range(3f, 5f);
+        movement.y = UnityEngine.Random.Range(3f, 6f);
     }
 
     private void Update()
     {
-        movement.y = Mathf.Lerp(movement.y, 0f, Time.deltaTime);
-        if (controller.isGrounded)
+        if (!isFloating)
         {
-            dropVelocity.y = 0f;
+            movement.y = Mathf.Lerp(movement.y, 0f, Time.deltaTime);
+            if (controller.isGrounded)
+            {
+                dropVelocity.y = 0f;
+            }
+            else
+            {
+                dropVelocity.y += gravity * Time.deltaTime;
+            }
+            controller.Move((movement + dropVelocity) * Time.deltaTime);
         }
-        else
-        {
-            dropVelocity.y += gravity * Time.deltaTime;
-        }
-        controller.Move((movement + dropVelocity) * Time.deltaTime);
     }
 
     private void Initialize()

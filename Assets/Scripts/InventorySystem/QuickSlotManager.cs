@@ -4,30 +4,30 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuickSlotManager : SingletonMonobehaviour<QuickSlotManager>
+public class QuickSlotManager : MonoBehaviour
 {
-    [SerializeField] private int quickItemSlotCount = 5;
-    [SerializeField] private int quickWeaponSlotCount = 3;
-    [SerializeField] private List<InventorySlot> quickItemSlots = new List<InventorySlot>();
-    [SerializeField] private List<InventorySlot> quickWeaponSlots = new List<InventorySlot>();
     [SerializeField] private Image quickItemSlotImage;
     [SerializeField] private Image quickWeaponSlotImage;
     [SerializeField] private TextMeshProUGUI itemQuantityTextMesh;
     [SerializeField] private TextMeshProUGUI weaponNameTextMesh;
 
-    private int currentActiveIndex;
     private InventorySlot currentItemSlot;
     private WeaponItemData currentWeaponSlot;
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     private void Start()
     {
-        UpdateCurrentItemInfo();
+        UpdateCurrentItemInfo("1001");
         UpdateCurrentWeaponInfo();
+        EventHandler.UseItemEvent += UpdateCurrentItemInfo;
+        EventHandler.PickUpItemEvent += UpdateCurrentItemInfo;
+        EventHandler.SwitchWeaponEvent += UpdateCurrentWeaponInfo;
+    }
+
+    private void OnApplicationQuit()
+    {
+        EventHandler.UseItemEvent -= UpdateCurrentItemInfo;
+        EventHandler.PickUpItemEvent -= UpdateCurrentItemInfo;
+        EventHandler.SwitchWeaponEvent -= UpdateCurrentWeaponInfo;
     }
 
     private void UpdateUI()
@@ -58,13 +58,9 @@ public class QuickSlotManager : SingletonMonobehaviour<QuickSlotManager>
         }
     }
 
-    public void UpdateCurrentItemInfo()
+    public void UpdateCurrentItemInfo(string itemGuid)
     {
-        if (currentItemSlot == null)
-        {
-            currentItemSlot = InventoryBox.Instance.GetInventoryInfo("1001");
-        }
-        else currentItemSlot = InventoryBox.Instance.GetInventoryInfo(currentItemSlot.itemGuid);
+        currentItemSlot = InventoryBox.Instance.CheckInventory("1001");
         UpdateUI();
     }
 

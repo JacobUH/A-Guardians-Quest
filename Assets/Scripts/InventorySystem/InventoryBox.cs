@@ -37,14 +37,14 @@ public class InventoryBox : SingletonMonobehaviour<InventoryBox>
         }
     }
 
-    public void RemoveItem(string itemGuid, int quantity)
+    public bool RemoveItem(string itemGuid, int quantity)
     {
         if (inventoryDictionary.TryGetValue(itemGuid, out InventorySlot slot))
         {
             if (quantity > slot.quantity)
             {
                 Debug.Log("You don't have enough.");
-                return;
+                return false;
             }
             slot.Remove(quantity);
             if (slot.quantity <= 0)
@@ -52,27 +52,16 @@ public class InventoryBox : SingletonMonobehaviour<InventoryBox>
                 inventoryList.Remove(slot);
                 inventoryDictionary.Remove(itemGuid);
             }
+            return true;
         }
         else
         {
             Debug.Log("Item doesn't exist in inventory. Failed to remove item.");
+            return false;
         }
     }
 
-    public List<InventorySlot> GetConsumableList()
-    {
-        List<InventorySlot> list = new List<InventorySlot>();
-        foreach (InventorySlot slot in inventoryList)
-        {
-            if (ItemDatabase.Instance.GetItemData(slot.itemGuid).type == ItemType.Consumable)
-            {
-                list.Add(slot);
-            }
-        }
-        return list;
-    }
-
-    public InventorySlot GetInventoryInfo(string itemGuid)
+    public InventorySlot CheckInventory(string itemGuid)
     {
         if (inventoryDictionary.TryGetValue(itemGuid, out InventorySlot slot))
         {

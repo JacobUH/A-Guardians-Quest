@@ -37,7 +37,7 @@ public class AttackHandler : MonoBehaviour
         }
         if (attacks[index].projectilePrefab != null)
         {
-            GameObject projectile = Instantiate(attacks[index].projectilePrefab, this.transform.position + Vector3.up * 1f, this.transform.rotation);
+            GameObject projectile = Instantiate(attacks[index].projectilePrefab, this.transform.position + Vector3.up * 1f + this.transform.forward, this.transform.rotation);
             AttackCollider projectileCollider = projectile.GetComponent<AttackCollider>();
             projectileCollider.SetAttack(attacks[index].damage, attacks[index].knockBack, attacks[index].launchForce,
                              attacks[index].hitLagDuration, attacks[index].hitLagStrength, attacks[index].hitEffectPrefab);

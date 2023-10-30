@@ -339,6 +339,21 @@ public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFre
 
     public void OnDpadDownButton(InputAction.CallbackContext context)
     {
+        if (context.started)
+        {
+            isPressing = true;
+            isPressingDpadDown = true;
+            pressTime = 0f;
+        }
+        else if (context.canceled)
+        {
+            if (pressTime < longPressDuration && isPressing)
+            {
+                DpadDownButtonPressEvent?.Invoke();
+            }
+            isPressing = false;
+            isPressingDpadDown = false;
+        }
     }
 
     public void OnDpadLeftButton(InputAction.CallbackContext context)

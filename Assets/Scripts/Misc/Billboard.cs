@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    private Transform cameraTransform;
+    public Transform cameraTransform;
 
     private void Awake()
     {
