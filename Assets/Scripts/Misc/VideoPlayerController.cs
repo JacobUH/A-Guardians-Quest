@@ -8,7 +8,7 @@ public class VideoPlayerController : MonoBehaviour
     public GameObject canvasUI;
     public VideoPlayer videoPlayer;
 
-    private void OnEnable()
+    private void Start()
     {
         InputReader.Instance.DisableFreelookInputReader();
         canvasUI.SetActive(false);
@@ -20,7 +20,7 @@ public class VideoPlayerController : MonoBehaviour
     {
         if (Gamepad.current != null)
         {
-            if (Gamepad.current.buttonSouth.IsPressed())
+            if (Gamepad.current.startButton.IsPressed())
             {
                 OnVideoFinished(videoPlayer);
             }
