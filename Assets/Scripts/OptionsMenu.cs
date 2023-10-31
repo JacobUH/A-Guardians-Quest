@@ -21,14 +21,20 @@ public class OptionsMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            optionsUI.SetActive(false);
+            pauseUI.SetActive(true);
+        } 
     }
+    
 
     public void back()
     {
         optionsUI.SetActive(false);
         pauseUI.SetActive(true);
     }
+    
 
     public void backTitle()
     {

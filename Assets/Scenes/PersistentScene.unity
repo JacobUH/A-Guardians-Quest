@@ -1847,12 +1847,14 @@ VideoPlayer:
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 0
@@ -3521,6 +3523,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &603764599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2695373051307879278, guid: 2364ad62b5f738147b395de46398c33f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1628877419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &608327352
 GameObject:
   m_ObjectHideFlags: 0
@@ -6243,7 +6251,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9156467182894123187, guid: 77e0f7753840e8a4da45c57175798edb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 981258473}
   m_SourcePrefab: {fileID: 100100000, guid: 77e0f7753840e8a4da45c57175798edb, type: 3}
 --- !u!1 &981258469 stripped
 GameObject:
@@ -6251,6 +6263,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 981258468}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &981258473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981258469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89898213f0f37c1469c96be3f5b198b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pause: {fileID: 1628877420}
 --- !u!1 &1011327122
 GameObject:
   m_ObjectHideFlags: 0
@@ -8966,6 +8991,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7946715196697552467, guid: 2364ad62b5f738147b395de46398c33f,
         type: 3}
+      propertyPath: pauseUI
+      value: 
+      objectReference: {fileID: 603764599}
+    - target: {fileID: 7946715196697552467, guid: 2364ad62b5f738147b395de46398c33f,
+        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 0}
@@ -8986,7 +9016,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 2364ad62b5f738147b395de46398c33f, type: 3}
 --- !u!1 &1628877420 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2695373051307879278, guid: 2364ad62b5f738147b395de46398c33f,
+  m_CorrespondingSourceObject: {fileID: 4124738621928644988, guid: 2364ad62b5f738147b395de46398c33f,
     type: 3}
   m_PrefabInstance: {fileID: 1628877419}
   m_PrefabAsset: {fileID: 0}
@@ -10627,7 +10657,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07423059, y: 0.00000001820062, z: 0.000000006229927, w: 0.9972411}
+  m_LocalRotation: {x: 0.074230604, y: -0.000000009995655, z: -0.0000000034214322,
+    w: 0.9972411}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

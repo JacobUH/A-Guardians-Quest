@@ -13,6 +13,7 @@ public class VideoPlayerController : MonoBehaviour
         AudioManager.Instance.MuteBGM();
         InputReader.Instance.DisableFreelookInputReader();
         canvasUI.SetActive(false);
+        Time.timeScale = 0.0f;
         videoPlayer = GetComponent<VideoPlayer>();
         videoPlayer.loopPointReached += OnVideoFinished;
     }
@@ -32,6 +33,7 @@ public class VideoPlayerController : MonoBehaviour
     {
         videoPlayer.Stop();
         this.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
         canvasUI.SetActive(true);
         InputReader.Instance.EnableFreelookInputReader();
         AudioManager.Instance.UnmuteBGM();
