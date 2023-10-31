@@ -17,6 +17,15 @@ public class VideoPlayerController : MonoBehaviour
         videoPlayer = GetComponent<VideoPlayer>();
         videoPlayer.loopPointReached += OnVideoFinished;
     }
+    private void OnEnable()
+    {
+        AudioManager.Instance.MuteBGM();
+        InputReader.Instance.DisableFreelookInputReader();
+        canvasUI.SetActive(false);
+        Time.timeScale = 0.0f;
+        videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer.loopPointReached += OnVideoFinished;
+    }
 
     private void Update()
     {
@@ -26,6 +35,10 @@ public class VideoPlayerController : MonoBehaviour
             {
                 OnVideoFinished(videoPlayer);
             }
+        }
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            OnVideoFinished(videoPlayer);
         }
     }
 
