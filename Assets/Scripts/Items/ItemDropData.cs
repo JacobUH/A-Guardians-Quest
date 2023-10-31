@@ -12,8 +12,9 @@ public class ItemDropData : MonoBehaviour
     [SerializeField] public int itemID;
     [SerializeField] public int quantity;
     [SerializeField] public bool isFloating;
+    [SerializeField] public AudioSource audioSource;
 
-    [SerializeField] protected string itemGuid;
+    protected string itemGuid;
 
     private float gravity = -9.81f;
     private Vector3 dropVelocity;
@@ -29,12 +30,24 @@ public class ItemDropData : MonoBehaviour
         if (!other.gameObject.CompareTag("Player")) return;
         InventoryBox.Instance.AddItem(itemGuid, quantity);
         EventHandler.OnPickUpItemEvent(itemGuid);
+        transform.GetChild(0).gameObject.SetActive(false);
+        StartCoroutine(PlayAudio());
+    }
+
+    private IEnumerator PlayAudio()
+    {
+        audioSource.Play();
+        while (audioSource.isPlaying)
+        {
+            yield return new WaitForEndOfFrame();
+        }
         this.gameObject.SetActive(false);
     }
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>();
         Initialize();
         movement.y = UnityEngine.Random.Range(3f, 6f);
     }
