@@ -14,6 +14,16 @@ public class AudioManager : SingletonMonobehaviour<AudioManager>
         audioSource = GetComponent<AudioSource>();
     }
 
+    public void MuteBGM()
+    {
+        audioSource.mute = true;
+    }
+
+    public void UnmuteBGM()
+    {
+        audioSource.mute = false;
+    }
+
     public void ChangeBMG(int index)
     {
         if (index < 0 || index >= bgms.Count())
@@ -22,5 +32,6 @@ public class AudioManager : SingletonMonobehaviour<AudioManager>
             return;
         }
         audioSource.clip = bgms[index];
+        audioSource.Play();
     }
 }

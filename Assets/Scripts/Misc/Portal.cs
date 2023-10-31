@@ -5,6 +5,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public Transform destination;
+    public int bgmIndex = -1;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,6 +29,7 @@ public class Portal : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         InputReader.Instance.EnableFreelookInputReader();
+        if (bgmIndex != -1) AudioManager.Instance.ChangeBMG(bgmIndex);
         yield break;
     }
 }

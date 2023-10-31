@@ -10,6 +10,7 @@ public class VideoPlayerController : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.MuteBGM();
         InputReader.Instance.DisableFreelookInputReader();
         canvasUI.SetActive(false);
         videoPlayer = GetComponent<VideoPlayer>();
@@ -33,5 +34,6 @@ public class VideoPlayerController : MonoBehaviour
         this.gameObject.SetActive(false);
         canvasUI.SetActive(true);
         InputReader.Instance.EnableFreelookInputReader();
+        AudioManager.Instance.UnmuteBGM();
     }
 }

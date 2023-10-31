@@ -1948,7 +1948,7 @@ GameObject:
   - component: {fileID: 701505064}
   - component: {fileID: 701505063}
   m_Layer: 0
-  m_Name: MainZonePortal
+  m_Name: Portal-MainZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1983,6 +1983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 890377508}
+  bgmIndex: 1
 --- !u!65 &701505064
 BoxCollider:
   m_ObjectHideFlags: 0

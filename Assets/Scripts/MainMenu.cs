@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("StartingZone", LoadSceneMode.Additive);
         SceneManager.LoadScene("MainZone", LoadSceneMode.Additive);
         SceneManager.LoadScene("ShopInside", LoadSceneMode.Additive);
+        SceneManager.LoadScene("WizardTowerInside", LoadSceneMode.Additive);
     }
     public void LoadGamge()
     {
@@ -18,6 +19,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("StartingZone", LoadSceneMode.Additive);
         SceneManager.LoadScene("MainZone", LoadSceneMode.Additive);
         SceneManager.LoadScene("ShopInside", LoadSceneMode.Additive);
+        SceneManager.LoadScene("WizardTowerInside", LoadSceneMode.Additive);
     }
     public void Option()
     {
