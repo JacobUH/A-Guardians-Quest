@@ -10,8 +10,20 @@ public class CutsceneTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            VideoManager.Instance.PlayVideo(videoIndex);
+            StartCoroutine(TriggerCoroutine());
         }
+    }
+
+    public IEnumerator TriggerCoroutine()
+    {
+        InputReader.Instance.DisableFreelookInputReader();
+        float fadeDuration = FadeScreen.Instance.GetFadeDuration();
+
+        FadeScreen.Instance.FadeOut();
+        yield return new WaitForSeconds(fadeDuration);
+
+        FadeScreen.Instance.FadeIn();
+        VideoManager.Instance.PlayVideo(videoIndex);
         transform.parent.gameObject.SetActive(false);
     }
 }

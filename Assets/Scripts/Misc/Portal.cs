@@ -19,8 +19,12 @@ public class Portal : MonoBehaviour
 
     public IEnumerator TeleportCoroutine(Collider other)
     {
+        FadeScreen.Instance.FadeOut();
+        float fadeDuration = FadeScreen.Instance.GetFadeDuration();
         InputReader.Instance.DisableFreelookInputReader();
         CharacterController controller = other.GetComponent<CharacterController>();
+
+        yield return new WaitForSeconds(fadeDuration);
 
         controller.enabled = false;
         other.gameObject.transform.position = destination.position;
@@ -28,6 +32,10 @@ public class Portal : MonoBehaviour
         controller.enabled = true;
 
         yield return new WaitForSeconds(1f);
+
+        FadeScreen.Instance.FadeIn();
+        yield return new WaitForSeconds(fadeDuration);
+
         InputReader.Instance.EnableFreelookInputReader();
         if (bgmIndex != -1) AudioManager.Instance.ChangeBMG(bgmIndex);
         yield break;

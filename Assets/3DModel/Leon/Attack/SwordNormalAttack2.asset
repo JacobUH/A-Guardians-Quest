@@ -18,8 +18,8 @@ MonoBehaviour:
   animationName: SwordNormalAttack2
   transitionDuration: 0.5
   moveForwardDistance: 1
-  moveStartTime: 0
-  moveEndTime: 0
+  moveStartTime: 0.2
+  moveEndTime: 0.3
   nextComboIndex: 2
   nextStrongComboIndex: 1
   nextComboEnableTime: 0.55

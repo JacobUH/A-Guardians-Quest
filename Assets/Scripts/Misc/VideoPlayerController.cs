@@ -10,21 +10,12 @@ public class VideoPlayerController : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.MuteBGM();
-        InputReader.Instance.DisableFreelookInputReader();
-        canvasUI.SetActive(false);
-        Time.timeScale = 0.0f;
-        videoPlayer = GetComponent<VideoPlayer>();
-        videoPlayer.loopPointReached += OnVideoFinished;
+        StartVideo();
     }
+
     private void OnEnable()
     {
-        AudioManager.Instance.MuteBGM();
-        InputReader.Instance.DisableFreelookInputReader();
-        canvasUI.SetActive(false);
-        Time.timeScale = 0.0f;
-        videoPlayer = GetComponent<VideoPlayer>();
-        videoPlayer.loopPointReached += OnVideoFinished;
+        StartVideo();
     }
 
     private void Update()
@@ -40,6 +31,16 @@ public class VideoPlayerController : MonoBehaviour
         {
             OnVideoFinished(videoPlayer);
         }
+    }
+
+    private void StartVideo()
+    {
+        AudioManager.Instance.MuteBGM();
+        InputReader.Instance.DisableFreelookInputReader();
+        canvasUI.SetActive(false);
+        Time.timeScale = 0.0f;
+        videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer.loopPointReached += OnVideoFinished;
     }
 
     private void OnVideoFinished(VideoPlayer vp)
