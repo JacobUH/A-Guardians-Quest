@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SkeletonWarriorStateMachine : EnemyStateMachine
 {
+    public List<GameObject> patrolPath = new List<GameObject>();
+    public bool isAggro;
+
     public override void Start()
     {
         base.Start();

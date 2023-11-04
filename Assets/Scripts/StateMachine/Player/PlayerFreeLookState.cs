@@ -24,8 +24,6 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.WestButtonLongPressEvent += ChargeAttack;
         InputReader.Instance.RightStickPressEvent += SpanCameraFaceTarget;
         InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
-        //InputReader.Instance.DpadLeftButtonPressEvent += LockOnPreviousTarget;
-        //InputReader.Instance.DpadRightButtonPressEvent += LockOnNextTarget;
         PlayAnimation(freelookHash, crossFixedDuration);
     }
 
@@ -41,8 +39,6 @@ public class PlayerFreeLookState : PlayerState
         InputReader.Instance.WestButtonLongPressEvent -= ChargeAttack;
         InputReader.Instance.RightStickPressEvent -= SpanCameraFaceTarget;
         InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
-        //InputReader.Instance.DpadLeftButtonPressEvent -= LockOnPreviousTarget;
-        //InputReader.Instance.DpadRightButtonPressEvent -= LockOnNextTarget;
     }
 
     public override void Tick()
@@ -80,18 +76,10 @@ public class PlayerFreeLookState : PlayerState
         WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
         {
-            playerStateMachine.swordMainHand.SetActive(true);
-            playerStateMachine.bowBack.SetActive(true);
-            playerStateMachine.swordBack.SetActive(false);
-            playerStateMachine.bowMainHand.SetActive(false);
             playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalSwordCombo, 0));
         }
         else if (weaponType == WeaponType.Bow)
         {
-            playerStateMachine.swordMainHand.SetActive(false);
-            playerStateMachine.bowBack.SetActive(false);
-            playerStateMachine.swordBack.SetActive(true);
-            playerStateMachine.bowMainHand.SetActive(true);
             playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalBowCombo, 0));
         }
         else return;
@@ -130,13 +118,6 @@ public class PlayerFreeLookState : PlayerState
     private void Jump()
     {
         playerStateMachine.SwitchState(new PlayerJumpState(playerStateMachine));
-    }
-
-    private void Dodge()
-    {
-        if (CalculateMovement() == Vector3.zero) return;
-        playerStateMachine.isDashing = false;
-        playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
     }
 
     private void Dash()

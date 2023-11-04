@@ -13,10 +13,12 @@ public class PlayerFallingState : PlayerState
     public override void Enter()
     {
         PlayAnimation(fallHash, crossFadeDuration);
+        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
     }
 
     public override void Exit()
     {
+        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
     }
 
     public override void Tick()

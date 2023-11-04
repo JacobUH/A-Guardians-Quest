@@ -9,31 +9,51 @@ public class PlayerDodgingState : PlayerState
     private readonly int dodgeHash = Animator.StringToHash("Dodge");
     private Vector3 movement;
     private const float crossFadeDuration = 0.1f;
+    private float invincibleTimer;
 
     public override void Enter()
     {
         playerStateMachine.character.isInvincible = true;
+        Debug.Log("Invincible On");
+        invincibleTimer = 0f;
+
         movement = CalculateMovement();
-        ChangeDirectionInstantly(movement);
+        if (movement != Vector3.zero) ChangeDirectionInstantly(movement);
+
         PlayAnimation(dodgeHash, crossFadeDuration);
+        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
+        InputReader.Instance.DpadLeftButtonPressEvent += QuickSwitchWeapon;
     }
 
     public override void Exit()
     {
         playerStateMachine.character.isInvincible = false;
+        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
+        InputReader.Instance.DpadLeftButtonPressEvent -= QuickSwitchWeapon;
     }
 
     public override void Tick()
     {
         HandleCameraMovement();
+
+        if (invincibleTimer < 0.2f && playerStateMachine.character.isInvincible == true)
+        {
+            invincibleTimer += Time.deltaTime;
+        }
+        else if (playerStateMachine.character.isInvincible == true)
+        {
+            playerStateMachine.character.isInvincible = false;
+            Debug.Log("Invincible off");
+        }
+
         float normalizedTime = GetNormalizedTime(playerStateMachine.animator, dodgeHash);
         if (normalizedTime <= 0.7f)
         {
-            Move(movement * playerStateMachine.dodgeSpeed);
+            Move(playerStateMachine.transform.forward * playerStateMachine.dodgeSpeed);
         }
         else
         {
-            Move(Vector3.zero);
+            Move(playerStateMachine.transform.forward * playerStateMachine.dodgeSpeed * 0.2f);
         }
         if (normalizedTime >= 1f)
         {

@@ -8,12 +8,13 @@ public abstract class EnemyChasingState : EnemyState
     public EnemyChasingState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine) { }
 
     protected bool targetInRange;
+    protected float targetDistance;
 
     protected void ChaseTarget(float chaseStopRange)
     {
-        float distance = enemyStateMachine.targetManager.GetDistanceToTarget();
+        targetDistance = enemyStateMachine.targetManager.GetDistanceToTarget();
 
-        if (distance <= chaseStopRange)
+        if (targetDistance <= chaseStopRange)
         {
             targetInRange = true;
         }

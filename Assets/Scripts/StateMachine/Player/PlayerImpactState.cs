@@ -12,10 +12,12 @@ public class PlayerImpactState : PlayerState
     public override void Enter()
     {
         PlayAnimation(impactHash, crossFixedDuration);
+        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
     }
 
     public override void Exit()
     {
+        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
     }
 
     public override void Tick()

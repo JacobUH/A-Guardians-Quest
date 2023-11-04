@@ -16,10 +16,12 @@ public class PlayerChargeAttackingState : PlayerState
     public override void Enter()
     {
         PlayAnimation(chargingAttackHash, crossFixedDuration);
+        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
     }
 
     public override void Exit()
     {
+        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
     }
 
     public override void Tick()

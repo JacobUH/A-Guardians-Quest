@@ -84,6 +84,10 @@ public abstract class PlayerState : State
             CameraController.Instance.ZoomIn();
         }
     }
+    public void Dodge()
+    {
+        playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
+    }
 
     public void PlayAnimation(int animationHash, float crossFixedDuration)
     {
