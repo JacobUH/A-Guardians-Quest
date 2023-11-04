@@ -11,6 +11,10 @@ public class PlayerDieState : PlayerState
 
     public override void Enter()
     {
+        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        attackHandler.HitboxDisabled();
+        attackHandler.DisabledSwordTrail();
+
         PlayAnimation(dieHash, crossFixedDuration);
         playerStateMachine.forceReceiver.enabled = false;
         playerStateMachine.controller.enabled = false;

@@ -103,7 +103,6 @@ public class PlayerAttackingState : PlayerState
 
     private void ChargeAttack()
     {
-        if (normalizedTime < attack.nextComboEnableTime) return;
         WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
         {

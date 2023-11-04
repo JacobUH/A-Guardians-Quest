@@ -26,7 +26,7 @@ MonoBehaviour:
   damage: 25
   knockBack: 2
   launchForce: 10
-  hitLagDuration: 0.5
+  hitLagDuration: 0.3
   projectileSpeed: 0
   projectileLifetime: 0
   hitLagStrength: 0.8

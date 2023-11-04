@@ -16,11 +16,12 @@ MonoBehaviour:
     type: 3}
   projectilePrefab: {fileID: 0}
   animationName: SwordChargeAttack1
-  transitionDuration: 0
-  moveForwardDistance: 5
+  transitionDuration: 0.1
+  moveForwardDistance: 8
   moveStartTime: 0.3
-  moveEndTime: 0.7
+  moveEndTime: 0.6
   nextComboIndex: -1
+  nextStrongComboIndex: -1
   nextComboEnableTime: 0
   damage: 40
   knockBack: 3

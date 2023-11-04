@@ -22,7 +22,7 @@ public class VideoPlayerController : MonoBehaviour
     {
         if (Gamepad.current != null)
         {
-            if (Gamepad.current.startButton.IsPressed())
+            if (Gamepad.current.selectButton.IsPressed())
             {
                 OnVideoFinished(videoPlayer);
             }

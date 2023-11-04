@@ -13,8 +13,11 @@ public class PlayerDodgingState : PlayerState
 
     public override void Enter()
     {
+        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        attackHandler.HitboxDisabled();
+        attackHandler.DisabledSwordTrail();
+
         playerStateMachine.character.isInvincible = true;
-        Debug.Log("Invincible On");
         invincibleTimer = 0f;
 
         movement = CalculateMovement();
@@ -43,7 +46,6 @@ public class PlayerDodgingState : PlayerState
         else if (playerStateMachine.character.isInvincible == true)
         {
             playerStateMachine.character.isInvincible = false;
-            Debug.Log("Invincible off");
         }
 
         float normalizedTime = GetNormalizedTime(playerStateMachine.animator, dodgeHash);

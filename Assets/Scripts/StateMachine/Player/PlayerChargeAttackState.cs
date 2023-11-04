@@ -15,6 +15,10 @@ public class PlayerChargeAttackingState : PlayerState
 
     public override void Enter()
     {
+        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        attackHandler.HitboxDisabled();
+        attackHandler.DisabledSwordTrail();
+
         PlayAnimation(chargingAttackHash, crossFixedDuration);
         InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
     }
@@ -34,7 +38,7 @@ public class PlayerChargeAttackingState : PlayerState
             FaceTarget(target);
         }
 
-        if (InputReader.Instance.isPressingWestButton) return; 
+        //if (InputReader.Instance.isPressingWestButton) return; 
 
         playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.chargeSwordAttackCombo, 0));
     }

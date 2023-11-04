@@ -10,6 +10,7 @@ public class PlayerFreeLookState : PlayerState
     private int blendSpeedHash = Animator.StringToHash("FreeLookBlendSpeed");
     private float crossFixedDuration = 0.1f;
     private float blendValue;
+    private float footstepInterval;
 
     public override void Enter()
     {
@@ -47,6 +48,33 @@ public class PlayerFreeLookState : PlayerState
         HandleCameraMovement();
         HandlePlayerMovement();
         if (!playerStateMachine.controller.isGrounded) playerStateMachine.SwitchState(new PlayerFallingState(playerStateMachine));
+
+        footstepInterval += Time.deltaTime;
+        if (InputReader.Instance.leftStickValue == Vector2.zero) return;
+        if (playerStateMachine.walkMode || Mathf.Max(Mathf.Abs(InputReader.Instance.leftStickValue.x), Mathf.Abs(InputReader.Instance.leftStickValue.y)) < 0.7f)
+        {
+            if (footstepInterval > 0.9f)
+            {
+                if (!playerStateMachine.footstepSource.isPlaying) playerStateMachine.footstepSource.Play();
+                footstepInterval -= 0.9f;
+            }
+        }
+        else if (playerStateMachine.isDashing)
+        {
+            if (footstepInterval > 0.1f)
+            {
+                if (!playerStateMachine.footstepSource.isPlaying) playerStateMachine.footstepSource.Play();
+                footstepInterval -= 0.1f;
+            }
+        }
+        else
+        {
+            if (footstepInterval > 0.2f)
+            {
+                if (!playerStateMachine.footstepSource.isPlaying) playerStateMachine.footstepSource.Play();
+                footstepInterval -= 0.2f;
+            }
+        }
     }
 
     private void UpdateAnimator()

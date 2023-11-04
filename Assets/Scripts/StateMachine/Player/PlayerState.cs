@@ -73,7 +73,7 @@ public abstract class PlayerState : State
     {
         if (InputReader.Instance.rightStickValue != Vector2.zero)
         {
-            CameraController.Instance.RotateCamera(InputReader.Instance.rightStickValue);
+            CameraController.Instance.RotateCamera();
         }
         if (InputReader.Instance.isPressingLeftTrigger)
         {

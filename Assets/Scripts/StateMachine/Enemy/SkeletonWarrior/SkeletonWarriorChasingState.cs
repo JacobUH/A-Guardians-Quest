@@ -34,9 +34,9 @@ public class SkeletonWarriorChasingState : EnemyChasingState
         if (targetDistance <= 3f)
         {
             intervalTimer += Time.deltaTime;
-            if (intervalTimer > 1f)
+            if (intervalTimer > 0.2f)
             {
-                intervalTimer -= 1f;
+                intervalTimer -= 0.2f;
                 if (Random.Range(0, 100) < 30)
                 {
                     enemyStateMachine.SwitchState(new SkeletonWarriorAttackingState(skeletonWarriorStateMachine, 2));
