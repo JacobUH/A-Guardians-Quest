@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class CameraController : SingletonMonobehaviour<CameraController>
 {
+    [SerializeField] float verticalSpeed = 1f;
+    [SerializeField] float horizontalSpeed = 20f;
     [SerializeField] float zoomSpeed = 3f;
     [SerializeField] float spanSpeed = 100f;
     [Space]
@@ -68,13 +70,13 @@ public class CameraController : SingletonMonobehaviour<CameraController>
 
     public void RotateCamera()
     {
-        Vector2 cameraMovement = InputReader.Instance.rightStickValue;
+        Vector2 cameraMovement = InputReader.Instance.rightStickValue.normalized;
         if (cameraSpanning != null) return;
 
         if (cameraMovement.x != 0 || cameraMovement.y != 0)
         {
-            freeLook.m_YAxis.Value -= cameraMovement.y * Time.unscaledDeltaTime * freeLook.m_YAxis.m_MaxSpeed;
-            freeLook.m_XAxis.Value += cameraMovement.x * Time.unscaledDeltaTime * freeLook.m_XAxis.m_MaxSpeed;
+            freeLook.m_YAxis.Value -= cameraMovement.y * Time.unscaledDeltaTime * verticalSpeed;
+            freeLook.m_XAxis.Value += cameraMovement.x * Time.unscaledDeltaTime * horizontalSpeed;
         }
     }
 

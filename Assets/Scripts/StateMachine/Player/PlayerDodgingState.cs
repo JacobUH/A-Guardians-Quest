@@ -25,6 +25,7 @@ public class PlayerDodgingState : PlayerState
 
         PlayAnimation(dodgeHash, crossFadeDuration);
         InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
+        InputReader.Instance.SouthButtonPressEvent += Jump;
         InputReader.Instance.DpadLeftButtonPressEvent += QuickSwitchWeapon;
     }
 
@@ -32,6 +33,7 @@ public class PlayerDodgingState : PlayerState
     {
         playerStateMachine.character.isInvincible = false;
         InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
+        InputReader.Instance.SouthButtonPressEvent -= Jump;
         InputReader.Instance.DpadLeftButtonPressEvent -= QuickSwitchWeapon;
     }
 

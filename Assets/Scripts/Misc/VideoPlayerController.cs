@@ -10,12 +10,12 @@ public class VideoPlayerController : MonoBehaviour
 
     private void Start()
     {
-        StartVideo();
+        //StartVideo();
     }
 
     private void OnEnable()
     {
-        StartVideo();
+        //StartVideo();
     }
 
     private void Update()

@@ -89,6 +89,11 @@ public abstract class PlayerState : State
         playerStateMachine.SwitchState(new PlayerDodgingState(playerStateMachine));
     }
 
+    public void Jump()
+    {
+        playerStateMachine.SwitchState(new PlayerJumpState(playerStateMachine));
+    }
+
     public void PlayAnimation(int animationHash, float crossFixedDuration)
     {
         playerStateMachine.animator.CrossFadeInFixedTime(animationHash, crossFixedDuration);
