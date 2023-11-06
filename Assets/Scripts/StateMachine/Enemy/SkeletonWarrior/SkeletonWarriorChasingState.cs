@@ -13,6 +13,7 @@ public class SkeletonWarriorChasingState : EnemyChasingState
     private SkeletonWarriorStateMachine skeletonWarriorStateMachine;
     private int runHash = Animator.StringToHash("Run");
     private float crossFixedDuration = 0.3f;
+    private float intervalTimer;
 
     public override void Enter()
     {
@@ -30,9 +31,28 @@ public class SkeletonWarriorChasingState : EnemyChasingState
         { 
             enemyStateMachine.SwitchState(new SkeletonWarriorIdleState(skeletonWarriorStateMachine));
         }
+        if (targetDistance <= 3f)
+        {
+            intervalTimer += Time.deltaTime;
+            if (intervalTimer > 0.2f)
+            {
+                intervalTimer -= 0.2f;
+                if (Random.Range(0, 100) < 30)
+                {
+                    enemyStateMachine.SwitchState(new SkeletonWarriorAttackingState(skeletonWarriorStateMachine, 2));
+                }
+            }
+        }
         if (targetInRange)
         {
-            enemyStateMachine.SwitchState(new SkeletonWarriorAttackingState(skeletonWarriorStateMachine));
+            if (Random.Range(0, 100) < 30)
+            {
+                enemyStateMachine.SwitchState(new SkeletonWarriorAttackingState(skeletonWarriorStateMachine, 1));
+            }
+            else
+            {
+                enemyStateMachine.SwitchState(new SkeletonWarriorAttackingState(skeletonWarriorStateMachine, 0));
+            }
         }
     }
 }

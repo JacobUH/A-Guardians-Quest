@@ -10,6 +10,7 @@ public class AttackHandler : MonoBehaviour
 {
     [SerializeField] private AttackCollider weaponCollider;
     [SerializeField] private List<Attack> attacks;
+    [SerializeField] private GameObject swordTrailEffect;
 
     public void EnabledAttack(int index)
     {
@@ -21,6 +22,15 @@ public class AttackHandler : MonoBehaviour
         weaponCollider.gameObject.SetActive(true);
         weaponCollider.SetAttack(attacks[index].damage, attacks[index].knockBack, attacks[index].launchForce,
                          attacks[index].hitLagDuration, attacks[index].hitLagStrength, attacks[index].hitEffectPrefab);
+    }
+
+    public void EnabledSwordTrail()
+    {
+        if (swordTrailEffect != null) swordTrailEffect.SetActive(true);
+    }
+    public void DisabledSwordTrail()
+    {
+        if (swordTrailEffect != null) swordTrailEffect.SetActive(false);
     }
 
     public void HitboxDisabled()

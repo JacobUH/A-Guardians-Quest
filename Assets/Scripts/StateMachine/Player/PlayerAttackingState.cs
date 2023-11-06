@@ -22,6 +22,9 @@ public class PlayerAttackingState : PlayerState
         InputReader.Instance.WestButtonPressEvent += TryComboNormalAttack;
         InputReader.Instance.WestButtonLongPressEvent += ChargeAttack;
         InputReader.Instance.NorthButtonPressEvent += StrongAttack;
+        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
+        InputReader.Instance.EastButtonPressEvent += Dodge;
+        InputReader.Instance.DpadLeftButtonPressEvent += QuickSwitchWeapon;
     }
 
     public override void Exit()
@@ -29,15 +32,29 @@ public class PlayerAttackingState : PlayerState
         InputReader.Instance.WestButtonPressEvent -= TryComboNormalAttack;
         InputReader.Instance.WestButtonLongPressEvent -= ChargeAttack;
         InputReader.Instance.NorthButtonPressEvent -= StrongAttack;
+        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
+        InputReader.Instance.EastButtonPressEvent -= Dodge;
+        InputReader.Instance.DpadLeftButtonPressEvent -= QuickSwitchWeapon;
     }
 
     public override void Tick()
     {
         HandleCameraMovement();
         GameObject target = playerStateMachine.targetManager.GetCurrentTarget();
+        if (target == null)
+        {
+            target = playerStateMachine.targetManager.GetNearestTarget();
+        }
         if (target != null)
         {
-            FaceTarget(target);
+            if (playerStateMachine.character.GetCurrentWeaponData().weaponType == WeaponType.Sword)
+            {
+                if (Vector3.Distance(target.transform.position, playerStateMachine.transform.position) > 1.5f)
+                {
+                    Move(playerStateMachine.transform.forward);
+                }
+            }
+            FaceTargetInstantly(target);
         }
 
         normalizedTime = GetNormalizedTime(playerStateMachine.animator, attackHash);
@@ -57,12 +74,35 @@ public class PlayerAttackingState : PlayerState
         if (attack.nextComboIndex == -1) return;
         if (normalizedTime < attack.nextComboEnableTime) return;
 
-        playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, combo, attack.nextComboIndex));
+        WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
+        if (weaponType == WeaponType.Sword)
+        {
+            if (combo == playerStateMachine.comboManager.normalSwordCombo)
+            {
+                playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, combo, attack.nextComboIndex));
+            }
+            else 
+            { 
+                playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalSwordCombo, 0)); 
+            }
+                   
+        }
+        else
+        if (weaponType == WeaponType.Bow)
+        {
+            if (combo == playerStateMachine.comboManager.normalBowCombo)
+            {
+                playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, combo, attack.nextComboIndex));
+            }
+            else
+            {
+                playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalBowCombo, 0));
+            }
+        }
     }
 
     private void ChargeAttack()
     {
-        if (normalizedTime < attack.nextComboEnableTime) return;
         WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
         {

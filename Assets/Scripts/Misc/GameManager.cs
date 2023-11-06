@@ -16,6 +16,15 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         LockCursor();
     }
 
+    private void Start()
+    {
+        InputReader.Instance.StartButtonPressEvent += StopTime;
+    }
+    private void OnApplicationQuit()
+    {
+        InputReader.Instance.StartButtonPressEvent -= StopTime;
+    }
+
     void Update()
     {
         Vector2 mouseDelta = Mouse.current.delta.ReadValue();
@@ -54,5 +63,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.ExitPlaymode();
 #endif
+    }
+
+    private void StopTime()
+    {
+        Time.timeScale = 1 - Time.timeScale;
     }
 }

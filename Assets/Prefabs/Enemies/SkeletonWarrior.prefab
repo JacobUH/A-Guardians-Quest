@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 3909043655875775276}
   - component: {fileID: 5139600033601048008}
   - component: {fileID: 4118429419338667167}
+  - component: {fileID: 5714665746030683186}
   m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
@@ -394,6 +395,19 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   healthBar: {fileID: 6088713174912527622}
   emptyBar: {fileID: 8716374826687425094}
+--- !u!114 &5714665746030683186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042837790493676808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3de2d533cd7d5f468ac6eb68f2a451d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 0}
 --- !u!1 &6121232949861654584
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +606,7 @@ MonoBehaviour:
   comboManager: {fileID: 5580234981274530586}
   character: {fileID: 1026095539947790403}
   targetManager: {fileID: 2562698154432667924}
+  patrolPath: []
 --- !u!1 &6272423119385921212
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class InputReader : SingletonMonobehaviour<InputReader>, PlayerInput.IFreeLookActions
 {
-    public float longPressDuration = 0.5f;
+    public float longPressDuration = 0.2f;
 
     public bool isPressingLTRT;
     public bool isPressingLTRS;

@@ -9,6 +9,7 @@ public class PlayerStateMachine : StateMachine
     public GameObject bowMainHand;
     public GameObject swordBack;
     public GameObject bowBack;
+    public AudioSource footstepSource;
 
     public override void Start()
     {

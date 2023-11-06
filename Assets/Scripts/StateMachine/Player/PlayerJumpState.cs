@@ -11,10 +11,12 @@ public class PlayerJumpState : PlayerState
     {
         playerStateMachine.forceReceiver.Jump();
         PlayAnimation(jumpHash, crossFadeDuration);
+        InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
     }
 
     public override void Exit()
     {
+        InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
     }
 
     public override void Tick()

@@ -16,6 +16,7 @@ public class SkeletonWarriorImpactState : EnemyImpactState
     public override void Enter()
     {
         PlayAnimation(impactHash, crossFixedDuration);
+        skeletonWarriorStateMachine.GetComponent<AttackHandler>().HitboxDisabled();
     }
 
     public override void Exit()

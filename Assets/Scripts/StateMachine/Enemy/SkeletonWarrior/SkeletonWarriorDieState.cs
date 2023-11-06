@@ -18,6 +18,7 @@ public class SkeletonWarriorDieState : EnemyDieState
         PlayAnimation(dieHash, crossFixedDuration);
         skeletonWarriorStateMachine.forceReceiver.enabled = false;
         skeletonWarriorStateMachine.controller.enabled = false;
+        skeletonWarriorStateMachine.GetComponent<AttackHandler>().HitboxDisabled();
     }
 
     public override void Exit()
