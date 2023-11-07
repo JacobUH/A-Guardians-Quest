@@ -19,6 +19,6 @@ public class VideoManager : SingletonMonobehaviour<VideoManager>
 
     public void PlayVideo(int index)
     {
-        videos[index].gameObject.SetActive(true);
+        videos[index].GetComponent<VideoPlayerController>().PlayVideo();
     }
 }
