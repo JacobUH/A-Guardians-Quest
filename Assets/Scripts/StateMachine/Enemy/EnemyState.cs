@@ -30,6 +30,12 @@ public abstract class EnemyState : State
         Quaternion lookRotation = Quaternion.LookRotation(lookPos);
         enemyStateMachine.transform.rotation = Quaternion.Slerp(enemyStateMachine.transform.rotation, lookRotation, enemyStateMachine.changeDirectionSpeed * Time.deltaTime);
     }
+    public void FaceTargetInstantly(Vector3 target)
+    {
+        Vector3 lookPos = target - enemyStateMachine.transform.position;
+        lookPos.y = 0f;
+        enemyStateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
+    }
 
     public void FaceTargetInstantly(GameObject target)
     {

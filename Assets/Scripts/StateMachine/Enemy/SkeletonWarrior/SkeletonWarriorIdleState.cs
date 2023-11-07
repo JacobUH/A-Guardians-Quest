@@ -80,8 +80,9 @@ public class SkeletonWarriorIdleState : EnemyIdleState
             }
             else
             {
-                destination = skeletonWarriorStateMachine.patrolPath[patrolIndex];
-                if (Vector3.Distance(destination.transform.position, skeletonWarriorStateMachine.transform.position) <= 0.01f)
+                Vector3 destination = skeletonWarriorStateMachine.patrolPath[patrolIndex].transform.position;
+                destination.y = skeletonWarriorStateMachine.transform.position.y;
+                if (Vector3.Distance(destination, skeletonWarriorStateMachine.transform.position) <= 0.01f)
                 {
                     patrolIndex++;
                     skeletonWarriorStateMachine.animator.SetFloat(idleBlendHash, 0f);
