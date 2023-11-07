@@ -10,6 +10,7 @@ public class VideoPlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!videoPlayer.isPlaying) return;
         if (Gamepad.current != null)
         {
             if (Gamepad.current.selectButton.IsPressed())
@@ -42,5 +43,6 @@ public class VideoPlayerController : MonoBehaviour
         InputReader.Instance.EnableFreelookInputReader();
         AudioManager.Instance.UnmuteBGM();
         videoPlayer.loopPointReached -= OnVideoFinished;
+        this.gameObject.SetActive(false);
     }
 }
