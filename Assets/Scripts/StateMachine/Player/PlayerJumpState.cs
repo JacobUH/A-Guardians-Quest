@@ -9,6 +9,10 @@ public class PlayerJumpState : PlayerState
 
     public override void Enter()
     {
+        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        attackHandler.HitboxDisabled();
+        attackHandler.DisabledSwordTrail();
+
         playerStateMachine.forceReceiver.Jump();
         PlayAnimation(jumpHash, crossFadeDuration);
         InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;

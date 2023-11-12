@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class CameraController : SingletonMonobehaviour<CameraController>
 {
+    [SerializeField] float verticalSpeed = 1f;
+    [SerializeField] float horizontalSpeed = 20f;
     [SerializeField] float zoomSpeed = 3f;
     [SerializeField] float spanSpeed = 100f;
     [Space]
@@ -68,13 +70,13 @@ public class CameraController : SingletonMonobehaviour<CameraController>
 
     public void RotateCamera()
     {
-        Vector2 cameraMovement = InputReader.Instance.rightStickValue;
+        Vector2 cameraMovement = InputReader.Instance.rightStickValue.normalized;
         if (cameraSpanning != null) return;
 
         if (cameraMovement.x != 0 || cameraMovement.y != 0)
         {
-            freeLook.m_YAxis.Value -= cameraMovement.y * Time.unscaledDeltaTime * freeLook.m_YAxis.m_MaxSpeed;
-            freeLook.m_XAxis.Value += cameraMovement.x * Time.unscaledDeltaTime * freeLook.m_XAxis.m_MaxSpeed;
+            freeLook.m_YAxis.Value -= cameraMovement.y * Time.deltaTime * verticalSpeed;
+            freeLook.m_XAxis.Value += cameraMovement.x * Time.deltaTime * horizontalSpeed;
         }
     }
 
@@ -86,29 +88,29 @@ public class CameraController : SingletonMonobehaviour<CameraController>
 
     public void ZoomIn()
     {
-        if (freeLook.m_Orbits[0].m_Height > topMinHeight) freeLook.m_Orbits[0].m_Height -= zoomSpeed * Time.unscaledDeltaTime;
+        if (freeLook.m_Orbits[0].m_Height > topMinHeight) freeLook.m_Orbits[0].m_Height -= zoomSpeed * Time.deltaTime;
         else freeLook.m_Orbits[0].m_Height = topMinHeight;
-        if (freeLook.m_Orbits[0].m_Radius > topMinRadius) freeLook.m_Orbits[0].m_Radius -= zoomSpeed * Time.unscaledDeltaTime;
+        if (freeLook.m_Orbits[0].m_Radius > topMinRadius) freeLook.m_Orbits[0].m_Radius -= zoomSpeed * Time.deltaTime;
         else freeLook.m_Orbits[0].m_Radius = topMinRadius;
-        if (freeLook.m_Orbits[1].m_Radius > midMinRadius) freeLook.m_Orbits[1].m_Radius -= zoomSpeed * Time.unscaledDeltaTime;
+        if (freeLook.m_Orbits[1].m_Radius > midMinRadius) freeLook.m_Orbits[1].m_Radius -= zoomSpeed * Time.deltaTime;
         else freeLook.m_Orbits[1].m_Radius = midMinRadius;
-        if (freeLook.m_Orbits[2].m_Height < botMinHeight) freeLook.m_Orbits[2].m_Height += zoomSpeed * Time.unscaledDeltaTime;
+        if (freeLook.m_Orbits[2].m_Height < botMinHeight) freeLook.m_Orbits[2].m_Height += zoomSpeed * Time.deltaTime;
         else freeLook.m_Orbits[2].m_Height = botMinHeight;
-        if (freeLook.m_Orbits[2].m_Radius > botMinRadius) freeLook.m_Orbits[2].m_Radius -= zoomSpeed * Time.unscaledDeltaTime;
+        if (freeLook.m_Orbits[2].m_Radius > botMinRadius) freeLook.m_Orbits[2].m_Radius -= zoomSpeed * Time.deltaTime;
         else freeLook.m_Orbits[2].m_Radius = botMinRadius;
     }
 
     public void ZoomOut()
     {
-        if (freeLook.m_Orbits[0].m_Height < topMaxHeight) freeLook.m_Orbits[0].m_Height += zoomSpeed * Time.unscaledDeltaTime;
+        if (freeLook.m_Orbits[0].m_Height < topMaxHeight) freeLook.m_Orbits[0].m_Height += zoomSpeed * Time.deltaTime;
         else freeLook.m_Orbits[0].m_Height = topMaxHeight;
-        if (freeLook.m_Orbits[0].m_Radius < topMaxRadius) freeLook.m_Orbits[0].m_Radius += zoomSpeed * Time.unscaledDeltaTime;
+        if (freeLook.m_Orbits[0].m_Radius < topMaxRadius) freeLook.m_Orbits[0].m_Radius += zoomSpeed * Time.deltaTime;
         else freeLook.m_Orbits[0].m_Radius = topMaxRadius;
-        if (freeLook.m_Orbits[1].m_Radius < midMaxRadius) freeLook.m_Orbits[1].m_Radius += zoomSpeed * Time.unscaledDeltaTime;
+        if (freeLook.m_Orbits[1].m_Radius < midMaxRadius) freeLook.m_Orbits[1].m_Radius += zoomSpeed * Time.deltaTime;
         else freeLook.m_Orbits[1].m_Radius = midMaxRadius;
-        if (freeLook.m_Orbits[2].m_Height > botMaxHeight) freeLook.m_Orbits[2].m_Height -= zoomSpeed * Time.unscaledDeltaTime;
+        if (freeLook.m_Orbits[2].m_Height > botMaxHeight) freeLook.m_Orbits[2].m_Height -= zoomSpeed * Time.deltaTime;
         else freeLook.m_Orbits[2].m_Height = botMaxHeight;
-        if (freeLook.m_Orbits[2].m_Radius < botMaxRadius) freeLook.m_Orbits[2].m_Radius += zoomSpeed * Time.unscaledDeltaTime;
+        if (freeLook.m_Orbits[2].m_Radius < botMaxRadius) freeLook.m_Orbits[2].m_Radius += zoomSpeed * Time.deltaTime;
         else freeLook.m_Orbits[2].m_Radius = botMaxRadius;
     }
 }

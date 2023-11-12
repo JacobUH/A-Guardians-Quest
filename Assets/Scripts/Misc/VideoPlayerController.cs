@@ -8,18 +8,9 @@ public class VideoPlayerController : MonoBehaviour
     public GameObject canvasUI;
     public VideoPlayer videoPlayer;
 
-    private void Start()
-    {
-        StartVideo();
-    }
-
-    private void OnEnable()
-    {
-        StartVideo();
-    }
-
     private void Update()
     {
+        if (!videoPlayer.isPlaying) return;
         if (Gamepad.current != null)
         {
             if (Gamepad.current.selectButton.IsPressed())
@@ -33,7 +24,7 @@ public class VideoPlayerController : MonoBehaviour
         }
     }
 
-    private void StartVideo()
+    public void PlayVideo()
     {
         AudioManager.Instance.MuteBGM();
         InputReader.Instance.DisableFreelookInputReader();
@@ -41,15 +32,17 @@ public class VideoPlayerController : MonoBehaviour
         Time.timeScale = 0.0f;
         videoPlayer = GetComponent<VideoPlayer>();
         videoPlayer.loopPointReached += OnVideoFinished;
+        videoPlayer.Play();
     }
 
     private void OnVideoFinished(VideoPlayer vp)
     {
         videoPlayer.Stop();
-        this.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
         canvasUI.SetActive(true);
         InputReader.Instance.EnableFreelookInputReader();
         AudioManager.Instance.UnmuteBGM();
+        videoPlayer.loopPointReached -= OnVideoFinished;
+        this.gameObject.SetActive(false);
     }
 }

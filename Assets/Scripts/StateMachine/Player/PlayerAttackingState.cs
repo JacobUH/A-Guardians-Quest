@@ -24,6 +24,7 @@ public class PlayerAttackingState : PlayerState
         InputReader.Instance.NorthButtonPressEvent += StrongAttack;
         InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
         InputReader.Instance.EastButtonPressEvent += Dodge;
+        InputReader.Instance.SouthButtonPressEvent += Jump;
         InputReader.Instance.DpadLeftButtonPressEvent += QuickSwitchWeapon;
     }
 
@@ -34,6 +35,7 @@ public class PlayerAttackingState : PlayerState
         InputReader.Instance.NorthButtonPressEvent -= StrongAttack;
         InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
         InputReader.Instance.EastButtonPressEvent -= Dodge;
+        InputReader.Instance.SouthButtonPressEvent -= Jump;
         InputReader.Instance.DpadLeftButtonPressEvent -= QuickSwitchWeapon;
     }
 

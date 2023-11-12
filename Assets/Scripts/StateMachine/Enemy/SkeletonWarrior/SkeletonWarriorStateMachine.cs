@@ -7,6 +7,7 @@ public class SkeletonWarriorStateMachine : EnemyStateMachine
 {
     public List<GameObject> patrolPath = new List<GameObject>();
     public bool isAggro;
+    public bool isPatrol;
 
     public override void Start()
     {

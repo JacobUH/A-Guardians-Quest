@@ -143,11 +143,6 @@ public class PlayerFreeLookState : PlayerState
         else return;
     }
 
-    private void Jump()
-    {
-        playerStateMachine.SwitchState(new PlayerJumpState(playerStateMachine));
-    }
-
     private void Dash()
     {
         playerStateMachine.isDashing = true;

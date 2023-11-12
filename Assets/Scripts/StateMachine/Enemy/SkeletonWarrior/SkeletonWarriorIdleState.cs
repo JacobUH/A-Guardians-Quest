@@ -21,6 +21,7 @@ public class SkeletonWarriorIdleState : EnemyIdleState
     private float idleTime;
     private float randomIdleTime;
     private bool playingAnimation;
+    private float patrolIdleTime = 5f;
 
     public override void Enter()
     {
@@ -40,18 +41,13 @@ public class SkeletonWarriorIdleState : EnemyIdleState
 
     public override void Tick()
     {
-        if (idleTime < randomIdleTime)
-        {
-            idleTime += Time.deltaTime;
-            return;
-        }
-
         if (GetCurrentTarget() != null)
         {
             FaceTarget(2f);
 
             if (skeletonWarriorStateMachine.isAggro)
             {
+                skeletonWarriorStateMachine.isPatrol = false;
                 if (playingAnimation)
                 {
                     if (GetNormalizedTime(skeletonWarriorStateMachine.animator, aggroHash) >= 1f)
@@ -72,21 +68,35 @@ public class SkeletonWarriorIdleState : EnemyIdleState
         }
         else skeletonWarriorStateMachine.isAggro = false;
 
+        if (idleTime < randomIdleTime)
+        {
+            idleTime += Time.deltaTime;
+            return;
+        }
+
+        if (!skeletonWarriorStateMachine.isPatrol)
+        {
+            PlayAnimation(idleHash, crossFixedDuration);
+            skeletonWarriorStateMachine.isPatrol = true;
+        }
+
         if (skeletonWarriorStateMachine.patrolPath.Count() != 0)
         {
-            if (idleTime < 5f)
+            if (idleTime < patrolIdleTime)
             {
-                idleTime += Time.deltaTime;
+                idleTime += Time.deltaTime * Random.Range(1, 10);
             }
             else
             {
-                destination = skeletonWarriorStateMachine.patrolPath[patrolIndex];
-                if (Vector3.Distance(destination.transform.position, skeletonWarriorStateMachine.transform.position) <= 0.01f)
+                Vector3 destination = skeletonWarriorStateMachine.patrolPath[patrolIndex].transform.position;
+                destination.y = skeletonWarriorStateMachine.transform.position.y;
+                if (Vector3.Distance(destination, skeletonWarriorStateMachine.transform.position) <= 0.01f)
                 {
                     patrolIndex++;
                     skeletonWarriorStateMachine.animator.SetFloat(idleBlendHash, 0f);
                     if (patrolIndex == skeletonWarriorStateMachine.patrolPath.Count()) patrolIndex = 0;
-                    idleTime = 0f; 
+                    idleTime = 0f;
+                    patrolIdleTime = Random.Range(1, 10);
                     return;
                 }
                 else
