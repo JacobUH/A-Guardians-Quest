@@ -6,8 +6,8 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 
 {
-    public TextMeshPro sentenceObj;
-    public TextMeshPro nameBox;
+    public TMP_Text sentenceObj;
+    public TMP_Text nameBox;
 
     public Animator textAnim;
 
@@ -40,7 +40,18 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
-        sentenceObj.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        sentenceObj.text = "";
+        foreach (char c in sentence.ToCharArray())
+        {
+            sentenceObj.text += c;
+            yield return null;
+        }
     }
 
     void EndDialogue()
@@ -50,4 +61,7 @@ public class DialogueManager : MonoBehaviour
         nameBox.text = null;
         return;
     }
+
+
+
 }

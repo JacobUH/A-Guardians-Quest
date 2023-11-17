@@ -953,6 +953,8 @@ GameObject:
   - component: {fileID: 4630165335136025553}
   - component: {fileID: 5433624885042264329}
   - component: {fileID: 5056350303687332817}
+  - component: {fileID: 5433624885042264330}
+  - component: {fileID: 5433624885042264331}
   m_Layer: 0
   m_Name: Shopkeeper
   m_TagString: Untagged
@@ -3413,6 +3415,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361801037105618121}
   m_Mesh: {fileID: 8638456120196982653, guid: 0af0e8b809747fe4680e1458b312da1a, type: 3}
+--- !u!114 &5433624885042264330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361801037105618121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a4e88ced558724c8b7416a7a4cfb01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    NPC: Shopkeeper
+    dialogue: []
+--- !u!114 &5433624885042264331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361801037105618121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce2d1a7627605842ae2e099ac70fd0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest:
+    questName: 
+    questDescription: 
+    questID: 0
+    coinReward: 
+    completed: 0
+    defaultResponse:
+      NPC: 
+      dialogue: []
 --- !u!4 &5436606270593375137
 Transform:
   m_ObjectHideFlags: 0

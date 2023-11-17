@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class QuestA2Manager : MonoBehaviour
 {
-    private List<QuestA2> activeQuest;
+    private List<int> activeQuest;
+    public QuestDatabase qB;
 
-    public void acceptQuest(QuestA2 quest)
+    public void acceptQuest(int quest)
     {
-        if (!quest.completed)
+        if (!qB.questDatabase[quest].completed)
         {
             activeQuest.Add(quest);
         }
         else
         {
-
-            FindObjectOfType<DialogueManager>().StartDialogue(quest.defaultResponse);
+            FindObjectOfType<DialogueManager>().StartDialogue(qB.questDatabase[quest].defaultResponse);
         }
         
     }
 
-    public void finishQuest(QuestA2 quest)
+    public void finishQuest(int quest)
     {
         activeQuest.Remove(quest);
-        InventoryBox.Instance.AddItem("9999", quest.coinReward[0]);
+        InventoryBox.Instance.AddItem("9999", qB.questDatabase[quest].coinReward[0]);
         EventHandler.OnPickUpItemEvent("9999");
-        InventoryBox.Instance.AddItem("9998", quest.coinReward[1]);
+        InventoryBox.Instance.AddItem("9998", qB.questDatabase[quest].coinReward[1]);
         EventHandler.OnPickUpItemEvent("9998");
-        InventoryBox.Instance.AddItem("9997", quest.coinReward[2]);
+        InventoryBox.Instance.AddItem("9997", qB.questDatabase[quest].coinReward[2]);
         EventHandler.OnPickUpItemEvent("9997");
-        quest.questComplete();
+        qB.questDatabase[quest].questComplete();
     }
 }
