@@ -40,8 +40,11 @@ public class AttackCollider : MonoBehaviour
         {
             if (damageableTarget.TryDealDamage(damage))
             {
-                GameObject hitEffect = Instantiate(hitEffectPrefab);
-                hitEffect.transform.position = other.ClosestPoint(transform.position);
+                if (hitEffectPrefab != null)
+                {
+                    GameObject hitEffect = Instantiate(hitEffectPrefab);
+                    hitEffect.transform.position = other.ClosestPoint(transform.position);
+                }
 
                 hitLagCoroutine = StartCoroutine(HitLag());
 
@@ -71,7 +74,7 @@ public class AttackCollider : MonoBehaviour
         hitLagCoroutine = null;
     }
 
-    public void SetAttack(int damage, float knockback, float launchForce,float hitLagDuration, float hitLagStrength, GameObject hitEffectPrefab)
+    public void SetAttack(int damage, float knockback, float launchForce,float hitLagDuration, float hitLagStrength, GameObject hitEffectPrefab = null)
     {
         this.damage = damage;
         this.knockback = knockback;

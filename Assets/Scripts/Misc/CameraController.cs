@@ -73,11 +73,8 @@ public class CameraController : SingletonMonobehaviour<CameraController>
         Vector2 cameraMovement = InputReader.Instance.rightStickValue.normalized;
         if (cameraSpanning != null) return;
 
-        if (cameraMovement.x != 0 || cameraMovement.y != 0)
-        {
-            freeLook.m_YAxis.Value -= cameraMovement.y * Time.deltaTime * verticalSpeed;
-            freeLook.m_XAxis.Value += cameraMovement.x * Time.deltaTime * horizontalSpeed;
-        }
+        freeLook.m_YAxis.Value -= cameraMovement.y * Time.deltaTime * verticalSpeed;
+        freeLook.m_XAxis.Value += cameraMovement.x * Time.deltaTime * horizontalSpeed;
     }
 
     public void SpanCamera(float targetAngle)

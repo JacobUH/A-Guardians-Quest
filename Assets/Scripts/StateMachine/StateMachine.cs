@@ -33,7 +33,7 @@ public class StateMachine : MonoBehaviour
     private State currentState;
     private Vector3 groundNormal;
 
-    private void Update()
+    public virtual void Update()
     {
         GroundCheck();
         currentState?.Tick();
