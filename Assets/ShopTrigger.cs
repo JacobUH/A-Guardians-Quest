@@ -15,12 +15,14 @@ public class ShopTrigger : MonoBehaviour
             shop.SetActive(true);
             pauseMenu.SetActive(false);
             GameManager.Instance.SetInMenuBool(true);
+            Time.timeScale = 0.0f;
         }
         if(other.CompareTag("Player") && Input.GetKeyDown(KeyCode.Escape))
         {
             shop.SetActive(false);
             pauseMenu.SetActive(true);
             GameManager.Instance.SetInMenuBool(false);
+            Time.timeScale = 1.0f;
         }
 
     }
