@@ -13,4 +13,5 @@ public class ItemData : ScriptableObject
     public Sprite sprite;
     public string shortDescription;
     public string longDescription;
+    public int[] cost;
 }

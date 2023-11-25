@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : SingletonMonobehaviour<DialogueManager>
 
 {
     public TMP_Text sentenceObj;
@@ -18,11 +18,17 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            DisplayNextSentence();
+        }
+    }
     // Update is called once per frame
     public void StartDialogue(Dialogue dialogue)
     {
-        textAnim.SetBool("IsOpen", true);
+        textAnim.SetBool("isOpen", true);
         sentences.Clear();
         nameBox.text = dialogue.NPC;
 
@@ -56,7 +62,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        textAnim.SetBool("IsOpen", false);
+        textAnim.SetBool("isOpen", false);
         sentenceObj.text=null;
         nameBox.text = null;
         return;
