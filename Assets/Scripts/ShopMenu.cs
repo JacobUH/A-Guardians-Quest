@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ShopMenu : MonoBehaviour
 {
+    private QuickSlotManager qms;
     DialogueTrigger trigger;
     void Start()
     {
@@ -17,15 +18,16 @@ public class ShopMenu : MonoBehaviour
         
     }
 
-    public void clickBuy(GameObject button)
-    {
-        ItemData Item = button.GetComponent<ShopItem>().item4Sale;
+    public void clickBuy(ItemData Item)
+    {   
+        qms = FindObjectOfType<QuickSlotManager>();
         if (canBuy(Item))
         {
-            InventoryBox.Instance.AddItem(Item.id.ToString());
+            InventoryBox.Instance.AddItem(Item.id.ToString(),1);
             InventoryBox.Instance.RemoveItem("9999", Item.cost[0]);
             InventoryBox.Instance.RemoveItem("9998", Item.cost[1]);
             InventoryBox.Instance.RemoveItem("9997", Item.cost[2]);
+            qms.UpdateUI();
         }
         else
         {
@@ -38,6 +40,8 @@ public class ShopMenu : MonoBehaviour
     {
         int[] prices = Item.cost;
 
+        
+        
         if (prices[0] > InventoryBox.Instance.CheckInventory("9999").quantity)
         {
             return false;
@@ -51,6 +55,7 @@ public class ShopMenu : MonoBehaviour
             return false;
         }
         return true;
+        
     }
     
 }

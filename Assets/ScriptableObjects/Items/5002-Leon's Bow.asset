@@ -20,6 +20,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 5091e76a348996946a318f8d74466709, type: 3}
   shortDescription: 
   longDescription: 
+  cost: 000000000000000000000000
   equipmentType: 0
   hp: 0
   atk: 5

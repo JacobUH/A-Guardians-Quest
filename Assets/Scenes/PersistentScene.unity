@@ -225,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 19497098}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5969,6 +5969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shop: {fileID: 291751081}
+  pauseMenu: {fileID: 1628877420}
 --- !u!65 &668786910
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5988,7 +5989,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &681824504
 GameObject:
@@ -13905,12 +13906,12 @@ PrefabInstance:
     - target: {fileID: 1217598697300446115, guid: 77e0f7753840e8a4da45c57175798edb,
         type: 3}
       propertyPath: m_ReferenceResolution.x
-      value: 1280
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 1217598697300446115, guid: 77e0f7753840e8a4da45c57175798edb,
         type: 3}
       propertyPath: m_ReferenceResolution.y
-      value: 720
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 1757463382223590961, guid: 77e0f7753840e8a4da45c57175798edb,
         type: 3}
@@ -16950,11 +16951,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1414904530}
+      objectReference: {fileID: 11400000, guid: 017d6bcdecb764046bf7573392deaddd,
+        type: 2}
     - target: {fileID: 241603753866044615, guid: 958f78717f9f6a0429905e914711a663,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: ItemData, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1562578470591228584, guid: 958f78717f9f6a0429905e914711a663,
         type: 3}
@@ -17096,12 +17098,6 @@ PrefabInstance:
 --- !u!224 &1414904529 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4155533288549218098, guid: 958f78717f9f6a0429905e914711a663,
-    type: 3}
-  m_PrefabInstance: {fileID: 1414904528}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1414904530 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3779536963105895516, guid: 958f78717f9f6a0429905e914711a663,
     type: 3}
   m_PrefabInstance: {fileID: 1414904528}
   m_PrefabAsset: {fileID: 0}
@@ -28901,7 +28897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652263291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7238417, y: -0.000000028662265, z: 0.000000012296444, w: 0.68996614}
+  m_LocalRotation: {x: 0.7238418, y: 0.000000026882022, z: -0.000000011532704, w: 0.6899661}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -30330,11 +30326,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1744226530}
+      objectReference: {fileID: 11400000, guid: 017d6bcdecb764046bf7573392deaddd,
+        type: 2}
     - target: {fileID: 241603753866044615, guid: 958f78717f9f6a0429905e914711a663,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: ItemData, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1562578470591228584, guid: 958f78717f9f6a0429905e914711a663,
         type: 3}
@@ -30471,12 +30468,6 @@ PrefabInstance:
 --- !u!224 &1744226529 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4155533288549218098, guid: 958f78717f9f6a0429905e914711a663,
-    type: 3}
-  m_PrefabInstance: {fileID: 1744226528}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1744226530 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3779536963105895516, guid: 958f78717f9f6a0429905e914711a663,
     type: 3}
   m_PrefabInstance: {fileID: 1744226528}
   m_PrefabAsset: {fileID: 0}
@@ -30641,7 +30632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752737683}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7242672, y: -0.000000010824691, z: 0.0000000046518256, w: 0.68951946}
+  m_LocalRotation: {x: 0.7242672, y: 0.00000004617347, z: -0.000000019842687, w: 0.68951946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31499,13 +31490,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842931826}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.05578661, z: 0, w: 0.9984427}
+  m_LocalPosition: {x: -1294.47, y: -18.22, z: 290.7596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 19497099}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 6.396, z: 0}
 --- !u!114 &1842931828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31519,6 +31510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shop: {fileID: 51192922}
+  pauseMenu: {fileID: 1628877420}
 --- !u!65 &1842931829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31538,7 +31530,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 6, y: 5, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1844936674
 GameObject:
@@ -37656,11 +37648,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 7467373432942347275}
+      objectReference: {fileID: 11400000, guid: 017d6bcdecb764046bf7573392deaddd,
+        type: 2}
     - target: {fileID: 241603753866044615, guid: 958f78717f9f6a0429905e914711a663,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: ItemData, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1562578470591228584, guid: 958f78717f9f6a0429905e914711a663,
         type: 3}
@@ -37876,12 +37869,6 @@ PrefabInstance:
 --- !u!224 &7467373432942347274 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4155533288549218098, guid: 958f78717f9f6a0429905e914711a663,
-    type: 3}
-  m_PrefabInstance: {fileID: 7467373432942347273}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7467373432942347275 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3779536963105895516, guid: 958f78717f9f6a0429905e914711a663,
     type: 3}
   m_PrefabInstance: {fileID: 7467373432942347273}
   m_PrefabAsset: {fileID: 0}

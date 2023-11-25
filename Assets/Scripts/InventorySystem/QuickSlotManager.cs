@@ -30,7 +30,7 @@ public class QuickSlotManager : MonoBehaviour
         EventHandler.SwitchWeaponEvent -= UpdateCurrentWeaponInfo;
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if (currentItemSlot != null)
         {

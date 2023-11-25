@@ -20,5 +20,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 0abafed4743f74946a72540517b4f7cd, type: 3}
   shortDescription: Recover 20 HP
   longDescription: 
+  cost: 000000000000000000000000
   itemEffects:
   - {fileID: 11400000, guid: d312da6dd57db2f44bbe8c3da7fbcb7a, type: 2}
