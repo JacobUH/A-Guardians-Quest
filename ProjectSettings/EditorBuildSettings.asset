@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WizardTowerInside.unity
     guid: 4214ae7b369c69e4c8c823b4a9215170
+  - enabled: 1
+    path: Assets/Scenes/BossZone.unity
+    guid: 2e729757dd6427f4886f0837c8c23d19
   m_configObjects: {}
