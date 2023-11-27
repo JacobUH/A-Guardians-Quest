@@ -32,7 +32,7 @@ public class BossBackStepState : BossState
             }
             else
             {
-                sm.SwitchState(new BossDashAttackState(sm, 0));
+                sm.SwitchState(new BossDashAttackAState(sm));
                 return;
             }
         }

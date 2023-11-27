@@ -18,6 +18,7 @@ public class Character : MonoBehaviour, IDamageable
     [SerializeField] private CharacterEquipmentData equipmentData;
 
     private float currentHp;
+    public float CurrentHpPercent => currentHp / GetMaxHp();
 
     private void Start()
     {

@@ -23,7 +23,7 @@ MonoBehaviour:
   nextComboIndex: -1
   nextStrongComboIndex: 1
   nextComboEnableTime: 0.7
-  damage: 25
+  damage: 30
   knockBack: 4
   launchForce: 0
   hitLagDuration: 0.2

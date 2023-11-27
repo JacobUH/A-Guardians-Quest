@@ -25,7 +25,7 @@ public class BossImpactState : BossState
         float normalizedTime = GetNormalizedTime(sm.animator, impactHash);
         if (normalizedTime >= 1f)
         {
-            sm.SwitchState(new BossIdleState(sm));
+            sm.SwitchState(new BossVulnerableState(sm));
         }
     }
 

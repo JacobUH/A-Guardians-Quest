@@ -11,11 +11,13 @@ public class BossRageState : BossState
 
     public override void Enter()
     {
+        FaceTargetInstantly();
         PlayAnimation(rageHash, crossFixedDuration);
     }
 
     public override void Exit()
     {
+        sm.animator.speed = 1.2f;
     }
 
     public override void Tick()
@@ -23,7 +25,7 @@ public class BossRageState : BossState
         float normalizedTime = GetNormalizedTime(sm.animator, rageHash);
         if (normalizedTime >= 1f)
         {
-            sm.SwitchState(new BossIdleState(sm));
+            sm.SwitchState(new BossMoveToCenterState(sm));
         }
     }
 }

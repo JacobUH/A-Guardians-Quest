@@ -10,8 +10,10 @@ public class BossIdleState : BossState
     private float crossFixedDuration = 0.3f;
     private float timer;
 
+    private float idleTime = 2f;
     public override void Enter()
     {
+        if (sm.below50Percent) idleTime = 1f;
         timer = 0f;
         PlayAnimation(idleHash, crossFixedDuration);
     }
@@ -23,10 +25,22 @@ public class BossIdleState : BossState
     public override void Tick()
     {
         if (sm.targetManager.GetCurrentTarget() == null) return;
+        Move(Vector3.zero);
+        FaceTarget();
 
         timer += Time.deltaTime;
-        if (timer >= 2f)
+        if (timer >= idleTime)
         {
+            if (sm.below50Percent)
+            {
+                float r = Random.Range(0f, 100f);
+                if (r < 25)
+                {
+                    sm.SwitchState(new BossMoveToCenterState(sm));
+                    return;
+                }
+            }
+
             if (sm.targetManager.GetDistanceToTarget() > 12f)
             {
                 float r = Random.Range(0f, 100f);

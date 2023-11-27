@@ -41,7 +41,7 @@ public class PlayerDodgingState : PlayerState
     {
         HandleCameraMovement();
 
-        if (invincibleTimer < 0.2f && playerStateMachine.character.isInvincible == true)
+        if (invincibleTimer < 0.5f && playerStateMachine.character.isInvincible == true)
         {
             invincibleTimer += Time.deltaTime;
         }
@@ -59,7 +59,7 @@ public class PlayerDodgingState : PlayerState
         {
             Move(playerStateMachine.transform.forward * playerStateMachine.dodgeSpeed * 0.2f);
         }
-        if (normalizedTime >= 1f)
+        if (normalizedTime >= 0.9f)
         {
             playerStateMachine.SwitchState(new PlayerFreeLookState(playerStateMachine));
         }

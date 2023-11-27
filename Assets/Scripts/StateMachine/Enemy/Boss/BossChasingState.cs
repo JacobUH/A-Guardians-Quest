@@ -21,11 +21,11 @@ public class BossChasingState : BossState
 
     public override void Tick()
     {
-        ChaseTarget(4f);
+        ChaseTarget(5f);
         if (sm.targetInRange)
         {
             int r = Random.Range(0, 100);
-            if (r < 75) sm.SwitchState(new BossDashAttackState(sm, 1));
+            if (r < 75) sm.SwitchState(new BossDashAttackBState(sm));
             else sm.SwitchState(new BossBackStepState(sm));
         }
     }
