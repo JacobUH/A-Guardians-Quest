@@ -99,7 +99,7 @@ MonoBehaviour:
   itemID: 1001
   quantity: 1
   isFloating: 0
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1310391284083578376}
 --- !u!82 &1310391284083578376
 AudioSource:
   m_ObjectHideFlags: 0

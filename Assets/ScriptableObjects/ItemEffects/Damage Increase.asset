@@ -15,3 +15,4 @@ MonoBehaviour:
   increaseAmount: 30
   damageEffect: {fileID: 8108297552573712994, guid: 1472b1b683d0c584898c64892c285c1d,
     type: 3}
+  duration: 30

@@ -102,10 +102,10 @@ public class Character : MonoBehaviour, IDamageable
         equipmentData.Equip(itemGuid);
     }
 
-    public void increaseDamage(float amount)
+    public void increaseDamage(float amount, float duration)
     {
         baseStats.attack += amount;
-        Invoke("endEffectWeapon", 30f);
+        Invoke("endEffectWeapon", duration);
     }
     private void endEffectWeapon()
     {
