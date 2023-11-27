@@ -19,9 +19,11 @@ public class FireballController : MonoBehaviour
 
     private GameObject player;
     private float timer;
+    private float chaseTime;
 
     private void Start()
     {
+        chaseTime = Random.Range(1.6f, 2.4f);
         controller = GetComponent<CharacterController>();
         player = GameObject.FindGameObjectWithTag("Player");
         Invoke(nameof(DestroySelf), lifeTime);
@@ -31,7 +33,7 @@ public class FireballController : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer < 2f) return;
+        if (timer < chaseTime) return;
 
         controller.Move(Time.deltaTime * speed * transform.forward);
 

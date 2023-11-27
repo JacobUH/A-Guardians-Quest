@@ -68851,7 +68851,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 1
   m_Events:
-  - time: 0.33333334
+  - time: 0.3
+    functionName: EnabledSwordTrail
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.36666667
     functionName: EnabledAttack
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -68860,6 +68867,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.46666667
     functionName: HitboxDisabled
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.53333336
+    functionName: DisabledSwordTrail
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

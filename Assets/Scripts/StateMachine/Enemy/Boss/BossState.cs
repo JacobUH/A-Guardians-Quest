@@ -27,6 +27,14 @@ public abstract class BossState : State
         sm.transform.rotation = Quaternion.Slerp(sm.transform.rotation, lookRotation, sm.changeDirectionSpeed * Time.deltaTime);
     }
 
+    public void FaceTarget(GameObject target)
+    {
+        Vector3 lookPos = target.transform.position - sm.transform.position;
+        lookPos.y = 0f;
+        Quaternion lookRotation = Quaternion.LookRotation(lookPos);
+        sm.transform.rotation = Quaternion.Slerp(sm.transform.rotation, lookRotation, sm.changeDirectionSpeed * Time.deltaTime);
+    }
+
     public void FaceTargetInstantly()
     {
         GameObject target = GetCurrentTarget();

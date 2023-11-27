@@ -8,6 +8,10 @@ public class BossStateMachine : StateMachine
     public bool targetInRange;
     public float targetDistance;
     public GameObject fireballPrefab;
+    public GameObject firewallPrefab;
+
+    public bool below50Percent;
+    public int specialUseCount;
 
     public override void Start()
     {
@@ -25,5 +29,17 @@ public class BossStateMachine : StateMachine
     {
         base.OnDie(dieCharacter);
         SwitchState(new BossDieState(this));
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+
+        if (character.CurrentHpPercent <= 0.5f && !below50Percent)
+        {
+            below50Percent = true;
+            SwitchState(new BossImpactState(this));
+        }
     }
 }
