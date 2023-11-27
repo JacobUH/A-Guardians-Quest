@@ -7,10 +7,14 @@ using UnityEngine.UI;
 public class ShopMenu : MonoBehaviour
 {
     private QuickSlotManager qms;
-    DialogueTrigger trigger;
+    
     void Start()
     {
         
+    }
+    private void OnEnable()
+    {
+        this.gameObject.GetComponent<Button>().interactable = true;
     }
 
     void Update()
@@ -18,8 +22,9 @@ public class ShopMenu : MonoBehaviour
         
     }
 
-    public void clickBuy(ItemData Item)
-    {   
+    public void ClickBuy(ItemData Item)
+    {
+        
         qms = FindObjectOfType<QuickSlotManager>();
         if (canBuy(Item))
         {
@@ -31,7 +36,8 @@ public class ShopMenu : MonoBehaviour
         }
         else
         {
-            trigger.triggerDialogue();
+            
+            this.gameObject.GetComponent<Button>().interactable = false;
         }
 
     }
@@ -40,7 +46,10 @@ public class ShopMenu : MonoBehaviour
     {
         int[] prices = Item.cost;
 
-        
+        if(Item.quantityToSell == 0)
+        {
+            return false;
+        }
         
         if (prices[0] > InventoryBox.Instance.CheckInventory("9999").quantity)
         {

@@ -5,4 +5,6 @@ using UnityEngine;
 public class ShopItem : MonoBehaviour
 {
     public ItemData item4Sale;
+
+
 }

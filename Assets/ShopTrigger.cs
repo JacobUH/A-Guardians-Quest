@@ -6,6 +6,7 @@ public class ShopTrigger : MonoBehaviour
 {
     public GameObject shop;
     public GameObject pauseMenu;
+    private bool inMenu =false;
     
 
     public void OnTriggerStay(Collider other)
@@ -15,16 +16,20 @@ public class ShopTrigger : MonoBehaviour
             shop.SetActive(true);
             pauseMenu.SetActive(false);
             GameManager.Instance.SetInMenuBool(true);
+            inMenu = true;
             Time.timeScale = 0.0f;
         }
-        if(other.CompareTag("Player") && Input.GetKeyDown(KeyCode.Escape))
+    }
+    private void Update()
+    {
+        if (inMenu && Input.GetKeyDown(KeyCode.Escape))
         {
             shop.SetActive(false);
             pauseMenu.SetActive(true);
+            inMenu = false;
             GameManager.Instance.SetInMenuBool(false);
             Time.timeScale = 1.0f;
         }
-
     }
 
 

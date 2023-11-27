@@ -14,4 +14,5 @@ public class ItemData : ScriptableObject
     public string shortDescription;
     public string longDescription;
     public int[] cost;
+    public int quantityToSell;
 }

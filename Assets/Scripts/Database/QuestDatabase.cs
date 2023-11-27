@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [System.Serializable]
-public class QuestDatabase : MonoBehaviour
+public class QuestDatabase : SingletonMonobehaviour<QuestDatabase>
 {
     public QuestA2[] questDatabase;
 }

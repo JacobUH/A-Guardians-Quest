@@ -25,6 +25,8 @@ public class CutsceneTrigger : MonoBehaviour
 
         FadeScreen.Instance.FadeIn();
         VideoManager.Instance.PlayVideo(videoIndex);
-        if(!triggerCutscene) transform.parent.gameObject.SetActive(false);
+        transform.parent.Find("Cube").gameObject.SetActive(false);
+        transform.parent.Find("Cube (1)").gameObject.SetActive(false);
+        if(!triggerCutscene) this.gameObject.SetActive(false);
     }
 }

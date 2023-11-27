@@ -11,7 +11,7 @@ public class QuestTriggerStart : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             QuestA2Manager.Instance.acceptQuest(questStartID);
-            transform.parent.gameObject.SetActive(false);
+            transform.gameObject.SetActive(false);
         }
     }
 }
