@@ -497,6 +497,17 @@
                 },
                 {
                     "name": "",
+                    "id": "2a869403-8ce9-449f-8547-d784498a0241",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "DpadRightButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6b3937ed-ab71-45f4-9c90-afc3c8513341",
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "",

@@ -16,6 +16,7 @@ public class PlayerFreeLookState : PlayerState
     {
         InputReader.Instance.EnableFreelookInputReader();
         InputReader.Instance.DpadUpButtonPressEvent += UseItem;
+        InputReader.Instance.DpadRightButtonPressEvent += SwitchItem;
         InputReader.Instance.DpadLeftButtonPressEvent += QuickSwitchWeapon;
         InputReader.Instance.SouthButtonPressEvent += Jump;
         InputReader.Instance.EastButtonPressEvent += Dodge;
@@ -31,6 +32,7 @@ public class PlayerFreeLookState : PlayerState
     public override void Exit()
     {
         InputReader.Instance.DpadUpButtonPressEvent -= UseItem;
+        InputReader.Instance.DpadRightButtonPressEvent -= SwitchItem;
         InputReader.Instance.DpadLeftButtonPressEvent -= QuickSwitchWeapon;
         InputReader.Instance.SouthButtonPressEvent -= Jump;
         InputReader.Instance.EastButtonPressEvent -= Dodge;
@@ -150,12 +152,26 @@ public class PlayerFreeLookState : PlayerState
 
     private void UseItem()
     {
-        string itemGuid = "1001"; //RedPotion
+        string itemGuid = playerStateMachine.currentItemGuid;
+        Debug.Log($"Try using item {itemGuid}");
         if (InventoryBox.Instance.RemoveItem(itemGuid, 1))
         {
             ConsumableItemData consumableItem = (ConsumableItemData)ItemDatabase.Instance.GetItemData(itemGuid);
             consumableItem.Use(playerStateMachine.gameObject);
             EventHandler.OnUseItemEvent(itemGuid);
         }
+    }
+
+    private void SwitchItem()
+    {
+        if (playerStateMachine.currentItemGuid == "1001")
+        {
+            playerStateMachine.currentItemGuid = "1002";
+        }
+        else if (playerStateMachine.currentItemGuid == "1002")
+        {
+            playerStateMachine.currentItemGuid = "1001";
+        }
+        Debug.Log($"Current Item {playerStateMachine.currentItemGuid}");
     }
 }

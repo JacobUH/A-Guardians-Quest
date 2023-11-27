@@ -10,6 +10,7 @@ public class PlayerStateMachine : StateMachine
     public GameObject swordBack;
     public GameObject bowBack;
     public AudioSource footstepSource;
+    public string currentItemGuid = "1001";
 
     public override void Start()
     {
