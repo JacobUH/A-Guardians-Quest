@@ -10,13 +10,11 @@ public class ShopMenu : MonoBehaviour
 {
     private QuickSlotManager qms;
     public DialogueTrigger defaultResponse;
-    public TMP_Text SoldOut;
-    public Button btn;
+    
     
     void Start()
     {
-        btn.interactable = true;
-        SoldOut.gameObject.SetActive(false);
+        
     }
     
 
@@ -41,7 +39,7 @@ public class ShopMenu : MonoBehaviour
         else
         {
             button.interactable = false;
-            SoldOut.gameObject.SetActive(true);
+            button.transform.Find("SoldOut").gameObject.SetActive(true);
             defaultResponse.triggerDialogue();
 
         }
