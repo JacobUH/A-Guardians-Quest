@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CoinManager : MonoBehaviour
+public class CoinManager : SingletonMonobehaviour<CoinManager>
 {
     [SerializeField] private Image greenCoinImage;
     [SerializeField] private Image redCoinImage;
@@ -30,7 +30,7 @@ public class CoinManager : MonoBehaviour
         EventHandler.PickUpItemEvent -= UpdateCoinInfo;
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if (greenCoinSlot != null)
         {

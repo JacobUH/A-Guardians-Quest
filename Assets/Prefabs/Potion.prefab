@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 7238638409847424974}
   - component: {fileID: 5107591846982766768}
   - component: {fileID: 241603753866044615}
-  - component: {fileID: 1562578470591228584}
+  - component: {fileID: 1045026124011112488}
   m_Layer: 0
   m_Name: Potion
   m_TagString: Untagged
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1562578470591228584
+--- !u!114 &1045026124011112488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937f01d2fef70a64587677f97b0417c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item4Sale: {fileID: 0}
+  item4Sale: {fileID: 11400000, guid: 017d6bcdecb764046bf7573392deaddd, type: 2}
 --- !u!1 &5567205376772175235
 GameObject:
   m_ObjectHideFlags: 0

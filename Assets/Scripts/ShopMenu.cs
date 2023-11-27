@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,24 +8,22 @@ using UnityEngine.UI;
 public class ShopMenu : MonoBehaviour
 {
     private QuickSlotManager qms;
+    public DialogueTrigger defaultResponse;
     
     void Start()
     {
         
     }
-    private void OnEnable()
-    {
-        this.gameObject.GetComponent<Button>().interactable = true;
-    }
+    
 
     void Update()
     {
         
     }
 
-    public void ClickBuy(ItemData Item)
+    public void ClickBuy(Button button)
     {
-        
+        ItemData Item = button.gameObject.GetComponent<ShopItem>().item4Sale;
         qms = FindObjectOfType<QuickSlotManager>();
         if (canBuy(Item))
         {
@@ -33,14 +32,19 @@ public class ShopMenu : MonoBehaviour
             InventoryBox.Instance.RemoveItem("9998", Item.cost[1]);
             InventoryBox.Instance.RemoveItem("9997", Item.cost[2]);
             qms.UpdateUI();
+            CoinManager.Instance.UpdateUI();
         }
         else
         {
-            
-            this.gameObject.GetComponent<Button>().interactable = false;
+            button.interactable = false;
+            defaultResponse.triggerDialogue();
+
         }
 
     }
+
+
+    
 
     private bool canBuy(ItemData Item)
     {
