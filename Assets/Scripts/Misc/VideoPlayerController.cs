@@ -7,6 +7,7 @@ public class VideoPlayerController : MonoBehaviour
 {
     public GameObject canvasUI;
     public VideoPlayer videoPlayer;
+    public GameObject skipTooltip;
 
     private void Update()
     {
@@ -32,6 +33,7 @@ public class VideoPlayerController : MonoBehaviour
         Time.timeScale = 0.0f;
         videoPlayer = GetComponent<VideoPlayer>();
         //videoPlayer.SetDirectAudioVolume(0, PlayerPrefs.GetFloat("CutsceneAudio"));
+        skipTooltip.SetActive(true);
         videoPlayer.loopPointReached += OnVideoFinished;
         videoPlayer.Play();
     }
@@ -45,5 +47,6 @@ public class VideoPlayerController : MonoBehaviour
         AudioManager.Instance.UnmuteBGM();
         videoPlayer.loopPointReached -= OnVideoFinished;
         this.gameObject.SetActive(false);
+        skipTooltip.SetActive(false);
     }
 }

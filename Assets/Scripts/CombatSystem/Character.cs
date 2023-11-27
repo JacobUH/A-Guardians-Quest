@@ -11,6 +11,7 @@ public class Character : MonoBehaviour, IDamageable
     public bool isInvincible;
     public event Action<GameObject> DieEvent;
     public event Action DamageEvent;
+    private float baseAttack;
 
     [SerializeField] private GaugeBar healthBar;
     [SerializeField] private TextMeshProUGUI healthBarTextMesh;
@@ -26,6 +27,7 @@ public class Character : MonoBehaviour, IDamageable
         currentHp = maxHp;
         healthBar.SetBar(maxHp);
         UpdateHPUI();
+        baseAttack = baseStats.attack;
     }
 
     private IEnumerator DestroyCoroutine()
@@ -98,5 +100,15 @@ public class Character : MonoBehaviour, IDamageable
     public void ChangeWeapon(string itemGuid)
     {
         equipmentData.Equip(itemGuid);
+    }
+
+    public void increaseDamage(float amount)
+    {
+        baseStats.attack += amount;
+        Invoke("endEffectWeapon", 30f);
+    }
+    private void endEffectWeapon()
+    {
+        baseStats.attack = baseAttack;
     }
 }

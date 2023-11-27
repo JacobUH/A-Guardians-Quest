@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca476dfc9033194aab56f70f44bfb10, type: 3}
+  m_Name: 1002-YellowPotion
+  m_EditorClassIdentifier: 
+  type: 0
+  isStackable: 1
+  isDiscardable: 1
+  id: 1002
+  itemName: Potion of Unnatural Strength
+  sprite: {fileID: 0}
+  shortDescription: Adds damage to each strike for 30 seconds
+  longDescription: 
+  cost: 010000000300000005000000
+  quantityToSell: 2
+  itemEffects:
+  - {fileID: 0}
