@@ -12,6 +12,7 @@ public class AudioManager : SingletonMonobehaviour<AudioManager>
     {
         base.Awake();
         audioSource = GetComponent<AudioSource>();
+        
     }
 
     public void MuteBGM()

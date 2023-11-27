@@ -31,6 +31,7 @@ public class VideoPlayerController : MonoBehaviour
         canvasUI.SetActive(false);
         Time.timeScale = 0.0f;
         videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer.SetDirectAudioVolume(0, PlayerPrefs.GetFloat("CutsceneAudio"));
         videoPlayer.loopPointReached += OnVideoFinished;
         videoPlayer.Play();
     }

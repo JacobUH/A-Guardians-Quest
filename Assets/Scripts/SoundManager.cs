@@ -9,6 +9,10 @@ public class SoundManager : MonoBehaviour {
     public Slider volumeSlider;
 
     void Start() {
+        if (!PlayerPrefs.HasKey("CutsceneSound"))
+        {
+            PlayerPrefs.SetFloat("CutsceneSound", 0.5f);
+        }
         if(!PlayerPrefs.HasKey("musicVolume")) {
             PlayerPrefs.SetFloat("musicVolume", 1);
         }
