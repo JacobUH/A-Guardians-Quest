@@ -9,6 +9,7 @@ public class PlayerJumpState : PlayerState
 
     public override void Enter()
     {
+        playerStateMachine.isJumping = true;
         AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
         attackHandler.HitboxDisabled();
         attackHandler.DisabledSwordTrail();
@@ -20,6 +21,7 @@ public class PlayerJumpState : PlayerState
 
     public override void Exit()
     {
+        playerStateMachine.isJumping = false;
         InputReader.Instance.DpadDownButtonPressEvent -= LockOnMode;
     }
 

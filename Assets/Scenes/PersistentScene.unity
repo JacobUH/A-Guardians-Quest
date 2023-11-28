@@ -3518,7 +3518,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.55614203, y: 0.000000046885688, z: -0.00000003137469, w: 0.83108723}
+  m_LocalRotation: {x: 0.55614203, y: -0.000000046885702, z: 0.000000031374697, w: 0.83108723}
   m_LocalPosition: {x: -1187, y: 4.231864, z: -1.031864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26311,7 +26311,7 @@ MonoBehaviour:
   chaseSpeed: 2
   dodgeSpeed: 6
   changeDirectionSpeed: 15
-  jumpForce: 28
+  jumpForce: 9
   walkMode: 0
   isDashing: 0
   groundCheckDistance: 1
@@ -26332,6 +26332,8 @@ MonoBehaviour:
   bowBack: {fileID: 1400089762}
   footstepSource: {fileID: 1469337932}
   currentItemGuid: 1001
+  isJumping: 0
+  isFalling: 0
 --- !u!114 &1469337922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26373,6 +26375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ec2de780b94a84d871eb70009c598c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  psm: {fileID: 1469337921}
   gravity: -9.8
   drag: 0.3
   stateMachine: {fileID: 1469337921}
@@ -26612,10 +26615,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
-  checkRadius: 0.2
+  checkRadius: 0.3
   groundMaxDistance: 0.2
   groundMaxAngle: 60
-  slideStrength: 3
+  slideStrength: 1
   groundAngle: 0
   groundDistance: 0
 --- !u!1 &1490451005
@@ -35823,7 +35826,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.71160614, y: 0.00000006818278, z: -0.00000002784301, w: 0.7025786}
+  m_LocalRotation: {x: 0.71160614, y: -0.00000003256357, z: 0.000000013297606, w: 0.7025786}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

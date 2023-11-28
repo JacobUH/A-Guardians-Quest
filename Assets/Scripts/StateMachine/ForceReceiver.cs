@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ForceReceiver : MonoBehaviour
 {
+    [SerializeField] private PlayerStateMachine psm;
     [SerializeField] private float gravity;
     [SerializeField] private float drag;
     [SerializeField] private StateMachine stateMachine;
@@ -27,13 +28,30 @@ public class ForceReceiver : MonoBehaviour
 
     private void CalculateGravity()
     {
-        if (controller.isGrounded)
+        if (psm != null)
         {
-            verticalVelocity = gravity * 100f * Time.deltaTime;
+            if (psm.isJumping || psm.isFalling)
+            {
+                if (verticalVelocity > gravity)
+                {
+                    verticalVelocity += gravity * Time.deltaTime * 3f;
+                }
+            }
+            else
+            {
+                verticalVelocity = gravity * 0.5f;
+            }
         }
         else
         {
-            verticalVelocity += gravity * Time.deltaTime;
+            if (controller.isGrounded)
+            {
+                verticalVelocity = gravity * 100f * Time.deltaTime;
+            }
+            else
+            {
+                verticalVelocity += gravity * Time.deltaTime;
+            }
         }
     }
 
@@ -48,7 +66,6 @@ public class ForceReceiver : MonoBehaviour
 
     public void Jump()
     {
-        if (!controller.isGrounded) return;
-        verticalVelocity += Mathf.Sqrt(stateMachine.jumpForce * - 2f * gravity);
+        verticalVelocity = psm.jumpForce;
     }
 }
