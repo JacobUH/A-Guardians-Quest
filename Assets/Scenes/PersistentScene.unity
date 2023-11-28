@@ -3521,9 +3521,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07cc3598ca9be343a8e14b061b99e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalSpeed: 0.6
-  horizontalSpeed: 170
+  cameraSensitive: 0.4
+  maxX: 180
+  minX: 50
+  maxY: 1
+  minY: 0.3
   zoomSpeed: 3
+  mouseZoomSpeed: 50
   spanSpeed: 250
   topMaxHeight: 7
   topMaxRadius: 4
@@ -3578,8 +3582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: -1
-  AutoEnableInputs: 0
-  XYAxis: {fileID: 0}
+  AutoEnableInputs: 1
+  XYAxis: {fileID: 9069663263648297814, guid: ecf3f0550f1e4cb498b34839d9d45967, type: 3}
   ZAxis: {fileID: 0}
 --- !u!1 &321564833
 GameObject:
@@ -3755,7 +3759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.55614203, y: 0.000000046885685, z: -0.000000031374686, w: 0.83108723}
+  m_LocalRotation: {x: 0.55614203, y: -0.000000046885702, z: 0.000000031374697, w: 0.83108723}
   m_LocalPosition: {x: -1187, y: 4.231864, z: -1.031864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26593,6 +26597,7 @@ GameObject:
   - component: {fileID: 1469337930}
   - component: {fileID: 1469337931}
   - component: {fileID: 1469337932}
+  - component: {fileID: 1469337933}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -26686,12 +26691,11 @@ MonoBehaviour:
   chaseSpeed: 2
   dodgeSpeed: 6
   changeDirectionSpeed: 15
-  jumpForce: 28
+  jumpForce: 9
   walkMode: 0
   isDashing: 0
   groundCheckDistance: 1
   slideSpeed: 2
-  isGrounded: 0
   slideDirection: {x: 0, y: 0, z: 0}
   attackRange: 2
   controller: {fileID: 1469337919}
@@ -26700,6 +26704,7 @@ MonoBehaviour:
   comboManager: {fileID: 1469337924}
   character: {fileID: 1469337929}
   targetManager: {fileID: 1554147453}
+  groundChecker: {fileID: 0}
   mainCameraTransform: {fileID: 330585546}
   swordMainHand: {fileID: 440184259}
   bowMainHand: {fileID: 1704164199}
@@ -26707,6 +26712,8 @@ MonoBehaviour:
   bowBack: {fileID: 1400089762}
   footstepSource: {fileID: 1469337932}
   currentItemGuid: 1001
+  isJumping: 0
+  isFalling: 0
 --- !u!114 &1469337922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26748,6 +26755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ec2de780b94a84d871eb70009c598c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  psm: {fileID: 1469337921}
   gravity: -9.8
   drag: 0.3
   stateMachine: {fileID: 1469337921}
@@ -26970,6 +26978,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1469337933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469337917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1613f6c8b54e7464c82014899976db4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  isGrounded: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  checkRadius: 0.3
+  groundMaxDistance: 0.2
+  groundMaxAngle: 60
+  slideStrength: 1
+  groundAngle: 0
+  groundDistance: 0
 --- !u!1 &1490451005
 GameObject:
   m_ObjectHideFlags: 0
@@ -33741,7 +33772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652263291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7238417, y: -0.000000028662265, z: 0.000000012296444, w: 0.68996614}
+  m_LocalRotation: {x: 0.7238418, y: 0.000000026882022, z: -0.000000011532704, w: 0.6899661}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36250,7 +36281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.71160614, y: 0.00000006818277, z: -0.000000027843011, w: 0.7025786}
+  m_LocalRotation: {x: 0.71160614, y: -0.00000003256357, z: 0.000000013297606, w: 0.7025786}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

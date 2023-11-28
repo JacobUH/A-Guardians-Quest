@@ -13,7 +13,7 @@ public abstract class PlayerState : State
 
     public void Move(Vector3 movement)
     {
-        playerStateMachine.controller.Move((movement + playerStateMachine.forceReceiver.GetForce() + playerStateMachine.slideDirection) * Time.deltaTime);
+        playerStateMachine.controller.Move((movement + playerStateMachine.forceReceiver.GetForce() + playerStateMachine.groundChecker.slidingForce) * Time.deltaTime);
     }
 
     public Vector3 CalculateMovement()
