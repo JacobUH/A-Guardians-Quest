@@ -7,7 +7,7 @@ public class DamageBoost : ItemEffect
 {
     [SerializeField] private int increaseAmount;
     [SerializeField] private GameObject damageEffect;
-    [SerializeField] private float duration;
+    [SerializeField] private int duration;
     
 
     public override void ResolveEffect(GameObject target)
