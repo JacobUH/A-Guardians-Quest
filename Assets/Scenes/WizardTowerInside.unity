@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 3640250757048697631}
   - component: {fileID: 7586166604398935951}
   - component: {fileID: 4997126396705347368}
+  - component: {fileID: 7586166604398935952}
   m_Layer: 0
   m_Name: BookShelves1
   m_TagString: Untagged
@@ -4225,6 +4226,7 @@ GameObject:
   - component: {fileID: 7769683447275075170}
   - component: {fileID: 8153425899899627990}
   - component: {fileID: 9176900457138313550}
+  - component: {fileID: 9176900457138313551}
   m_Layer: 0
   m_Name: BookShelves2
   m_TagString: Untagged
@@ -4836,6 +4838,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315779257354874905}
+  m_Mesh: {fileID: 6298494483047799700, guid: 4beb8010965521d47acffb320334ac7f, type: 3}
+--- !u!64 &7586166604398935952
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315779257354874905}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 6298494483047799700, guid: 4beb8010965521d47acffb320334ac7f, type: 3}
 --- !u!23 &7684669407849497664
 MeshRenderer:
@@ -5845,6 +5869,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9176900457138313551
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6508827331835975261}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7196802604745430461, guid: 4beb8010965521d47acffb320334ac7f, type: 3}
 --- !u!1 &9221666735395808387
 GameObject:
   m_ObjectHideFlags: 0

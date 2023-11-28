@@ -167,12 +167,14 @@ public class PlayerFreeLookState : PlayerState
         if (playerStateMachine.currentItemGuid == "1001")
         {
             playerStateMachine.currentItemGuid = "1002";
-            
+            GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1002");
+
         }
         else if (playerStateMachine.currentItemGuid == "1002")
         {
             playerStateMachine.currentItemGuid = "1001";
-            
+            GameObject.FindObjectOfType<QuickSlotManager>().UpdateCurrentItemInfo("1001");
+
         }
         
         Debug.Log($"Current Item {playerStateMachine.currentItemGuid}");
