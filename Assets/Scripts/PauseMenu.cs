@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 
@@ -14,7 +16,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject optionsUI;
     public string MainMenu;
     public GameObject CharacterUI;
-    
+
+    private void Start()
+    {
+        InputReader.Instance.StartButtonPressEvent += StartButtonHandler;
+    }
 
     // Update is called once per frame
     void Update()
@@ -70,4 +76,15 @@ public class PauseMenu : MonoBehaviour
         optionsUI.SetActive(true);
     }
     
+    private void StartButtonHandler()
+    {
+        if (isPaused)
+        {
+            resume();
+        }
+        else
+        {
+            pause();
+        }
+    }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ShopTrigger : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class ShopTrigger : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player") && Input.GetKeyDown(KeyCode.X))
+        if(other.CompareTag("Player") && (Input.GetKeyDown(KeyCode.X) || Gamepad.current.buttonSouth.isPressed))
         {
             shop.SetActive(true);
             pauseMenu.SetActive(false);
@@ -22,7 +23,7 @@ public class ShopTrigger : MonoBehaviour
     }
     private void Update()
     {
-        if (inMenu && Input.GetKeyDown(KeyCode.Escape))
+        if (inMenu && (Input.GetKeyDown(KeyCode.Escape) || Gamepad.current.buttonEast.isPressed))
         {
             shop.SetActive(false);
             pauseMenu.SetActive(true);

@@ -27,7 +27,7 @@ public class BossMoveToCenterState : BossState
         float distance = Vector3.Distance(sm.transform.position, target.transform.position);
         if (distance > 0.1f)
         {
-            FaceTarget(target);
+            FaceTargetInstantly(target);
             Move(direction.normalized * sm.chaseSpeed);
         }
         else sm.SwitchState(new BossSpecialState(sm));
