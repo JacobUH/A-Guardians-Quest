@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossZone.unity
     guid: 2e729757dd6427f4886f0837c8c23d19
+  - enabled: 1
+    path: Assets/Scenes/ForestZone.unity
+    guid: f0b84f528fbda814193b7caf66f1f5c5
   m_configObjects: {}
