@@ -27,10 +27,12 @@ public class InventoryBox : SingletonMonobehaviour<InventoryBox>
     {
         if (inventoryDictionary.TryGetValue(itemGuid, out InventorySlot slot))
         {
+            Debug.Log($"Got Item {itemGuid}");
             slot.Add(quantity);
         }
         else
         {
+            Debug.Log($"Got New Item {itemGuid}");
             InventorySlot newSlot = new InventorySlot(itemGuid, quantity);
             inventoryList.Add(newSlot);
             inventoryDictionary.Add(itemGuid, newSlot);

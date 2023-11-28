@@ -140,6 +140,12 @@ public abstract class PlayerState : State
         WeaponItemData currentWeapon = playerStateMachine.character.GetCurrentWeaponData();
         if (currentWeapon.weaponType == WeaponType.Sword)
         {
+            if (InventoryBox.Instance.CheckInventory("5002") == null)
+            {
+                Debug.Log($"You don't have a bow yet.");
+                return;
+            }
+            Debug.Log($"Switch to Bow.");
             playerStateMachine.character.ChangeWeapon("5002");
             playerStateMachine.swordMainHand.SetActive(false);
             playerStateMachine.bowBack.SetActive(false);
@@ -148,6 +154,7 @@ public abstract class PlayerState : State
         }
         else if (currentWeapon.weaponType == WeaponType.Bow)
         {
+            Debug.Log($"Switch to Sword.");
             playerStateMachine.character.ChangeWeapon("5001");
             playerStateMachine.swordMainHand.SetActive(true);
             playerStateMachine.bowBack.SetActive(true);

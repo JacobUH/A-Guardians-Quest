@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1402036301047889183}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1189.7614, y: 1, z: 4.230821}
+  m_LocalPosition: {x: -1126.3516, y: -0.0026148558, z: 229.41974}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -81,7 +81,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 4
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &3840146952629055891
 MonoBehaviour:
@@ -100,6 +100,8 @@ MonoBehaviour:
   quantity: 1
   isFloating: 1
   audioSource: {fileID: 2536733666029900719}
+  collectSpeed: 10
+  collectRange: 0
 --- !u!82 &2536733666029900719
 AudioSource:
   m_ObjectHideFlags: 0

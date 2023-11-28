@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
+    [SerializeField] private Character character;
     [SerializeField] List<GameObject> dropItemPrefabs;
     [SerializeField] private float spawnInterval = 1f;
     [SerializeField] private float spawnRadius = 2f;
 
     private void Start()
     {
-        StartCoroutine(DropCoroutine());
+        character.DieEvent += DropItem;
+    }
+
+    private void DropItem(GameObject thisGameObject)
+    {
+        if (thisGameObject == gameObject) StartCoroutine(DropCoroutine());
     }
 
     private IEnumerator DropCoroutine()
@@ -28,5 +34,9 @@ public class ItemSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
         }
         Destroy(this.gameObject);
+    }
+    private void OnDestroy()
+    {
+        character.DieEvent -= DropItem;
     }
 }

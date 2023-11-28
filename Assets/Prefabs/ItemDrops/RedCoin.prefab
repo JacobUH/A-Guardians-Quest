@@ -81,7 +81,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 4
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &3840146952629055891
 MonoBehaviour:
@@ -100,6 +100,8 @@ MonoBehaviour:
   quantity: 1
   isFloating: 1
   audioSource: {fileID: 6260242197737507795}
+  collectSpeed: 10
+  collectRange: 0
 --- !u!82 &6260242197737507795
 AudioSource:
   m_ObjectHideFlags: 0

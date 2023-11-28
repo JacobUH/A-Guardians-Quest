@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 5580234981274530586}
   - component: {fileID: 1026095539947790403}
   - component: {fileID: 5681303203830885003}
+  - component: {fileID: 3141375088025941952}
   m_Layer: 3
   m_Name: SkeletonWarrior
   m_TagString: Enemy
@@ -527,6 +528,7 @@ MonoBehaviour:
   weaponCollider: {fileID: 7279805812307373121}
   attacks:
   - {fileID: 11400000, guid: 27cb85564b9abf74eb51f1116b5efd82, type: 2}
+  swordTrailEffect: {fileID: 0}
 --- !u!114 &5580234981274530586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +560,7 @@ MonoBehaviour:
   isDead: 0
   isUnflinching: 0
   isInvincible: 0
+  attacks: []
   healthBar: {fileID: 4118429419338667167}
   healthBarTextMesh: {fileID: 0}
   baseStats:
@@ -607,6 +610,27 @@ MonoBehaviour:
   character: {fileID: 1026095539947790403}
   targetManager: {fileID: 2562698154432667924}
   patrolPath: []
+  isAggro: 0
+  isPatrol: 0
+--- !u!114 &3141375088025941952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6121232949861654584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a31b6f51e39624fa97021941e702fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 1026095539947790403}
+  dropItemPrefabs:
+  - {fileID: 1402036301047889183, guid: d767da4848cee9d4596fbbb0313563bc, type: 3}
+  - {fileID: 1402036301047889183, guid: 664d95e9a4d546b42ba020d15a22feeb, type: 3}
+  - {fileID: 1402036301047889183, guid: c90bfa12f8aaf4c428b0f16873484033, type: 3}
+  spawnInterval: 0.2
+  spawnRadius: 2.5
 --- !u!1 &6272423119385921212
 GameObject:
   m_ObjectHideFlags: 0

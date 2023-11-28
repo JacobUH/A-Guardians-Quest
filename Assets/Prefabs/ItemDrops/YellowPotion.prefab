@@ -53,7 +53,7 @@ CharacterController:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Height: 0
   m_Radius: 0
@@ -81,7 +81,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 5
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &3840146952629055891
 MonoBehaviour:
@@ -98,8 +98,10 @@ MonoBehaviour:
   controller: {fileID: 0}
   itemID: 1002
   quantity: 1
-  isFloating: 0
+  isFloating: 1
   audioSource: {fileID: 1310391284083578376}
+  collectSpeed: 10
+  collectRange: 0
 --- !u!82 &1310391284083578376
 AudioSource:
   m_ObjectHideFlags: 0
