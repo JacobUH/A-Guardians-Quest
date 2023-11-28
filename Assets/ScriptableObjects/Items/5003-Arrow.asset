@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca476dfc9033194aab56f70f44bfb10, type: 3}
+  m_Name: 5003-Arrow
+  m_EditorClassIdentifier: 
+  type: 0
+  isStackable: 1
+  isDiscardable: 1
+  id: 5003
+  itemName: Arrow
+  sprite: {fileID: 21300000, guid: a212bc6434e622f46a63ae0ebd08d1d8, type: 3}
+  shortDescription: An arrow made out of wood.
+  longDescription: 
+  cost: 010000000000000000000000
+  quantityToSell: 99999
+  itemEffects: []

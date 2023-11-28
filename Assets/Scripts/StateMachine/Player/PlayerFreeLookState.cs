@@ -110,6 +110,14 @@ public class PlayerFreeLookState : PlayerState
         }
         else if (weaponType == WeaponType.Bow)
         {
+            InventorySlot arrowSlot = InventoryBox.Instance.CheckInventory("5003");
+            if (arrowSlot == null || arrowSlot.quantity < 1)
+            {
+                Debug.Log($"Out of arrow.");
+                return;
+            }
+            InventoryBox.Instance.RemoveItem("5003", 1);
+            EventHandler.OnUseItemEvent("5003");
             playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.normalBowCombo, 0));
         }
         else return;
