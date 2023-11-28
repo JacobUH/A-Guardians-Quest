@@ -16,7 +16,6 @@ public class StateMachine : MonoBehaviour
     public bool isDashing;
     public float groundCheckDistance = 0.2f;
     public float slideSpeed = 2.0f;
-    public bool isGrounded;
     public Vector3 slideDirection;
 
     [Header("Combat Parameters")]
@@ -29,13 +28,13 @@ public class StateMachine : MonoBehaviour
     public ComboManager comboManager;
     public Character character;
     public TargetManager targetManager;
+    public GroundChecker groundChecker;
 
     private State currentState;
     private Vector3 groundNormal;
 
     public virtual void Update()
     {
-        GroundCheck();
         currentState?.Tick();
     }
 
@@ -47,6 +46,7 @@ public class StateMachine : MonoBehaviour
         comboManager = GetComponent<ComboManager>();
         character = GetComponent<Character>();
         targetManager = GetComponentInChildren<TargetManager>();
+        groundChecker = GetComponent<GroundChecker>();
         character.DamageEvent += OnDamage;
         character.DieEvent += OnDie;
     }
@@ -63,17 +63,6 @@ public class StateMachine : MonoBehaviour
 
     public virtual void OnDie(GameObject dieCharacter)
     { }
-
-    public void GroundCheck()
-    {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, groundCheckDistance);
-
-        groundNormal = hit.normal;
-        float groundAngle = Vector3.Angle(Vector3.up, groundNormal);
-        if (groundAngle > 45)
-            ApplySlide();
-        else slideDirection = Vector3.zero;
-    }
 
     private void ApplySlide()
     {

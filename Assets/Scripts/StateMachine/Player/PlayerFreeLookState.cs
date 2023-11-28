@@ -49,7 +49,7 @@ public class PlayerFreeLookState : PlayerState
         UpdateAnimator();
         HandleCameraMovement();
         HandlePlayerMovement();
-        if (!playerStateMachine.controller.isGrounded) playerStateMachine.SwitchState(new PlayerFallingState(playerStateMachine));
+        if (!playerStateMachine.groundChecker.IsGrounded) playerStateMachine.SwitchState(new PlayerFallingState(playerStateMachine));
 
         footstepInterval += Time.deltaTime;
         if (InputReader.Instance.leftStickValue == Vector2.zero) return;
