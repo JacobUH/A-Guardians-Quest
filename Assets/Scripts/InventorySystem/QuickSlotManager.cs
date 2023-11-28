@@ -60,7 +60,10 @@ public class QuickSlotManager : MonoBehaviour
 
     public void UpdateCurrentItemInfo(string itemGuid)
     {
-        currentItemSlot = InventoryBox.Instance.CheckInventory("1001");
+        if (itemGuid == "1001" || itemGuid == "1002")
+        {
+            currentItemSlot = InventoryBox.Instance.CheckInventory(itemGuid);
+        }
         UpdateUI();
     }
 

@@ -17,10 +17,10 @@ MonoBehaviour:
   isDiscardable: 1
   id: 1002
   itemName: Potion of Unnatural Strength
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 42438417b56199142918a7803d2ec8a6, type: 3}
   shortDescription: Adds damage to each strike for 30 seconds
-  longDescription: 
+  longDescription: ' '
   cost: 010000000300000005000000
-  quantityToSell: 2
+  quantityToSell: 5
   itemEffects:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 41fd1f30f9ea4414c99569b52ebdafd2, type: 2}

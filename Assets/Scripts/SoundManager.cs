@@ -14,7 +14,7 @@ public class SoundManager : MonoBehaviour {
             PlayerPrefs.SetFloat("CutsceneSound", 0.5f);
         }
         if(!PlayerPrefs.HasKey("musicVolume")) {
-            PlayerPrefs.SetFloat("musicVolume", 1);
+            PlayerPrefs.SetFloat("musicVolume", .5f);
         }
         Load();
     }

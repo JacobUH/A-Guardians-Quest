@@ -676,6 +676,7 @@ GameObject:
   - component: {fileID: 2581333090765234547}
   - component: {fileID: 7576557863286403645}
   - component: {fileID: 1212446817752829822}
+  - component: {fileID: 7576557863286403646}
   m_Layer: 0
   m_Name: MoneyBag.001
   m_TagString: Untagged
@@ -3442,15 +3443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce2d1a7627605842ae2e099ac70fd0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quest:
-    questName: 
-    questDescription: 
-    questID: 0
-    coinReward: 
-    completed: 0
-    defaultResponse:
-      NPC: 
-      dialogue: []
+  questNum: 0
 --- !u!4 &5436606270593375137
 Transform:
   m_ObjectHideFlags: 0
@@ -4627,6 +4620,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926642993813815722}
+  m_Mesh: {fileID: 7418458049473408977, guid: 0af0e8b809747fe4680e1458b312da1a, type: 3}
+--- !u!64 &7576557863286403646
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926642993813815722}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 7418458049473408977, guid: 0af0e8b809747fe4680e1458b312da1a, type: 3}
 --- !u!33 &7645061608133151045
 MeshFilter:

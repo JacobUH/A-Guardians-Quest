@@ -20,4 +20,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: dbc6166e66394f2428ec9f05c9d98ab4, type: 3}
   shortDescription: 
   longDescription: 
+  cost: 000000000000000000000000
+  quantityToSell: 0
   itemEffects: []
