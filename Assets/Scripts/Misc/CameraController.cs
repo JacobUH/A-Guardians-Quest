@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class CameraController : SingletonMonobehaviour<CameraController>
 {
-    [Range(0f,1f)] [SerializeField] float cameraSensitive = 0.5f;
+    [Range(0f,1f)] [SerializeField] public float cameraSensitive = 0.5f;
     [SerializeField] private float maxX = 180f;
     [SerializeField] private float minX = 50f;
     [SerializeField] private float maxY = 1f;

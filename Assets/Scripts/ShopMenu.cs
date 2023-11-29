@@ -10,6 +10,8 @@ public class ShopMenu : MonoBehaviour
 {
     private QuickSlotManager qms;
     public DialogueTrigger defaultResponse;
+    public Dialogue OutOfStock;
+    public Dialogue NotEnoughMoney;
     
     
     void Start()
@@ -27,7 +29,7 @@ public class ShopMenu : MonoBehaviour
     {
         ItemData Item = button.gameObject.GetComponent<ShopItem>().item4Sale;
         qms = FindObjectOfType<QuickSlotManager>();
-        if (canBuy(Item))
+        if (canBuy(Item, button))
         {
             InventoryBox.Instance.AddItem(Item.id.ToString(),1);
             InventoryBox.Instance.RemoveItem("9999", Item.cost[0]);
@@ -38,8 +40,6 @@ public class ShopMenu : MonoBehaviour
         }
         else
         {
-            button.interactable = false;
-            button.transform.Find("SoldOut").gameObject.SetActive(true);
             defaultResponse.triggerDialogue();
 
         }
@@ -49,27 +49,34 @@ public class ShopMenu : MonoBehaviour
 
     
 
-    private bool canBuy(ItemData Item)
+    private bool canBuy(ItemData Item, Button button)
     {
         int[] prices = Item.cost;
 
         if(Item.quantityToSell == 0)
         {
+            defaultResponse.dialogue = OutOfStock;
+            button.interactable = false;
+            button.transform.Find("SoldOut").gameObject.SetActive(true);
             return false;
         }
         
         if (prices[0] > InventoryBox.Instance.CheckInventory("9999").quantity)
         {
+            defaultResponse.dialogue = NotEnoughMoney;
             return false;
         }
         if (prices[1] > InventoryBox.Instance.CheckInventory("9998").quantity)
         {
+            defaultResponse.dialogue = NotEnoughMoney;
             return false;
         }
         if (prices[2] > InventoryBox.Instance.CheckInventory("9997").quantity)
         {
+            defaultResponse.dialogue = NotEnoughMoney;
             return false;
         }
+
         return true;
         
     }

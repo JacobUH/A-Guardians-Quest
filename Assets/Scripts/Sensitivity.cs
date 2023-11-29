@@ -12,14 +12,33 @@ public class Sensitivity : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("Sens"))
         {
-            PlayerPrefs.SetInt("Sens",0);
+            PlayerPrefs.SetFloat("Sens",0.4f);
         }
-        slider.value = PlayerPrefs.GetInt("Sens");
+        slider.value = PlayerPrefs.GetFloat("Sens");
+        try
+        {
+            setSens();
+        }
+        catch { }
     }
 
 
     public void setSens()
     {
-        
+        FindObjectOfType<CameraController>().cameraSensitive = PlayerPrefs.GetFloat("Sens");
+    }
+
+    public void changeSens()
+    {
+        PlayerPrefs.SetFloat("Sens", slider.value);
+        try
+        {
+            setSens();
+        }
+        catch { }
+    }
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
     }
 }
