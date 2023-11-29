@@ -21,7 +21,7 @@ MonoBehaviour:
   shortDescription: 
   longDescription: 
   cost: 0a0000000a0000000a000000
-  quantityToSell: 1
+  quantityToSell: 0
   equipmentType: 0
   hp: 0
   atk: 5

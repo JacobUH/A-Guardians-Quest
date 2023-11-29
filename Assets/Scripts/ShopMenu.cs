@@ -35,15 +35,28 @@ public class ShopMenu : MonoBehaviour
             InventoryBox.Instance.RemoveItem("9997", Item.cost[2]);
             qms.UpdateUI();
             CoinManager.Instance.UpdateUI();
+
+            if (Item.id == 5002)
+            {
+                if (button.FindSelectableOnRight().gameObject)
+                {
+                    EventSystem.current.SetSelectedGameObject(button.FindSelectableOnRight().gameObject);
+                }
+                else
+                if (button.FindSelectableOnLeft().gameObject)
+                {
+                    EventSystem.current.SetSelectedGameObject(button.FindSelectableOnLeft().gameObject);
+                }
+                button.interactable = false;
+                button.transform.Find("SoldOut").gameObject.SetActive(true);
+            }
         }
-        else
+        /*else
         {
             button.interactable = false;
             button.transform.Find("SoldOut").gameObject.SetActive(true);
             defaultResponse.triggerDialogue();
-
-        }
-
+        }*/
     }
 
 
@@ -52,11 +65,6 @@ public class ShopMenu : MonoBehaviour
     private bool canBuy(ItemData Item)
     {
         int[] prices = Item.cost;
-
-        if(Item.quantityToSell == 0)
-        {
-            return false;
-        }
         
         if (prices[0] > InventoryBox.Instance.CheckInventory("9999").quantity)
         {

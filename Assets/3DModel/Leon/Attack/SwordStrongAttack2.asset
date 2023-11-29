@@ -21,11 +21,12 @@ MonoBehaviour:
   moveStartTime: 0
   moveEndTime: 0
   nextComboIndex: -1
+  nextStrongComboIndex: -1
   nextComboEnableTime: 0
   damage: 20
   knockBack: 2
   launchForce: 0
-  hitLagDuration: 0.1
+  hitLagDuration: 0.2
   projectileSpeed: 0
   projectileLifetime: 0
-  hitLagStrength: 0.7
+  hitLagStrength: 0.5

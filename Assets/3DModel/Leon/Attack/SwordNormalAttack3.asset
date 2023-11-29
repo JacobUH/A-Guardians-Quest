@@ -29,4 +29,4 @@ MonoBehaviour:
   hitLagDuration: 0.2
   projectileSpeed: 0
   projectileLifetime: 0
-  hitLagStrength: 0.7
+  hitLagStrength: 0.5

@@ -24,9 +24,9 @@ MonoBehaviour:
   nextStrongComboIndex: -1
   nextComboEnableTime: 0.5
   damage: 30
-  knockBack: 25
-  launchForce: 25
-  hitLagDuration: 0.4
+  knockBack: 10
+  launchForce: 0
+  hitLagDuration: 0.2
   projectileSpeed: 0
   projectileLifetime: 0
   hitLagStrength: 0.5
