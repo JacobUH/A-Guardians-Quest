@@ -3394,6 +3394,7 @@ MonoBehaviour:
   canvasUI: {fileID: 1355038559}
   videoPlayer: {fileID: 321564835}
   skipTooltip: {fileID: 242350537}
+  pauseMenu: {fileID: 1386348847}
 --- !u!328 &321564835
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -3535,7 +3536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.55614203, y: -0.000000046885702, z: 0.000000031374697, w: 0.83108723}
+  m_LocalRotation: {x: 0.55614203, y: 0.000000046885688, z: -0.00000003137469, w: 0.83108723}
   m_LocalPosition: {x: -1187, y: 4.231864, z: -1.031864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4091,6 +4092,7 @@ MonoBehaviour:
   canvasUI: {fileID: 1355038559}
   videoPlayer: {fileID: 384741822}
   skipTooltip: {fileID: 583730944}
+  pauseMenu: {fileID: 1386348847}
 --- !u!328 &384741822
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -6694,6 +6696,7 @@ MonoBehaviour:
   canvasUI: {fileID: 1355038559}
   videoPlayer: {fileID: 537229909}
   skipTooltip: {fileID: 1568836517}
+  pauseMenu: {fileID: 1386348847}
 --- !u!328 &537229909
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -21499,6 +21502,18 @@ Transform:
   - {fileID: 1002449405}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1386348847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7946715196697552467, guid: 2364ad62b5f738147b395de46398c33f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1628877419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628877420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc58d5a39ffe4646b40ff619dcb6b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1391283475
 GameObject:
   m_ObjectHideFlags: 0
@@ -36605,7 +36620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752737683}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7242672, y: -0.000000010824691, z: 0.0000000046518256, w: 0.68951946}
+  m_LocalRotation: {x: 0.7242672, y: 0.00000004617347, z: -0.000000019842687, w: 0.68951946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36912,7 +36927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.71160614, y: -0.00000003256357, z: 0.000000013297606, w: 0.7025786}
+  m_LocalRotation: {x: 0.71160614, y: 0.00000006818278, z: -0.00000002784301, w: 0.7025786}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37382,6 +37397,7 @@ MonoBehaviour:
   canvasUI: {fileID: 1355038559}
   videoPlayer: {fileID: 1810536023}
   skipTooltip: {fileID: 551374386}
+  pauseMenu: {fileID: 1386348847}
 --- !u!328 &1810536023
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -38958,6 +38974,7 @@ MonoBehaviour:
   canvasUI: {fileID: 1355038559}
   videoPlayer: {fileID: 1946349918}
   skipTooltip: {fileID: 301290935}
+  pauseMenu: {fileID: 1386348847}
 --- !u!1 &1969190775
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class VideoPlayerController : MonoBehaviour
     public GameObject canvasUI;
     public VideoPlayer videoPlayer;
     public GameObject skipTooltip;
+    public PauseMenu pauseMenu;
 
     private void Update()
     {
@@ -36,6 +37,7 @@ public class VideoPlayerController : MonoBehaviour
         skipTooltip.SetActive(true);
         videoPlayer.loopPointReached += OnVideoFinished;
         videoPlayer.Play();
+        pauseMenu.videoPlaying = true;
     }
 
     private void OnVideoFinished(VideoPlayer vp)
@@ -46,7 +48,8 @@ public class VideoPlayerController : MonoBehaviour
         InputReader.Instance.EnableFreelookInputReader();
         AudioManager.Instance.UnmuteBGM();
         videoPlayer.loopPointReached -= OnVideoFinished;
-        this.gameObject.SetActive(false);
         skipTooltip.SetActive(false);
+        pauseMenu.videoPlaying = false;
+        this.gameObject.SetActive(false);
     }
 }
