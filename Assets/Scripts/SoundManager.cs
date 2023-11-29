@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.tvOS;
+using UnityEngine.Video;
 
 public class SoundManager : MonoBehaviour {
 
     public Slider volumeSlider;
+    public Slider cutsceneSlider;
+
+    private float preMute;
 
     void Start() {
-        if (!PlayerPrefs.HasKey("CutsceneSound"))
-        {
-            PlayerPrefs.SetFloat("CutsceneSound", 0.5f);
-        }
+        
         if(!PlayerPrefs.HasKey("musicVolume")) {
             PlayerPrefs.SetFloat("musicVolume", .5f);
         }
@@ -39,5 +41,33 @@ public class SoundManager : MonoBehaviour {
 
     private void Save() {
         PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+    }
+
+    public void muteCutscene(bool muted)
+    {
+        if (muted)
+        {
+            preMute = cutsceneSlider.value;
+            cutsceneSlider.value = 0.0f;
+            onVolChange();
+        }
+        else
+        {
+            cutsceneSlider.value = preMute;
+            onVolChange();
+        }
+    }
+
+    public void onVolChange()
+    {
+        if (GameObject.FindObjectsOfType<VideoPlayer>().Length != 0)
+        {
+            foreach (VideoPlayer vp in GameObject.FindObjectsOfType<VideoPlayer>())
+            {
+                vp.SetDirectAudioVolume(0, cutsceneSlider.value);
+            }
+        }
+
+        PlayerPrefs.SetFloat("CutsceneVol", cutsceneSlider.value);
     }
 }
