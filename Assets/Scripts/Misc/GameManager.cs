@@ -10,6 +10,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private float cursorHideDelay = 3.0f; 
     private float lastMouseActivityTime;
 
+    public bool IsInMenu => isInMenu;
     protected override void Awake()
     {
         base.Awake();

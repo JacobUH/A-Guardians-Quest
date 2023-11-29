@@ -78,6 +78,8 @@ public class PauseMenu : MonoBehaviour
     
     private void StartButtonHandler()
     {
+        if (optionsUI.activeSelf) return;
+        if (GameManager.Instance.IsInMenu) return;
         if (isPaused)
         {
             resume();
