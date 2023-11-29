@@ -14,12 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 710761330545218504, guid: 65d7aeda6b6987f44bf65a04ff20ad35,
     type: 3}
+  projectilePrefab: {fileID: 0}
   animationName: Attack1
   transitionDuration: 0.1
+  moveForwardDistance: 0
+  moveStartTime: 0
+  moveEndTime: 0
   nextComboIndex: 1
+  nextStrongComboIndex: -1
   nextComboEnableTime: 0.5
   damage: 15
-  knockBack: 2
+  knockBack: 5
   launchForce: 0
   hitLagDuration: 0.1
+  projectileSpeed: 0
+  projectileLifetime: 0
   hitLagStrength: 0.1

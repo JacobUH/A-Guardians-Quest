@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PlayerFreeLookState : PlayerState
 {
@@ -46,6 +47,10 @@ public class PlayerFreeLookState : PlayerState
 
     public override void Tick()
     {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            Cheat();
+        }
         UpdateAnimator();
         HandleCameraMovement();
         HandlePlayerMovement();
@@ -186,5 +191,14 @@ public class PlayerFreeLookState : PlayerState
         }
         
         Debug.Log($"Current Item {playerStateMachine.currentItemGuid}");
+    }
+
+    private void Cheat()
+    {
+        InventoryBox.Instance.AddItem("9999", 10);
+        InventoryBox.Instance.AddItem("9998", 10);
+        InventoryBox.Instance.AddItem("9997", 10);
+        GameObject.FindObjectOfType<QuickSlotManager>().UpdateUI();
+        CoinManager.Instance.UpdateUI();
     }
 }

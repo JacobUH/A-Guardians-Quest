@@ -26651,7 +26651,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb13c5b4ee760b4d81cd99387bc3610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryList: []
+  inventoryList:
+  - itemGuid: 1001
+    quantity: 0
+  - itemGuid: 1002
+    quantity: 0
+  - itemGuid: 5003
+    quantity: 0
+  - itemGuid: 9997
+    quantity: 0
+  - itemGuid: 9998
+    quantity: 0
+  - itemGuid: 9999
+    quantity: 0
 --- !u!205 &1469337931
 LODGroup:
   m_ObjectHideFlags: 0

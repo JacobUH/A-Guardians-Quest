@@ -27,7 +27,7 @@ public class PlayerFallingState : PlayerState
     {
         HandlePlayerMovement();
         HandleCameraMovement();
-        if (playerStateMachine.controller.isGrounded)
+        if (playerStateMachine.groundChecker.IsGrounded)
         {
             playerStateMachine.SwitchState(new PlayerFreeLookState(playerStateMachine));
         }

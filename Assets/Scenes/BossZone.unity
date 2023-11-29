@@ -6225,8 +6225,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.5}
-  m_SizeDelta: {x: -600, y: 33}
+  m_AnchoredPosition: {x: 0, y: -35}
+  m_SizeDelta: {x: -200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1497833652
 MonoBehaviour:
@@ -6248,7 +6248,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Boss
+  m_text: 'Bones
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -13173,7 +13175,6 @@ MonoBehaviour:
   isDashing: 0
   groundCheckDistance: 0.2
   slideSpeed: 2
-  isGrounded: 0
   slideDirection: {x: 0, y: 0, z: 0}
   attackRange: 2
   controller: {fileID: 5491774304033563329}
@@ -13182,6 +13183,7 @@ MonoBehaviour:
   comboManager: {fileID: 5491774304033563326}
   character: {fileID: 5491774304033563325}
   targetManager: {fileID: 889451046}
+  groundChecker: {fileID: 0}
   targetInRange: 0
   targetDistance: 0
   fireballPrefab: {fileID: 8085482803599371413, guid: 61a7b9b63656fd944838e574df839c3d,
@@ -13202,6 +13204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ec2de780b94a84d871eb70009c598c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  psm: {fileID: 0}
   gravity: -9.8
   drag: 0.2
   stateMachine: {fileID: 0}

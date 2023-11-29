@@ -37,13 +37,26 @@ public class ShopMenu : MonoBehaviour
             InventoryBox.Instance.RemoveItem("9997", Item.cost[2]);
             qms.UpdateUI();
             CoinManager.Instance.UpdateUI();
+
+            if (Item.id == 5002)
+            {
+                if (button.FindSelectableOnRight().gameObject)
+                {
+                    EventSystem.current.SetSelectedGameObject(button.FindSelectableOnRight().gameObject);
+                }
+                else
+                if (button.FindSelectableOnLeft().gameObject)
+                {
+                    EventSystem.current.SetSelectedGameObject(button.FindSelectableOnLeft().gameObject);
+                }
+                button.interactable = false;
+                button.transform.Find("SoldOut").gameObject.SetActive(true);
+            }
         }
-        else
+        /*else
         {
             defaultResponse.triggerDialogue();
-
-        }
-
+        }*/
     }
 
 
