@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-using UnityEngine.tvOS;
 using UnityEngine.Video;
 
 public class SoundManager : MonoBehaviour {
