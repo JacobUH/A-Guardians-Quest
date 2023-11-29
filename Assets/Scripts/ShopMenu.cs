@@ -66,13 +66,13 @@ public class ShopMenu : MonoBehaviour
     {
         int[] prices = Item.cost;
 
-        if(Item.quantityToSell == 0)
+        /*if(Item.quantityToSell == 0)
         {
             defaultResponse.dialogue = OutOfStock;
             button.interactable = false;
             button.transform.Find("SoldOut").gameObject.SetActive(true);
             return false;
-        }
+        }*/
         
         if (prices[0] > InventoryBox.Instance.CheckInventory("9999").quantity)
         {

@@ -49,11 +49,11 @@ public class InventoryBox : SingletonMonobehaviour<InventoryBox>
                 return false;
             }
             slot.Remove(quantity);
-            if (slot.quantity <= 0)
+            /*if (slot.quantity <= 0)
             {
                 inventoryList.Remove(slot);
                 inventoryDictionary.Remove(itemGuid);
-            }
+            }*/
             return true;
         }
         else
