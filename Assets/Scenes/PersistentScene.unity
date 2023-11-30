@@ -294,7 +294,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0
+  - 1
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -562,7 +562,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0
+  - 1
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -3985,7 +3985,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0
+  - 1
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -4101,7 +4101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.55614203, y: -0.00000004688571, z: 0.0000000313747, w: 0.83108723}
+  m_LocalRotation: {x: 0.55614203, y: 0.000000046885685, z: -0.000000031374686, w: 0.83108723}
   m_LocalPosition: {x: -1187, y: 4.231864, z: -1.031864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4690,7 +4690,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0
+  - 1
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -7295,7 +7295,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0
+  - 1
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -18089,6 +18089,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sensitivity
       objectReference: {fileID: 0}
+    - target: {fileID: 2160757243148288388, guid: 77e0f7753840e8a4da45c57175798edb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2249135452375994948, guid: 77e0f7753840e8a4da45c57175798edb,
         type: 3}
       propertyPath: m_IsOn
@@ -18508,6 +18513,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603246659677349527, guid: 77e0f7753840e8a4da45c57175798edb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9156467182894123187, guid: 77e0f7753840e8a4da45c57175798edb,
         type: 3}
@@ -21440,7 +21450,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0
+  - 1
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -28637,7 +28647,8 @@ MonoBehaviour:
   currentItemGuid: 1001
   isJumping: 0
   isFalling: 0
-  saveTransform: {fileID: 0}
+  savePosition: {x: 0, y: 0, z: 0}
+  saveRotation: {x: 0, y: 0, z: 0, w: 0}
   saveScene: StartingZone
   retryMenuUI: {fileID: 241756353}
 --- !u!114 &1469337922
@@ -38421,7 +38432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.71160614, y: -0.000000032563577, z: 0.000000013297608, w: 0.7025786}
+  m_LocalRotation: {x: 0.71160614, y: 0.00000006818277, z: -0.000000027843011, w: 0.7025786}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -38993,7 +39004,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0
+  - 1
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -40623,7 +40634,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0
+  - 1
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00

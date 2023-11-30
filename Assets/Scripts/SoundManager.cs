@@ -11,37 +11,45 @@ public class SoundManager : MonoBehaviour {
     public Slider cutsceneSlider;
 
     private float preMute;
+    private float cutscenePreMute;
 
     void Start() {
         
         if(!PlayerPrefs.HasKey("musicVolume")) {
             PlayerPrefs.SetFloat("musicVolume", .5f);
         }
+        if (!PlayerPrefs.HasKey("CutsceneVol"))
+        {
+            PlayerPrefs.SetFloat("CutsceneVol", .5f);
+        }
         Load();
     }
-    
+    /*
     public void MuteToggle(bool muted) {
         if (muted) {
             AudioListener.volume = 0;
         } else {
             Load();
         }
-    }
+    }*/
 
-    public void ChangeVolume() {
-        AudioListener.volume = volumeSlider.value;
-        Save();
-    }
 
     private void Load() {
         volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        cutsceneSlider.value = PlayerPrefs.GetFloat("CutsceneVol");
         ChangeVolume();
+    }
+
+    public void ChangeVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
+        Save();
     }
 
     private void Save() {
         PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
     }
-
+    /*
     public void muteCutscene(bool muted)
     {
         if (muted)
@@ -55,7 +63,7 @@ public class SoundManager : MonoBehaviour {
             cutsceneSlider.value = preMute;
             onVolChange();
         }
-    }
+    }*/
 
     public void onVolChange()
     {
