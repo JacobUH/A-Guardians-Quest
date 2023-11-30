@@ -13,6 +13,9 @@ public class PlayerFallingState : PlayerState
     public override void Enter()
     {
         playerStateMachine.isFalling = true;
+        AttackHandler attackHandler = playerStateMachine.GetComponent<AttackHandler>();
+        attackHandler.HitboxDisabled();
+        attackHandler.DisabledSwordTrail();
         PlayAnimation(fallHash, crossFadeDuration);
         InputReader.Instance.DpadDownButtonPressEvent += LockOnMode;
     }
