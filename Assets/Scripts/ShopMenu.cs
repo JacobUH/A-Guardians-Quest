@@ -12,11 +12,16 @@ public class ShopMenu : MonoBehaviour
     public DialogueTrigger defaultResponse;
     public Dialogue OutOfStock;
     public Dialogue NotEnoughMoney;
+    public ItemData[] itemsForSale;
+    public int[] defaultQuantity;
     
     
     void Start()
     {
-        
+        for(int i = 0; i < itemsForSale.Length; i++)
+        {
+            itemsForSale[i].quantityToSell = defaultQuantity[i];
+        }
     }
     
 

@@ -715,6 +715,10 @@ MonoBehaviour:
     NPC: Shopkeeper
     dialogue:
     - You don't seem to have the wallet to match your eyes. Come back when it does.
+  itemsForSale:
+  - {fileID: 11400000, guid: e5134d107d178314dbef67674e82c857, type: 2}
+  - {fileID: 11400000, guid: 28b75b870f459b14eaac601fd436667f, type: 2}
+  defaultQuantity: 010000003f420f00
 --- !u!114 &51192928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3522,6 +3526,10 @@ MonoBehaviour:
     NPC: Wizard
     dialogue:
     - You don't have enough coins to purchase that... come back later.
+  itemsForSale:
+  - {fileID: 11400000, guid: 13ee59dc93858674ba11d6108af22bfa, type: 2}
+  - {fileID: 11400000, guid: 017d6bcdecb764046bf7573392deaddd, type: 2}
+  defaultQuantity: 050000007f969800
 --- !u!114 &291751087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35944,7 +35952,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652263291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7238417, y: -0.000000028662265, z: 0.000000012296444, w: 0.68996614}
+  m_LocalRotation: {x: 0.7238418, y: 0.000000026882022, z: -0.000000011532704, w: 0.6899661}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -38246,7 +38254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752737683}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7242672, y: -0.000000010824691, z: 0.0000000046518256, w: 0.68951946}
+  m_LocalRotation: {x: 0.7242672, y: 0.00000004617347, z: -0.000000019842687, w: 0.68951946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
