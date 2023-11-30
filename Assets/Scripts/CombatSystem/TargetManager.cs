@@ -58,6 +58,11 @@ public class TargetManager : MonoBehaviour
         return nearestTarget;
     }
 
+    public void ClearTargetList()
+    {
+        targets.Clear(); ;
+    }
+
     public bool IsTargetInFront()
     {
         if (currentTarget == null) return false;

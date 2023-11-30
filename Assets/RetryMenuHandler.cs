@@ -58,6 +58,7 @@ public class RetryMenuHandler : MonoBehaviour
         controller.enabled = true;
         psm.forceReceiver.enabled = true;
         character.Revive();
+        psm.targetManager.ClearTargetList();
         psm.SwitchState(new PlayerFreeLookState(psm));
 
         retryButton.SetActive(false);
