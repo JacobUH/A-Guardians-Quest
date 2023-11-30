@@ -15040,6 +15040,8 @@ GameObject:
   m_Component:
   - component: {fileID: 488061594531834614}
   - component: {fileID: 976755293409308749}
+  - component: {fileID: 976755293409308751}
+  - component: {fileID: 976755293409308750}
   m_Layer: 0
   m_Name: forest_zone
   m_TagString: Untagged
@@ -15061,6 +15063,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountToKill: 6
   questID: 4
+--- !u!114 &976755293409308750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976755293409308748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5df9d1d07d06d24bb649b31bb356628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 976755293409308749}
+  trigger: {fileID: 976755293409308751}
+--- !u!114 &976755293409308751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976755293409308748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda6ee62f776a1d42b5551aab3bea25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questStartID: 5
 --- !u!4 &1007072547266904799
 Transform:
   m_ObjectHideFlags: 0

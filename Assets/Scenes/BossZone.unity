@@ -10572,6 +10572,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2313677299066400225}
+  - component: {fileID: 3121000667012708188}
   m_Layer: 0
   m_Name: boss_zone
   m_TagString: Untagged
@@ -10579,6 +10580,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3121000667012708188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121000667012708187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b2df4e05394a949b32b7d46197efbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountToKill: 1
+  questID: 5
 --- !u!108 &3141939482449478271
 Light:
   m_ObjectHideFlags: 0
@@ -13077,6 +13092,7 @@ GameObject:
   - component: {fileID: 5491774304033563325}
   - component: {fileID: 5491774304033563330}
   - component: {fileID: 5491774304033563331}
+  - component: {fileID: 5491774304033563332}
   m_Layer: 3
   m_Name: Boss
   m_TagString: Enemy
@@ -13268,6 +13284,19 @@ MonoBehaviour:
   character: {fileID: 5491774304033563325}
   videoIndex: 7
   triggerCutscene: 0
+--- !u!114 &5491774304033563332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491774304033563323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fae719aac6d3674396840927e18caa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 3121000667012708188}
 --- !u!4 &5539997600314752845
 Transform:
   m_ObjectHideFlags: 0
