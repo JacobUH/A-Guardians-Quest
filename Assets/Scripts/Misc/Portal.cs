@@ -16,6 +16,10 @@ public class Portal : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            PlayerStateMachine psm = other.GetComponent<PlayerStateMachine>();
+            psm.savePosition = destination.position;
+            psm.saveRotation = destination.rotation;
+            psm.saveScene = loadSceneName;
             StartCoroutine(TeleportCoroutine(other));
         }
     }

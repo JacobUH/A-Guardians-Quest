@@ -13,10 +13,16 @@ public class PlayerStateMachine : StateMachine
     public string currentItemGuid = "1001";
     public bool isJumping;
     public bool isFalling;
+    public Vector3 savePosition;
+    public Quaternion saveRotation;
+    public string saveScene;
+    public GameObject retryMenuUI;
 
     public override void Start()
     {
         base.Start();
+        savePosition = transform.position;
+        saveRotation = transform.rotation;
         SwitchState(new PlayerFreeLookState(this));
     }
 

@@ -35,6 +35,11 @@ public class Character : MonoBehaviour, IDamageable
     private IEnumerator DestroyCoroutine()
     {
         yield return new WaitForSeconds(1f);
+        if (this.gameObject.CompareTag("Player"))
+        {
+            GetComponent<PlayerStateMachine>().retryMenuUI.SetActive(true);
+            yield break;
+        }
         healthBar.gameObject.SetActive(false);
         yield return new WaitForSeconds(5f);
         Destroy(this.gameObject);
@@ -119,5 +124,13 @@ public class Character : MonoBehaviour, IDamageable
         {
             attack.damage -= dmgBst;
         }
+    }
+
+    public void Revive()
+    {
+        isDead = false;
+        int maxHp = GetMaxHp();
+        currentHp = maxHp;
+        UpdateHPUI();
     }
 }
