@@ -12,5 +12,9 @@ public class EnemiesToKill : MonoBehaviour
         {
             QuestA2Manager.Instance.finishQuest(questID);
         }
+        if(FindObjectOfType<ConnectQuests>() != null)
+        {
+            FindObjectOfType<ConnectQuests>().triggerNext();
+        }
     }
 }

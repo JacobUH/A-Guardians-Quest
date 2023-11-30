@@ -8,6 +8,7 @@ public class DamageBoost : ItemEffect
     [SerializeField] private int increaseAmount;
     [SerializeField] private GameObject damageEffect;
     [SerializeField] private int duration;
+    private GameObject obj;
     
 
     public override void ResolveEffect(GameObject target)
@@ -16,8 +17,13 @@ public class DamageBoost : ItemEffect
         {
             character.increaseDamage(duration, increaseAmount);
             Instantiate(damageEffect, target.transform);
+            
             Debug.Log($"Increased {target.name} Damage for {increaseAmount} Hp");
         }
+    }
+    private void turnOff()
+    {
+        obj.transform.Find("DamageBuff").gameObject.SetActive(false);
     }
 
     

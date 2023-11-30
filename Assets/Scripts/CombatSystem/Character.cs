@@ -9,6 +9,7 @@ public class Character : MonoBehaviour, IDamageable
     public bool isDead;
     public bool isUnflinching;
     public bool isInvincible;
+    private GameObject obj;
     public event Action<GameObject> DieEvent;
     public event Action DamageEvent;
     private int dmgBst;
@@ -116,6 +117,9 @@ public class Character : MonoBehaviour, IDamageable
         {
             attack.damage += amount;
         }
+        obj = FindObjectOfType<CoinManager>().gameObject;
+        obj.transform.Find("DamageBuff").gameObject.SetActive(true);
+        Invoke("turnOff", duration);
         Invoke("endEffectWeapon", duration);
     }
     private void endEffectWeapon()
@@ -132,5 +136,9 @@ public class Character : MonoBehaviour, IDamageable
         int maxHp = GetMaxHp();
         currentHp = maxHp;
         UpdateHPUI();
+    }
+    private void turnOff()
+    {
+        obj.transform.Find("DamageBuff").gameObject.SetActive(false);
     }
 }
