@@ -14,4 +14,9 @@ public class QuestTriggerStart : MonoBehaviour
             transform.gameObject.SetActive(false);
         }
     }
+
+    public void onCompletePrev()
+    {
+        QuestA2Manager.Instance.acceptQuest(questStartID);
+    }
 }

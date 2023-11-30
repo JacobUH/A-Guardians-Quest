@@ -21,6 +21,6 @@ MonoBehaviour:
   shortDescription: Adds damage to each strike for 30 seconds
   longDescription: ' '
   cost: 010000000300000005000000
-  quantityToSell: 5
+  quantityToSell: 0
   itemEffects:
   - {fileID: 11400000, guid: 41fd1f30f9ea4414c99569b52ebdafd2, type: 2}

@@ -567,7 +567,7 @@ MonoBehaviour:
   baseStats:
     level: 1
     experience: 0
-    hp: 75
+    hp: 100
     attack: 10
     defense: 5
   equipmentData:
@@ -578,7 +578,6 @@ MonoBehaviour:
     - 
     - 
     - 
-  healthUI: {fileID: 0}
 --- !u!114 &5681303203830885003
 MonoBehaviour:
   m_ObjectHideFlags: 0
