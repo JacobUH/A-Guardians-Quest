@@ -10,7 +10,10 @@ public class QuestA2
     public string questDescription;
     public int[] coinReward;
     public bool completed = false;
+    public bool hasObjective = false;
+    [Space]
     public Dialogue defaultResponse;
+    
 
     public void questComplete()
     {

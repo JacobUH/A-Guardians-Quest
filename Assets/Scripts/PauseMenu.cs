@@ -28,8 +28,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (videoPlaying) return;
         if (optionsUI.activeSelf) return;
-        if (GameManager.Instance.IsInMenu) return;
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -41,6 +39,9 @@ public class PauseMenu : MonoBehaviour
                 pause();
             }
         }
+        if (GameManager.Instance.IsInMenu) return;
+
+        
     }
 
     void pause()

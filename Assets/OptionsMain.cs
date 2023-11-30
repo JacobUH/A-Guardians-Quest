@@ -15,6 +15,7 @@ public class OptionsMain : MonoBehaviour
 
     public void backMenu()
     {
+        PlayerPrefs.Save();
         SceneManager.LoadScene("MainMenu");
     }
 }
