@@ -9,7 +9,7 @@ public class CutsceneTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && triggerCutscene)
         {
             StartCoroutine(TriggerCoroutine());
         }
@@ -27,6 +27,6 @@ public class CutsceneTrigger : MonoBehaviour
         VideoManager.Instance.PlayVideo(videoIndex);
         transform.parent.Find("Cube").gameObject.SetActive(false);
         transform.parent.Find("Cube (1)").gameObject.SetActive(false);
-        if(!triggerCutscene) this.gameObject.SetActive(false);
+        triggerCutscene = false;
     }
 }

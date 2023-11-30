@@ -13076,6 +13076,7 @@ GameObject:
   - component: {fileID: 5491774304033563326}
   - component: {fileID: 5491774304033563325}
   - component: {fileID: 5491774304033563330}
+  - component: {fileID: 5491774304033563331}
   m_Layer: 3
   m_Name: Boss
   m_TagString: Enemy
@@ -13252,6 +13253,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 858a17c5dc2348e4b96b3645950b9b5a, type: 2}
   - {fileID: 11400000, guid: 1800ce7b431cec44a8f1132256ac1681, type: 2}
   swordTrailEffect: {fileID: 1216124179}
+--- !u!114 &5491774304033563331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491774304033563323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb1e23adee24c54ca9d6f069d56c8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 5491774304033563325}
+  videoIndex: 7
+  triggerCutscene: 0
 --- !u!4 &5539997600314752845
 Transform:
   m_ObjectHideFlags: 0
