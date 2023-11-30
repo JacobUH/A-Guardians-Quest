@@ -509,6 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ec2de780b94a84d871eb70009c598c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  psm: {fileID: 0}
   gravity: -9.8
   drag: 0.2
   stateMachine: {fileID: 0}
@@ -566,7 +567,7 @@ MonoBehaviour:
   baseStats:
     level: 1
     experience: 0
-    hp: 150
+    hp: 75
     attack: 10
     defense: 5
   equipmentData:
@@ -577,6 +578,7 @@ MonoBehaviour:
     - 
     - 
     - 
+  healthUI: {fileID: 0}
 --- !u!114 &5681303203830885003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +602,6 @@ MonoBehaviour:
   isDashing: 0
   groundCheckDistance: 0.2
   slideSpeed: 2
-  isGrounded: 0
   slideDirection: {x: 0, y: 0, z: 0}
   attackRange: 2
   controller: {fileID: 708974837332125410}
@@ -609,6 +610,7 @@ MonoBehaviour:
   comboManager: {fileID: 5580234981274530586}
   character: {fileID: 1026095539947790403}
   targetManager: {fileID: 2562698154432667924}
+  groundChecker: {fileID: 0}
   patrolPath: []
   isAggro: 0
   isPatrol: 0

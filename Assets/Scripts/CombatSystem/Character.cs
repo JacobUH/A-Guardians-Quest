@@ -19,6 +19,8 @@ public class Character : MonoBehaviour, IDamageable
     [SerializeField] private TextMeshProUGUI healthBarTextMesh;
     [SerializeField] private CharacterBaseStats baseStats;
     [SerializeField] private CharacterEquipmentData equipmentData;
+    [SerializeField] protected GameObject healthUI;
+    [SerializeField] protected float healthDisplayDistance;
 
     private float currentHp;
     public float CurrentHpPercent => currentHp / GetMaxHp();
