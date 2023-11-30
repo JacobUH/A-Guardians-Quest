@@ -11,7 +11,8 @@ public class ButtonGuideUI : MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.delta.value != Vector2.zero || Input.anyKeyDown)
+        //Mouse.current.delta.value != Vector2.zero 
+        if (Input.anyKeyDown || Mouse.current.leftButton.isPressed || Mouse.current.rightButton.isPressed)
         {
             if (!pcButtonGuideUI.activeSelf)
             {
