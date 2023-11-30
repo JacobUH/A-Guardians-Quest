@@ -21,7 +21,7 @@ public class DialogueManager : SingletonMonobehaviour<DialogueManager>
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X) || Gamepad.current.selectButton.IsPressed())
+        if (Input.GetKeyDown(KeyCode.X) || Gamepad.current.aButton.IsPressed())
         {
             DisplayNextSentence();
         }
