@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class QuestA2Manager : SingletonMonobehaviour<QuestA2Manager>
 {
@@ -27,6 +28,7 @@ public class QuestA2Manager : SingletonMonobehaviour<QuestA2Manager>
             questNotifStart.SetBool("startQuest", true);
             activeQuest.Add(quest);
             Invoke("turnNotifS", 2.0f);
+            
         }
         else
         {
@@ -60,4 +62,7 @@ public class QuestA2Manager : SingletonMonobehaviour<QuestA2Manager>
         questNotifStart.SetBool("startQuest", false);
         qStart.text = null;
     }
+
+
+    
 }

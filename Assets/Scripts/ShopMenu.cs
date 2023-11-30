@@ -52,6 +52,7 @@ public class ShopMenu : MonoBehaviour
                 button.interactable = false;
                 button.transform.Find("SoldOut").gameObject.SetActive(true);
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>().bowBack.SetActive(true);
+                QuestA2Manager.Instance.acceptQuest(4);
             }
         }
         /*else

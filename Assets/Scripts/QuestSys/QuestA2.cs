@@ -8,9 +8,9 @@ public class QuestA2
 {
     public string questName;
     public string questDescription;
-    public int[] coinReward;
     public bool completed = false;
-    public bool hasObjective = false;
+    [Space]
+    public int[] coinReward;
     [Space]
     public Dialogue defaultResponse;
     

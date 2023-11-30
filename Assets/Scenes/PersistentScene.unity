@@ -8049,36 +8049,37 @@ MonoBehaviour:
   questDatabase:
   - questName: Now Awake
     questDescription: Now awake, you head on home.
-    coinReward: 020000000300000004000000
     completed: 0
+    coinReward: 020000000300000004000000
     defaultResponse:
       NPC: NA
       dialogue: []
   - questName: Forboding Darkness
     questDescription: There's been an explosion! Head home as quickly as possible.
-    coinReward: 010000000100000002000000
     completed: 0
+    coinReward: 010000000100000002000000
     defaultResponse:
       NPC: NA
       dialogue: []
   - questName: A Grocer...
     questDescription: Who won the most "Most Disgusting Shopkeeper contest?
-    coinReward: 020000000100000002000000
     completed: 0
+    coinReward: 020000000100000002000000
     defaultResponse:
       NPC: 
       dialogue: []
   - questName: Off to See the Wizard
     questDescription: A little Hocus Pocus never hurt anyone!
-    coinReward: 070000000700000007000000
     completed: 0
+    coinReward: 070000000700000007000000
     defaultResponse:
       NPC: 
       dialogue: []
   - questName: Bone-jour
-    questDescription: You got some new tools! Say hi to the skeletons!
-    coinReward: 06000000080000000c000000
+    questDescription: You got some new tools! Say hi to the skeletons! Head deeper
+      into the forest to clear out the Skeletons invading.
     completed: 0
+    coinReward: 140000001400000014000000
     defaultResponse:
       NPC: 
       dialogue: []
@@ -35275,7 +35276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652263291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7238417, y: -0.000000028662265, z: 0.000000012296444, w: 0.68996614}
+  m_LocalRotation: {x: 0.7238418, y: 0.000000026882022, z: -0.000000011532704, w: 0.6899661}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37577,7 +37578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752737683}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7242672, y: 0.00000004617347, z: -0.000000019842687, w: 0.68951946}
+  m_LocalRotation: {x: 0.7242672, y: -0.000000010824691, z: 0.0000000046518256, w: 0.68951946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
