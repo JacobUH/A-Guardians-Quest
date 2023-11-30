@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class VideoPlayerController : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class VideoPlayerController : MonoBehaviour
     public VideoPlayer videoPlayer;
     public GameObject skipTooltip;
     public PauseMenu pauseMenu;
+    public string loadSceneAfterFinish;
+
 
     private void Update()
     {
@@ -50,6 +53,10 @@ public class VideoPlayerController : MonoBehaviour
         videoPlayer.loopPointReached -= OnVideoFinished;
         skipTooltip.SetActive(false);
         pauseMenu.videoPlaying = false;
+        if (!string.IsNullOrEmpty(loadSceneAfterFinish))
+        {
+            SceneManager.LoadSceneAsync(loadSceneAfterFinish, LoadSceneMode.Single);
+        }
         this.gameObject.SetActive(false);
     }
 }

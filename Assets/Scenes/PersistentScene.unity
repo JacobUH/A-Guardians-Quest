@@ -268,6 +268,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 18357396}
   skipTooltip: {fileID: 2115330051}
   pauseMenu: {fileID: 1386348847}
+  loadSceneAfterFinish: Credits
 --- !u!328 &18357396
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -535,6 +536,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 49645438}
   skipTooltip: {fileID: 2051572255}
   pauseMenu: {fileID: 1386348847}
+  loadSceneAfterFinish: 
 --- !u!328 &49645438
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -3770,6 +3772,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 321564835}
   skipTooltip: {fileID: 242350537}
   pauseMenu: {fileID: 1386348847}
+  loadSceneAfterFinish: 
 --- !u!328 &321564835
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -3911,7 +3914,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.55614203, y: -0.00000004688571, z: 0.0000000313747, w: 0.83108723}
+  m_LocalRotation: {x: 0.55614203, y: 0.000000046885688, z: -0.00000003137469, w: 0.83108723}
   m_LocalPosition: {x: -1187, y: 4.231864, z: -1.031864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4474,6 +4477,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 384741822}
   skipTooltip: {fileID: 583730944}
   pauseMenu: {fileID: 1386348847}
+  loadSceneAfterFinish: 
 --- !u!328 &384741822
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -7078,6 +7082,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 537229909}
   skipTooltip: {fileID: 1568836517}
   pauseMenu: {fileID: 1386348847}
+  loadSceneAfterFinish: 
 --- !u!328 &537229909
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -21011,6 +21016,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 1233533039}
   skipTooltip: {fileID: 138105155}
   pauseMenu: {fileID: 1386348847}
+  loadSceneAfterFinish: 
 --- !u!328 &1233533039
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -37571,7 +37577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752737683}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7242672, y: -0.000000010824691, z: 0.0000000046518256, w: 0.68951946}
+  m_LocalRotation: {x: 0.7242672, y: 0.00000004617347, z: -0.000000019842687, w: 0.68951946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37878,7 +37884,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.71160614, y: -0.000000032563577, z: 0.000000013297608, w: 0.7025786}
+  m_LocalRotation: {x: 0.71160614, y: 0.00000006818278, z: -0.00000002784301, w: 0.7025786}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -38349,6 +38355,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 1810536023}
   skipTooltip: {fileID: 551374386}
   pauseMenu: {fileID: 1386348847}
+  loadSceneAfterFinish: 
 --- !u!328 &1810536023
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -40031,6 +40038,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 1946349918}
   skipTooltip: {fileID: 301290935}
   pauseMenu: {fileID: 1386348847}
+  loadSceneAfterFinish: 
 --- !u!1 &1969190775
 GameObject:
   m_ObjectHideFlags: 0

@@ -133,10 +133,11 @@ public class PlayerFreeLookState : PlayerState
         WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
         {
+            /*
             playerStateMachine.swordMainHand.SetActive(true);
             playerStateMachine.bowBack.SetActive(true);
             playerStateMachine.swordBack.SetActive(false);
-            playerStateMachine.bowMainHand.SetActive(false);
+            playerStateMachine.bowMainHand.SetActive(false);*/
             playerStateMachine.SwitchState(new PlayerChargeAttackingState(playerStateMachine));
         }
         else return;
@@ -147,11 +148,11 @@ public class PlayerFreeLookState : PlayerState
         playerStateMachine.isDashing = false;
         WeaponType weaponType = playerStateMachine.character.GetCurrentWeaponData().weaponType;
         if (weaponType == WeaponType.Sword)
-        {
+        {/*
             playerStateMachine.swordMainHand.SetActive(true);
             playerStateMachine.bowBack.SetActive(true);
             playerStateMachine.swordBack.SetActive(false);
-            playerStateMachine.bowMainHand.SetActive(false);
+            playerStateMachine.bowMainHand.SetActive(false);*/
             playerStateMachine.SwitchState(new PlayerAttackingState(playerStateMachine, playerStateMachine.comboManager.strongSwordAttackCombo, 0));
         }
         else return;
