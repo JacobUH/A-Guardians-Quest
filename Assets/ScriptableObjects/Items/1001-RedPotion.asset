@@ -21,6 +21,6 @@ MonoBehaviour:
   shortDescription: Recover 20 HP
   longDescription: 
   cost: 050000000300000001000000
-  quantityToSell: 99999
+  quantityToSell: 99981
   itemEffects:
   - {fileID: 11400000, guid: d312da6dd57db2f44bbe8c3da7fbcb7a, type: 2}
