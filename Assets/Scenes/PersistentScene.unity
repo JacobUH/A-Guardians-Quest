@@ -4109,7 +4109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.55614203, y: 0.000000046885688, z: -0.00000003137469, w: 0.83108723}
+  m_LocalRotation: {x: 0.55614203, y: -0.00000004688571, z: 0.0000000313747, w: 0.83108723}
   m_LocalPosition: {x: -1187, y: 4.231864, z: -1.031864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -28747,7 +28747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f1e7dbfc0aa1a459832bc752e420f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3.5
+  movementSpeed: 5
   dashSpeed: 10
   walkSpeed: 0.7
   chaseSpeed: 2
@@ -28909,6 +28909,8 @@ MonoBehaviour:
     - 
     - 
     - 
+  healthUI: {fileID: 0}
+  healthDisplayDistance: 0
 --- !u!114 &1469337930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29072,7 +29074,7 @@ MonoBehaviour:
   isGrounded: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 9
   checkRadius: 0.3
   groundMaxDistance: 0.2
   groundMaxAngle: 60
@@ -38561,7 +38563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781189906}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.71160614, y: 0.00000006818278, z: -0.00000002784301, w: 0.7025786}
+  m_LocalRotation: {x: 0.71160614, y: -0.000000032563577, z: 0.000000013297608, w: 0.7025786}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

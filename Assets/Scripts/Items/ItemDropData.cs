@@ -89,10 +89,10 @@ public class ItemDropData : MonoBehaviour
     private IEnumerator CollectCoroutine()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        while (Vector3.Distance(player.transform.position + Vector3.up * 0.5f, transform.position) > 0.25f)
+        while (Vector3.Distance(player.transform.position + Vector3.up * 0.5f, transform.position) > 0.1f)
         {
             Vector3 moveDirection = (player.transform.position + Vector3.up * 0.5f - transform.position).normalized;
-            transform.Translate(moveDirection * Time.deltaTime * collectSpeed);
+            transform.Translate(moveDirection * Time.deltaTime * collectSpeed * 1.25f);
             yield return null;
         }
         InventoryBox.Instance.AddItem(itemGuid, quantity);
