@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogueManager : SingletonMonobehaviour<DialogueManager>
 
@@ -20,7 +21,7 @@ public class DialogueManager : SingletonMonobehaviour<DialogueManager>
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) || Gamepad.current.selectButton.IsPressed())
         {
             DisplayNextSentence();
         }
