@@ -70,6 +70,6 @@ Reem Alkhalily, Johnathan Castillo, Sean Eppling, Gweyneth Gravador, Dalton Hayn
 - **Windows:** Graphics Card Recommended, NVIDIA GTX 1060 and Above.
 - **Mac:** Silicon Chips Only, M1 and Above.
 
-The ZIP File Includes both the Windows 64 and MacOS versions of the game.
+Inside the ReleaseBuilds Folder, Each Respected ZIP File of the Windows 64 and MacOS versions of the game is available to Download.
 
 **Thanks for Playing! - Coogsoft Games**
