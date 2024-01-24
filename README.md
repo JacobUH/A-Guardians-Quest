@@ -67,7 +67,7 @@ Reem Alkhalily, Johnathan Castillo, Sean Eppling, Gweyneth Gravador, Dalton Hayn
 
 ## System Requirements
 
-- **Windows:** Decent Graphics Card, NVIDIA RTX 1060 and Above.
+- **Windows:** Graphics Card Recommended, NVIDIA GTX 1060 and Above.
 - **Mac:** Silicon Chips Only, M1 and Above.
 
 The ZIP File Includes both the Windows 64 and MacOS versions of the game.
