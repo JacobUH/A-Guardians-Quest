@@ -1,6 +1,9 @@
 # A Guardian's Quest
 ### A Game Created By: CoogSoft Games
 
+[![Game Cover](https://img.itch.zone/aW1nLzE0NTcxNzg5LnBuZw==/original/bzids3.png)](https://coogsoftgames.itch.io/a-guardians-quest)
+
+
 Embark on an epic 3D RPG adventure in "A Guardian's Quest" with mesmerizing landscapes, Zelda-inspired visuals, and challenging Soulslike battles. Uncover thrilling secrets!
 
 ## Story
