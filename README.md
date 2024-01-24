@@ -14,9 +14,9 @@ Embark on a journey with Leon, the brave protagonist who awakens in the heart of
 Immerse yourself in the visually stunning landscapes of A Guardian's Quest, where the art style takes inspiration from the timeless charm of The Legend of Zelda: Wind Waker. Traverse vibrant and picturesque environments that breathe life into the world around you.
 
 <p align="center">
-  <img src="https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MDgxNy5wbmc=/original/sGLP0I.png" width="30%" alt="Image 1">
-  <img src="https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MDgxOC5wbmc=/original/Ut58vF.png" width="30%" alt="Image 2">
-  <img src="https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MDgyMS5wbmc=/original/BdLcU5.png" width="30%" alt="Image 3">
+  <img src="https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MDgxNy5wbmc=/original/sGLP0I.png" width="33%" alt="Image 1">
+  <img src="https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MDgxOC5wbmc=/original/Ut58vF.png" width="33%" alt="Image 2">
+  <img src="https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MDgyMS5wbmc=/original/BdLcU5.png" width="33%" alt="Image 3">
 </p>
 
 ## Combat
