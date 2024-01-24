@@ -23,6 +23,13 @@ Immerse yourself in the visually stunning landscapes of A Guardian's Quest, wher
 
 Prepare for intense battles with a combat system reminiscent of challenging classics like Dark Souls. Experience the thrill of engaging foes in the Soulslike genre, offering a satisfying blend of strategy and skill that will test the limits of your skills.
 
+<p align="center">
+  <img src="https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MTQxNi5wbmc=/original/aCrASb.png" width="33%" alt="Image 1">
+  <img src="https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MTQxNy5wbmc=/original/Qxa22Y.png" width="33%" alt="Image 2">
+  <img src="https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MTQxOS5wbmc=/original/1dUmA4.png" width="33%" alt="Image 3">
+  <img src="https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MjAzMy5wbmc=/original/U81wBa.png" width="33%" alt="Image 4">
+</p>
+
 ## Features
 
 - **Engaging Story:** Uncover a narrative rich in depth and mystery as Leon's journey unfolds. The fate of the village rests on your shoulders.
