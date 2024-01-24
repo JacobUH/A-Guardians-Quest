@@ -52,6 +52,8 @@ Embark on this unforgettable adventure in A Guardian's Quest, where every step f
 
 ## Creation
 
+[![Team Cover](https://img.itch.zone/aW1hZ2UvMjQ1NzE2Ny8xNDU3MTQyNS5wbmc=/original/5gxcWT.png)](https://coogsoftgames.itch.io/a-guardians-quest)
+
 This game was created by the team, Coogsoft Games, at the University of Houston. Roles/Members are as follows:
 
 - **Producer:** Jacob Rangel
